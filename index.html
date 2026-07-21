@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samuel.A.I - Rumus Perpangkatan Universal 4.0 Analyzer</title>
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- KaTeX CDN for beautiful math rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+    <!-- Chart.js CDN for interactive graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-logo">S</div>
+                <div class="brand-text">
+                    <h1>SAMUEL.A.I</h1>
+                    <span>Versi 4.0</span>
+                </div>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-item active" data-tab="dashboard">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+                    Dashboard
+                </button>
+                <button class="nav-item" data-tab="audit">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    Audit Matematis
+                </button>
+                <button class="nav-item" data-tab="calculator">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path><path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path></svg>
+                    Kalkulator & Grafik
+                </button>
+                <button class="nav-item" data-tab="corrector">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                    Formula Fixer
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Karya Mahasiswa Robotika & AI</p>
+                <p class="school">Politeknik Negeri Batam</p>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="header-title">
+                    <h2>Rumus Perpangkatan Universal 4.0</h2>
+                    <p>Menganalisis, memperbaiki, dan menyimulasikan formula matematika Samuel Purba</p>
+                </div>
+                <div class="badge-status">
+                    <span class="status-dot green"></span>
+                    <span>Terhubung ke Sandbox</span>
+                </div>
+            </header>
+
+            <!-- TAB: Dashboard -->
+            <section id="dashboard" class="tab-content active">
+                <div class="welcome-card">
+                    <div class="welcome-text">
+                        <h3>Halo, Samuel Purba! 👋</h3>
+                        <p>Selamat datang di <strong>Samuel.A.I</strong>. Platform ini dibuat khusus untuk memvisualisasikan, menganalisis, dan memperbaiki secara matematis <em>Rumus Perpangkatan Universal 4.0</em> yang Anda rancang. Mari kita selaraskan rumus Anda agar sesuai dengan kaidah kalkulus dan aljabar formal!</p>
+                    </div>
+                    <div class="formula-display-container">
+                        <div class="formula-label">FORMULA ORIGINAL DARI DOKUMEN:</div>
+                        <div class="formula-math" id="original-formula-display">
+                            $$\sum_{(x \to \infty)} \lim_{(x \to \infty)} ((x - y)^n) = \sum_{(x \to \infty)} \lim_{(x \to \infty)} \left( \frac{\{(\int x^x \, dx \times \{\frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{k-n} y^k\}) - \int x^x \, dx\}}{\{\frac{d}{dt} \sum_{i=k}^n \binom{n}{i} y^k\}} \right)$$
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <!-- Card 1: Status Audit -->
+                    <div class="glass-card audit-summary">
+                        <h4>Ringkasan Audit Teknis</h4>
+                        <ul class="audit-list">
+                            <li class="audit-item critical">
+                                <span class="badge red">Kritis</span>
+                                <div>
+                                    <h5>Turunan Terhadap $t$ ($\frac{d}{dt}$)</h5>
+                                    <p>Variabel $t$ tidak ada dalam ekspresi, menghasilkan turunan $0$ dan error pembagian dengan nol.</p>
+                                </div>
+                            </li>
+                            <li class="audit-item warning">
+                                <span class="badge yellow">Peringatan</span>
+                                <div>
+                                    <h5>Integral Non-Elementer $\int x^x \, dx$</h5>
+                                    <p>Integral ini tidak dapat dipecahkan secara analitis menggunakan fungsi dasar matematika.</p>
+                                </div>
+                            </li>
+                            <li class="audit-item info">
+                                <span class="badge blue">Saran</span>
+                                <div>
+                                    <h5>Ketidaksesuaian Indeks Sumasi</h5>
+                                    <p>Variabel indeks sumasi menggunakan $i$, namun suku di dalamnya menggunakan variabel bebas $k$.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Card 2: Quick Calc -->
+                    <div class="glass-card quick-calc">
+                        <h4>Simulasi Cepat (Perbandingan)</h4>
+                        <div class="calc-inputs-row">
+                            <div class="input-group">
+                                <label for="quick-x">Variabel $x$</label>
+                                <input type="number" id="quick-x" value="5">
+                            </div>
+                            <div class="input-group">
+                                <label for="quick-y">Variabel $y$</label>
+                                <input type="number" id="quick-y" value="2">
+                            </div>
+                            <div class="input-group">
+                                <label for="quick-n">Pangkat $n$</label>
+                                <input type="number" id="quick-n" value="3">
+                            </div>
+                        </div>
+                        <div class="calc-results">
+                            <div class="result-box">
+                                <span class="label">Teorema Binomial Standar $(x-y)^n$</span>
+                                <span class="value" id="quick-res-std">27</span>
+                            </div>
+                            <div class="result-box error">
+                                <span class="label">Rumus Original Samuel (d/dt)</span>
+                                <span class="value" id="quick-res-sam">❌ Division by Zero</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" id="btn-goto-calc">Buka Simulator Grafik &rarr;</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB: Audit -->
+            <section id="audit" class="tab-content">
+                <div class="section-header">
+                    <h3>Detail Audit Matematis</h3>
+                    <p>Bedah kritis terhadap notasi dan keabsahan rumus berdasarkan standar kalkulus akademis.</p>
+                </div>
+
+                <div class="audit-details-container">
+                    <!-- Bug 1 -->
+                    <div class="audit-card">
+                        <div class="audit-card-header">
+                            <span class="severity-badge red">Kritis</span>
+                            <h4>1. Variabel Diferensiasi & Pembagian dengan Nol</h4>
+                        </div>
+                        <div class="audit-card-body">
+                            <p>Di dalam rumus Anda, terdapat operator turunan $\frac{d}{dt}$ yang ditargetkan pada ekspresi deret binomial:</p>
+                            <div class="math-block">
+                                $$\frac{d}{dt} \left( \sum_{i=k}^n \binom{n}{i} x^{k-n} y^k \right) \quad \text{dan} \quad \frac{d}{dt} \left( \sum_{i=k}^n \binom{n}{i} y^k \right)$$
+                            </div>
+                            <p><strong>Masalah:</strong> Variabel turunan adalah $t$, namun tidak ada variabel $t$ di dalam deret sumasi tersebut (semua variabel adalah $x$, $y$, $n$, $k$, $i$). Secara kalkulus formal, jika variabel-variabel tersebut tidak bergantung pada $t$, maka nilai turunan parsialnya adalah nol:</p>
+                            <div class="math-block">
+                                $$\frac{d}{dt}(\dots) = 0$$
+                            </div>
+                            <p>Hal ini mengakibatkan penyebut bernilai $0$ dan pembilangnya menjadi:</p>
+                            <div class="math-block">
+                                $$\int x^x \, dx \cdot 0 - \int x^x \, dx = -\int x^x \, dx$$
+                            </div>
+                            <p>Sehingga rumus menghasilkan bentuk tak tentu $\frac{-\int x^x \, dx}{0}$ (pembagian dengan nol).</p>
+                        </div>
+                    </div>
+
+                    <!-- Bug 2 -->
+                    <div class="audit-card">
+                        <div class="audit-card-header">
+                            <span class="severity-badge yellow">Peringatan</span>
+                            <h4>2. Integral Non-Elementer $\int x^x \, dx$</h4>
+                        </div>
+                        <div class="audit-card-body">
+                            <p>Suku $\int x^x \, dx$ adalah integral dari fungsi eksponensial diri ($x$ pangkat $x$).</p>
+                            <p><strong>Masalah:</strong> Integral ini tidak memiliki antiderivatif yang elementer. Nilainya hanya bisa dicari menggunakan deret tak hingga (seperti pada Teorema Sophomore's Dream) atau pendekatan numerik:</p>
+                            <div class="math-block">
+                                $$\int_{0}^{1} x^x \, dx = \sum_{m=1}^{\infty} \frac{(-1)^{m-1}}{m^m} \approx 0.78343$$
+                            </div>
+                            <p>Menggunakan fungsi non-elementer ini di dalam rumus penyederhanaan pangkat membuat rumus menjadi jauh lebih rumit daripada perhitungan eksponen standar.</p>
+                        </div>
+                    </div>
+
+                    <!-- Bug 3 -->
+                    <div class="audit-card">
+                        <div class="audit-card-header">
+                            <span class="severity-badge blue">Saran</span>
+                            <h4>3. Sinkronisasi Indeks Sumasi</h4>
+                        </div>
+                        <div class="audit-card-body">
+                            <p>Notasi sumasi Anda tertulis:</p>
+                            <div class="math-block">
+                                $$\sum_{i=k}^n \binom{n}{i} x^{k-n} y^k$$
+                            </div>
+                            <p><strong>Masalah:</strong> Indeks berjalan sumasi adalah $i$, yang dimulai dari $k$ hingga $n$. Namun suku di dalamnya menggunakan $k$ dan $n$ sebagai eksponen ($x^{k-n} y^k$). Karena tidak ada indeks $i$ pada bagian variabel basis, sumasi tersebut hanya menduplikasi suku yang sama sebanyak $(n-k+1)$ kali, bukan melakukan ekspansi binomial.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB: Calculator -->
+            <section id="calculator" class="tab-content">
+                <div class="section-header">
+                    <h3>Simulator Interaktif & Grafik Perbandingan</h3>
+                    <p>Bandingkan hasil Teorema Binomial dengan Rumus Samuel yang telah disesuaikan (diferensiasi diset ke variabel $y$ atau $x$).</p>
+                </div>
+
+                <div class="calculator-layout">
+                    <!-- Control Panel -->
+                    <div class="glass-card calc-controls">
+                        <h4>Parameter Input</h4>
+                        
+                        <div class="input-field">
+                            <label for="calc-x">Nilai $x$ (Basis Utama)</label>
+                            <input type="number" id="calc-x" value="4" step="0.1">
+                        </div>
+
+                        <div class="input-field">
+                            <label for="calc-y">Nilai $y$ (Pengurang)</label>
+                            <input type="number" id="calc-y" value="1.5" step="0.1">
+                        </div>
+
+                        <div class="input-field">
+                            <label for="calc-n">Nilai $n$ (Pangkat)</label>
+                            <input type="number" id="calc-n" value="3" min="1" max="10" step="1">
+                        </div>
+
+                        <div class="input-field">
+                            <label for="calc-k">Batas Bawah Sumasi $k$</label>
+                            <input type="number" id="calc-k" value="1" min="0" max="10" step="1">
+                        </div>
+
+                        <div class="input-field">
+                            <label for="calc-deriv">Variabel Turunan ($\frac{d}{d\text{var}}$)</label>
+                            <select id="calc-deriv">
+                                <option value="t">t (Sesuai Dokumen Original - Hasil Error)</option>
+                                <option value="y" selected>y (Penyesuaian Pertama)</option>
+                                <option value="x">x (Penyesuaian Kedua)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="info-alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="alert-icon"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                            <span>Untuk menghindari division by zero, Anda dapat memilih variabel turunan <strong>y</strong> atau <strong>x</strong> pada pilihan di atas.</span>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Table and Graph -->
+                    <div class="calc-results-container">
+                        <div class="glass-card results-summary-card">
+                            <h4>Hasil Perhitungan Sistem</h4>
+                            <div class="comparison-grid">
+                                <div class="comp-box highlight">
+                                    <h5>Ekspansi Binomial Standar</h5>
+                                    <span class="formula-ref">$(x-y)^n$</span>
+                                    <span class="comp-value" id="res-std-val">15.625</span>
+                                </div>
+                                <div class="comp-box">
+                                    <h5>Rumus Samuel (Tersimulasi)</h5>
+                                    <span class="formula-ref" id="sim-formula-ref">Menggunakan $\frac{d}{dy}$ & Integrasi Numerik $\int x^x$</span>
+                                    <span class="comp-value" id="res-sam-val">Calculating...</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card chart-card">
+                            <h4>Grafik Konvergensi (Fungsi Terhadap $x$)</h4>
+                            <div class="chart-wrapper">
+                                <canvas id="convergenceChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB: Corrector -->
+            <section id="corrector" class="tab-content">
+                <div class="section-header">
+                    <h3>Formula Fixer & Rekomendasi Formal</h3>
+                    <p>Gunakan panel di bawah ini untuk melihat bagaimana modifikasi kecil dapat mengubah rumus Anda menjadi benar secara akademis.</p>
+                </div>
+
+                <div class="corrector-grid">
+                    <div class="glass-card corrector-panel">
+                        <h4>Pilih Langkah Perbaikan</h4>
+                        
+                        <div class="checkbox-group">
+                            <label class="control-checkbox">
+                                <input type="checkbox" id="fix-deriv" checked>
+                                <span class="control-label">
+                                    <strong>Ubah Turunan menjadi Terhadap $y$ ($\frac{d}{dy}$)</strong>
+                                    <small>Menghilangkan pembagian dengan nol dengan menurunkan variabel yang ada dalam sumasi.</small>
+                                </span>
+                            </label>
+
+                            <label class="control-checkbox">
+                                <input type="checkbox" id="fix-index" checked>
+                                <span class="control-label">
+                                    <strong>Sinkronkan Indeks Sumasi ($i \to k$)</strong>
+                                    <small>Menyelaraskan indeks berjalan dari batas bawah ke pangkat suku-suku deret.</small>
+                                </span>
+                            </label>
+
+                            <label class="control-checkbox">
+                                <input type="checkbox" id="fix-integral" checked>
+                                <span class="control-label">
+                                    <strong>Hilangkan Integral $\int x^x$ & Sederhanakan</strong>
+                                    <small>Menghilangkan konstanta non-elementer agar formula dapat dihitung secara langsung.</small>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="glass-card corrector-preview">
+                        <h4>Hasil Formula Rekomendasi</h4>
+                        
+                        <div class="corrected-math-container">
+                            <div class="math-rendered" id="corrected-math-render">
+                                Loading KaTeX...
+                            </div>
+                        </div>
+
+                        <div class="explanation-box" id="corrected-explanation">
+                            Loading explanation...
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Main JavaScript Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
