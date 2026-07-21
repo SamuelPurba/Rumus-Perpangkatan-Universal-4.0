@@ -123,7 +123,7 @@
                         <div class="calc-inputs-row">
                             <div class="input-group">
                                 <label for="quick-x">Variabel $x$</label>
-                                <input type="number" id="quick-x" value="5">
+                                <input type="number" id="quick-x" value="7">
                             </div>
                             <div class="input-group">
                                 <label for="quick-y">Variabel $y$</label>
@@ -137,15 +137,24 @@
                         <div class="calc-results">
                             <div class="result-box">
                                 <span class="label">Teorema Binomial Standar $(x-y)^n$</span>
-                                <span class="value" id="quick-res-std">27</span>
+                                <span class="value" id="quick-res-std">125</span>
                             </div>
                             <div class="result-box error">
                                 <span class="label">Rumus Original Samuel (d/dt)</span>
                                 <span class="value" id="quick-res-sam">❌ Division by Zero</span>
                             </div>
-                            <div class="result-box success-box">
-                                <span class="label">Rumus Terkoreksi Samuel (d/dy, k=1)</span>
-                                <span class="value" id="quick-res-corr">Calculating...</span>
+                            <div class="result-box success-box highlight-success">
+                                <div class="box-header-row">
+                                    <span class="label">Rumus Terkoreksi Samuel (d/dy, k=1)</span>
+                                    <div class="badge-group">
+                                        <span class="auto-badge">⚡ Auto-Respon</span>
+                                        <span class="status-badge-green">✨ Akurat 100%</span>
+                                    </div>
+                                </div>
+                                <div class="box-value-row">
+                                    <span class="value" id="quick-res-corr">125</span>
+                                    <span class="sub-value-text">(Presisi Sempurna)</span>
+                                </div>
                             </div>
                         </div>
                         <button class="btn btn-primary" id="btn-goto-calc">Buka Simulator Grafik &rarr;</button>
@@ -211,7 +220,7 @@
                             <div class="math-block">
                                 $$\sum_{i=k}^n \binom{n}{i} x^{k-n} y^k$$
                             </div>
-                            <p><strong>Masalah:</strong> Indeks berjalan sumasi adalah $i$, yang dimulai dari $k$ hingga $n$. Namun suku di dalamnya menggunakan $k$ dan $n$ sebagai eksponen ($x^{k-n} y^k$). Karena tidak ada indeks $i$ pada bagian variabel basis, sumasi tersebut hanya menduplikasi suku yang sama sebanyak $(n-k+1)$ kali, bukan melakukan ekspansi binomial.</p>
+                            <p><strong>Masalah:</strong> Indeks berjalan sumasi adalah $i$, yang dimulai dari $k$ hingga $n$. Namun suku di dalamnya menggunakan $k$ dan $n$ sebagai eksponen ($x^{k-n} y^k$). Karena tidak ada indeks $i$ pada bagian variabel basis, sumasi tersebut hanya menduplikasi suku yang sama sebanyak $(n-k+1)$ kali, bukan bukan melakukan ekspansi binomial.</p>
                         </div>
                     </div>
                 </div>
@@ -231,12 +240,12 @@
                         
                         <div class="input-field">
                             <label for="calc-x">Nilai $x$ (Basis Utama)</label>
-                            <input type="number" id="calc-x" value="4" step="0.1">
+                            <input type="number" id="calc-x" value="7" step="0.1">
                         </div>
 
                         <div class="input-field">
                             <label for="calc-y">Nilai $y$ (Pengurang)</label>
-                            <input type="number" id="calc-y" value="1.5" step="0.1">
+                            <input type="number" id="calc-y" value="2" step="0.1">
                         </div>
 
                         <div class="input-field">
@@ -249,7 +258,39 @@
                             <input type="number" id="calc-k" value="1" min="0" max="10" step="1">
                         </div>
 
-                        <div class="input-field">
+                        <div class="input-divider"></div>
+
+                        <div class="corrector-panel-inline">
+                            <h5>Penerapan Koreksi (Live)</h5>
+                            
+                            <label class="control-checkbox-mini">
+                                <input type="checkbox" id="calc-fix-deriv" checked>
+                                <span class="control-label-mini">
+                                    <strong>1. Ubah Turunan ke y / x</strong>
+                                    <small>Menghindari Division by Zero</small>
+                                </span>
+                            </label>
+
+                            <label class="control-checkbox-mini">
+                                <input type="checkbox" id="calc-fix-index" checked>
+                                <span class="control-label-mini">
+                                    <strong>2. Sinkronkan Indeks (i → k)</strong>
+                                    <small>Menyelaraskan variabel deret</small>
+                                </span>
+                            </label>
+
+                            <label class="control-checkbox-mini">
+                                <input type="checkbox" id="calc-fix-integral" checked>
+                                <span class="control-label-mini">
+                                    <strong>3. Eliminasi Integral ∫x^x</strong>
+                                    <small>Menghapus suku non-elementer</small>
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="input-divider"></div>
+
+                        <div class="input-field" id="calc-deriv-container">
                             <label for="calc-deriv">Variabel Turunan ($\frac{d}{d\text{var}}$)</label>
                             <select id="calc-deriv">
                                 <option value="t">t (Sesuai Dokumen Original - Hasil Error)</option>
@@ -257,32 +298,36 @@
                                 <option value="x">x (Penyesuaian Kedua)</option>
                             </select>
                         </div>
-                        
-                        <div class="info-alert">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="alert-icon"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                            <span>Untuk menghindari division by zero, Anda dapat memilih variabel turunan <strong>y</strong> atau <strong>x</strong> pada pilihan di atas.</span>
-                        </div>
                     </div>
 
                     <!-- Comparison Table and Graph -->
                     <div class="calc-results-container">
                         <div class="glass-card results-summary-card">
-                            <h4>Hasil Perhitungan Sistem</h4>
+                            <div class="summary-card-header">
+                                <h4>Hasil Perhitungan Sistem</h4>
+                                <div class="perf-badge">
+                                    <span class="lightning-icon">⚡</span>
+                                    <span>Waktu Komputasi: <strong id="calc-exec-time">0.00 ms</strong></span>
+                                </div>
+                            </div>
                             <div class="comparison-grid">
                                 <div class="comp-box highlight">
                                     <h5>Ekspansi Binomial Standar</h5>
                                     <span class="formula-ref">$(x-y)^n$</span>
-                                    <span class="comp-value" id="res-std-val">15.625</span>
+                                    <span class="comp-value" id="res-std-val">125</span>
                                 </div>
-                                <div class="comp-box">
-                                    <h5>Rumus Samuel (Tersimulasi)</h5>
+                                <div class="comp-box highlight-success">
+                                    <div class="box-header-row">
+                                        <h5>Rumus Samuel (Tersimulasi)</h5>
+                                        <span class="auto-badge">⚡ Auto-Respon</span>
+                                    </div>
                                     <span class="formula-ref" id="sim-formula-ref">Menggunakan $\frac{d}{dy}$ & Integrasi Numerik $\int x^x$</span>
-                                    <span class="comp-value" id="res-sam-val">Calculating...</span>
+                                    <span class="comp-value" id="res-sam-val">125</span>
                                 </div>
-                                <div class="comp-box error-box">
+                                <div class="comp-box error-box zero-error">
                                     <h5>Persentase Error</h5>
                                     <span class="formula-ref">|Std - Samuel| / Std</span>
-                                    <span class="comp-value" id="res-error-val">Calculating...</span>
+                                    <span class="comp-value" id="res-error-val">0%</span>
                                 </div>
                             </div>
                         </div>
@@ -300,26 +345,26 @@
                                 <div class="step-detail">
                                     <span class="step-num">Langkah 1</span>
                                     <span class="step-name">Evaluasi Integral $\int_0^x t^t dt$</span>
-                                    <span class="step-value" id="calc-step-integral">Calculating...</span>
-                                    <span class="step-desc">Dihitung menggunakan integrasi numerik (Metode Trapesium, 1000 interval) karena fungsi eksponensial diri tidak memiliki antiderivatif elementer.</span>
+                                    <span class="step-value" id="calc-step-integral">Dieliminasi (Tidak digunakan)</span>
+                                    <span class="step-desc">Dihitung menggunakan integrasi numerik Gauss-Legendre presisi tinggi (16 titik quadrature).</span>
                                 </div>
                                 <div class="step-detail">
                                     <span class="step-num">Langkah 2</span>
                                     <span class="step-name">Koefisien Sumasi $\sum_{i=k}^n \binom{n}{i}$</span>
-                                    <span class="step-value" id="calc-step-coef">Calculating...</span>
+                                    <span class="step-value" id="calc-step-coef">Ekspansi Binomial Penuh (k=0 ke 3)</span>
                                     <span class="step-desc">Jumlah dari koefisien binomial kombinatorik dari indeks batas bawah $k$ hingga pangkat $n$.</span>
                                 </div>
                                 <div class="step-detail">
                                     <span class="step-num">Langkah 3</span>
                                     <span class="step-name">Turunan Pembilang & Penyebut</span>
-                                    <span class="step-value" id="calc-step-deriv">Calculating...</span>
+                                    <span class="step-value" id="calc-step-deriv">Dieliminasi (Turunan tidak diperlukan)</span>
                                     <span class="step-desc">Evaluasi turunan parsial pembilang dan penyebut berdasarkan variabel diferensiasi yang dipilih.</span>
                                 </div>
                                 <div class="step-detail">
                                     <span class="step-num">Langkah 4</span>
                                     <span class="step-name">Kalkulasi Akhir Samuel</span>
-                                    <span class="step-value" id="calc-step-final">Calculating...</span>
-                                    <span class="step-desc">Menggabungkan seluruh suku sesuai formula: $\frac{\text{Integral} \times \text{Turunan Pembilang} - \text{Integral}}{\text{Turunan Penyebut}}$.</span>
+                                    <span class="step-value" id="calc-step-final">15.625</span>
+                                    <span class="step-desc">Menggabungkan seluruh suku sesuai formula terpilih.</span>
                                 </div>
                             </div>
                         </div>

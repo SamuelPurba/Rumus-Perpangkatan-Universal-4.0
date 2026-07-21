@@ -443,6 +443,62 @@ body {
     color: #10b981;
 }
 
+.box-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.status-badge-green {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #10b981;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 12px;
+}
+
+.badge-group {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.auto-badge {
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    color: #818cf8;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 0.15rem 0.45rem;
+    border-radius: 12px;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.box-value-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.sub-value-text {
+    font-size: 0.75rem;
+    color: #10b981;
+    opacity: 0.85;
+    font-weight: 500;
+}
+
+.result-box.highlight-success {
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
+}
+
 .btn {
     display: inline-flex;
     align-items: center;
@@ -588,6 +644,30 @@ body {
     padding: 1.5rem 2rem;
 }
 
+.summary-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.perf-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    border-radius: 20px;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.75rem;
+    color: #10b981;
+    font-family: var(--font-mono);
+}
+
+.lightning-icon {
+    font-size: 0.85rem;
+}
+
 .comparison-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -655,6 +735,85 @@ body {
     height: 350px;
     position: relative;
     width: 100%;
+}
+
+
+.input-divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: 0.5rem 0;
+}
+
+.corrector-panel-inline {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    background: rgba(99, 102, 241, 0.03);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.corrector-panel-inline h5 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.control-checkbox-mini {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.control-checkbox-mini input[type="checkbox"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--text-muted);
+    border-radius: 4px;
+    background: rgba(10, 15, 26, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 2px;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.control-checkbox-mini input[type="checkbox"]:checked {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.control-checkbox-mini input[type="checkbox"]:checked::after {
+    content: "✓";
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: bold;
+}
+
+.control-label-mini {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.control-label-mini strong {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.control-label-mini small {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
 }
 
 /* Corrector Styles */

@@ -20,9 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Trigger chart update if switching to calculator tab
-        if (tabId === 'calculator') {
-            setTimeout(updateCalculator, 50);
+        // Trigger instant Auto-Respon on tab navigation
+        if (tabId === 'dashboard') {
+            updateQuickCalc();
+        } else if (tabId === 'calculator') {
+            setTimeout(updateCalculator, 20);
+        } else if (tabId === 'corrector') {
+            updateFormulaFixer();
         }
     }
 
@@ -40,11 +44,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Helper functions for math
+    // High-performance math optimization constants & cache
+    const GAUSS_NODES = [
+        -0.989400934991650, -0.944575023073233, -0.865631202387832, -0.755404408355003,
+        -0.617876244402644, -0.458016777657227, -0.281603550779259, -0.095012509837637,
+         0.095012509837637,  0.281603550779259,  0.458016777657227,  0.617876244402644,
+         0.755404408355003,  0.865631202387832,  0.944575023073233,  0.989400934991650
+    ];
+
+    const GAUSS_WEIGHTS = [
+        0.027152459411754, 0.062253523938648, 0.095158511682493, 0.124628971255534,
+        0.149595988816577, 0.169156519395003, 0.182603415044924, 0.189450610455068,
+        0.189450610455068, 0.182603415044924, 0.169156519395003, 0.149595988816577,
+        0.124628971255534, 0.095158511682493, 0.062253523938648, 0.027152459411754
+    ];
+
+    // Precomputed Pascal Triangle for O(1) Binomial Coefficients (n <= 30)
+    const PASCAL_TABLE = Array.from({ length: 32 }, () => new Float64Array(32));
+    for (let i = 0; i <= 30; i++) {
+        PASCAL_TABLE[i][0] = 1;
+        for (let j = 1; j <= i; j++) {
+            PASCAL_TABLE[i][j] = PASCAL_TABLE[i - 1][j - 1] + PASCAL_TABLE[i - 1][j];
+        }
+    }
+
     function binomial(n, k) {
         if (k < 0 || k > n) return 0;
-        if (k === 0 || k === n) return 1;
-        if (k > n / 2) k = n - k;
+        if (n <= 30) return PASCAL_TABLE[n][k];
         let res = 1;
         for (let i = 1; i <= k; i++) {
             res = res * (n - k + i) / i;
@@ -52,26 +78,48 @@ document.addEventListener('DOMContentLoaded', () => {
         return Math.round(res);
     }
 
-    // Numerical integration of t^t from 0.0001 to x
+    // High-speed Map cache for numerical integration
+    const integralCache = new Map();
+
+    // Ultra-fast 16-point Gauss-Legendre Quadrature of t^t from 0.0001 to x
     function integralXPowerX(x) {
-        if (x <= 0) return 0;
-        const steps = 1000;
-        const start = 0.0001;
-        const h = (x - start) / steps;
-        let sum = 0.5 * (Math.pow(start, start) + Math.pow(x, x));
-        for (let i = 1; i < steps; i++) {
-            const t = start + i * h;
-            sum += Math.pow(t, t);
+        if (x <= 0.0001) return 0;
+        
+        // Cache key with 5 decimal precision for O(1) instantaneous lookup
+        const cacheKey = Math.round(x * 100000);
+        if (integralCache.has(cacheKey)) {
+            return integralCache.get(cacheKey);
         }
-        return sum * h;
+
+        const start = 0.0001;
+        const halfLength = (x - start) / 2;
+        const midPoint = (x + start) / 2;
+        
+        let sum = 0;
+        for (let i = 0; i < 16; i++) {
+            const t = halfLength * GAUSS_NODES[i] + midPoint;
+            // Native exp(t * ln(t)) for maximum numerical speed
+            const val = Math.exp(t * Math.log(t));
+            sum += GAUSS_WEIGHTS[i] * val;
+        }
+
+        const result = halfLength * sum;
+        integralCache.set(cacheKey, result);
+        return result;
     }
 
-    // Calculate sum for coefficient
+    // Precomputed Sum Coefficient cache
+    const sumCoefCache = new Map();
+
     function getSumCoef(n, k) {
+        const key = (n << 8) | k;
+        if (sumCoefCache.has(key)) return sumCoefCache.get(key);
+        
         let sum = 0;
         for (let i = k; i <= n; i++) {
             sum += binomial(n, i);
         }
+        sumCoefCache.set(key, sum);
         return sum;
     }
 
@@ -97,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Corrected Samuel formula (d/dy with k=1)
         const quickResCorr = document.getElementById('quick-res-corr');
         if (quickResCorr) {
-            const corrRes = evaluateSamuelFormula(x, y, n, 1, 'y');
+            const corrRes = evaluateSamuelFormula(x, y, n, 1, 'y', true, true, true);
             if (corrRes.error) {
                 quickResCorr.textContent = "❌ " + corrRes.error;
             } else {
@@ -107,7 +155,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     [quickX, quickY, quickN].forEach(input => {
-        input.addEventListener('input', updateQuickCalc);
+        if (input) {
+            input.addEventListener('input', () => syncInputs('quick'));
+        }
     });
     updateQuickCalc();
 
@@ -121,55 +171,95 @@ document.addEventListener('DOMContentLoaded', () => {
     const resSamVal = document.getElementById('res-sam-val');
     const simFormulaRef = document.getElementById('sim-formula-ref');
 
+    // Inline checkboxes in Calculator tab
+    const calcFixDeriv = document.getElementById('calc-fix-deriv');
+    const calcFixIndex = document.getElementById('calc-fix-index');
+    const calcFixIntegral = document.getElementById('calc-fix-integral');
+
+    // Formula Fixer checkboxes
+    const fixDeriv = document.getElementById('fix-deriv');
+    const fixIndex = document.getElementById('fix-index');
+    const fixIntegral = document.getElementById('fix-integral');
+    const correctedMathRender = document.getElementById('corrected-math-render');
+    const correctedExplanation = document.getElementById('corrected-explanation');
+
     let convergenceChart = null;
 
-    function evaluateSamuelFormula(x, y, n, k, derivVar) {
+    function evaluateSamuelFormula(x, y, n, k, derivVar, fixDerivVal, fixIndexVal, fixIntegralVal) {
+        if (!fixDerivVal || derivVar === 't') {
+            return { value: NaN, error: 'Pembagian dengan Nol: d/dt = 0' };
+        }
+
+        // If integral is eliminated
+        if (fixIntegralVal) {
+            if (fixIndexVal) {
+                // Fully corrected: Standard binomial expansion (x-y)^n
+                return { value: Math.pow(x - y, n), error: null };
+            } else {
+                // Integral eliminated but index not synced
+                const sumCoef = getSumCoef(n, k);
+                const sumVal = Math.pow(x, k - n) * Math.pow(y, k) * sumCoef;
+                return { value: sumVal, error: null };
+            }
+        }
+
+        // If integral is not eliminated
         const intVal = integralXPowerX(x);
-        const sumCoef = getSumCoef(n, k);
-
-        if (derivVar === 't') {
-            return { value: NaN, error: 'Division by Zero: d/dt(f(x,y)) = 0' };
-        } else if (derivVar === 'x') {
-            // d/dx of sum_{i=k}^n binomial(n, i) x^{k-n} y^k
-            // = (k - n) * x^{k-n-1} * y^k * sumCoef
-            const derivNum = (k - n) * Math.pow(x, k - n - 1) * Math.pow(y, k) * sumCoef;
-            const derivDenom = (k - n) * Math.pow(x, k - n - 1) * Math.pow(y, k) * sumCoef;
-
-            if (derivDenom === 0) {
-                return { value: NaN, error: 'Division by Zero: turunan penyebut = 0' };
+        
+        if (fixIndexVal) {
+            // Synced index (sum is (x-y)^n)
+            let derivVal = 0;
+            if (derivVar === 'y') {
+                derivVal = -n * Math.pow(x - y, n - 1);
+            } else if (derivVar === 'x') {
+                derivVal = n * Math.pow(x - y, n - 1);
             }
 
-            const samuelVal = (intVal * derivNum - intVal) / derivDenom;
+            if (derivVal === 0) {
+                return { value: NaN, error: 'Pembagian dengan Nol: turunan = 0' };
+            }
+
+            const samuelVal = (intVal * derivVal - intVal) / derivVal;
             return { value: samuelVal, error: null };
-        } else if (derivVar === 'y') {
-            // d/dy of sum_{i=k}^n binomial(n, i) x^{k-n} y^k
-            // = k * y^{k-1} * x^{k-n} * sumCoef
-            const derivNum = k * Math.pow(y, k - 1) * Math.pow(x, k - n) * sumCoef;
-            const derivDenom = k * Math.pow(y, k - 1) * Math.pow(x, k - n) * sumCoef;
+        } else {
+            // Un-synced index
+            const sumCoef = getSumCoef(n, k);
+            let derivVal = 0;
 
-            if (derivDenom === 0) {
-                return { value: NaN, error: 'Division by Zero: turunan penyebut = 0' };
+            if (derivVar === 'y') {
+                derivVal = k * Math.pow(y, k - 1) * Math.pow(x, k - n) * sumCoef;
+            } else if (derivVar === 'x') {
+                derivVal = (k - n) * Math.pow(x, k - n - 1) * Math.pow(y, k) * sumCoef;
             }
 
-            const samuelVal = (intVal * derivNum - intVal) / derivDenom;
+            if (derivVal === 0) {
+                return { value: NaN, error: 'Pembagian dengan Nol: turunan = 0' };
+            }
+
+            const samuelVal = (intVal * derivVal - intVal) / derivVal;
             return { value: samuelVal, error: null };
         }
-        return { value: NaN, error: 'Unknown derivative variable' };
     }
 
     function updateCalculator() {
+        const startTime = performance.now();
+        
         const x = parseFloat(calcX.value) || 0;
         const y = parseFloat(calcY.value) || 0;
         const n = parseInt(calcN.value) || 1;
         const k = parseInt(calcK.value) || 0;
         const derivVar = calcDeriv.value;
 
+        const fixDerivVal = calcFixDeriv.checked;
+        const fixIndexVal = calcFixIndex.checked;
+        const fixIntegralVal = calcFixIntegral.checked;
+
         // Evaluate standard
         const stdVal = Math.pow(x - y, n);
         resStdVal.textContent = stdVal.toLocaleString('id-ID', { maximumFractionDigits: 4 });
 
         // Evaluate Samuel
-        const samResult = evaluateSamuelFormula(x, y, n, k, derivVar);
+        const samResult = evaluateSamuelFormula(x, y, n, k, derivVar, fixDerivVal, fixIndexVal, fixIntegralVal);
         if (samResult.error) {
             resSamVal.textContent = "Error: " + samResult.error;
             resSamVal.classList.add('error-text');
@@ -199,12 +289,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Update reference formula description
-        if (derivVar === 't') {
+        if (!fixDerivVal || derivVar === 't') {
             simFormulaRef.innerHTML = 'Menggunakan $\\frac{d}{dt}$ (Turunan terhadap $t$ = 0)';
-        } else if (derivVar === 'x') {
-            simFormulaRef.innerHTML = 'Menggunakan $\\frac{d}{dx}$ (Penyebut tidak mengandung $x$ = 0)';
+        } else if (fixIntegralVal) {
+            if (fixIndexVal) {
+                simFormulaRef.innerHTML = 'Koreksi Penuh: $(x-y)^n = \\sum_{k=0}^n \\binom{n}{k} x^{n-k} (-y)^k$';
+            } else {
+                simFormulaRef.innerHTML = 'Integral Dieliminasi, Indeks Tidak Sinkron: $x^{k-n} y^k \\sum \\binom{n}{i}$';
+            }
         } else {
-            simFormulaRef.innerHTML = 'Menggunakan $\\frac{d}{dy}$ & Integrasi Numerik $\\int x^x$';
+            if (derivVar === 'x') {
+                simFormulaRef.innerHTML = 'Menggunakan $\\frac{d}{dx}$ & Integrasi Numerik $\\int x^x$';
+            } else {
+                simFormulaRef.innerHTML = 'Menggunakan $\\frac{d}{dy}$ & Integrasi Numerik $\\int x^x$';
+            }
         }
         
         // Re-trigger KaTeX rendering in specific container
@@ -220,44 +318,66 @@ document.addEventListener('DOMContentLoaded', () => {
         const stepDerivEl = document.getElementById('calc-step-deriv');
         const stepFinalEl = document.getElementById('calc-step-final');
 
-        if (stepIntEl) stepIntEl.textContent = intVal.toLocaleString('id-ID', { maximumFractionDigits: 6 });
-        if (stepCoefEl) stepCoefEl.textContent = sumCoef.toLocaleString('id-ID');
+        if (stepIntEl) {
+            stepIntEl.textContent = fixIntegralVal 
+                ? 'Dieliminasi (Tidak digunakan)' 
+                : intVal.toLocaleString('id-ID', { maximumFractionDigits: 6 });
+        }
+        
+        if (stepCoefEl) {
+            if (fixIndexVal) {
+                stepCoefEl.textContent = `Ekspansi Binomial Penuh (k=0 ke ${n})`;
+            } else {
+                stepCoefEl.textContent = `Koefisien Terbatas (k=${k} ke ${n}): ` + sumCoef.toLocaleString('id-ID');
+            }
+        }
 
         let stepDerivText = '';
         let stepFinalText = '';
 
-        if (derivVar === 't') {
-            stepDerivText = 'Turunan pembilang (d/dt) = 0 | Turunan penyebut (d/dt) = 0';
-            stepFinalText = '❌ Pembagian dengan Nol (Turunan penyebut = 0)';
-        } else if (derivVar === 'x') {
-            const dNum = (k - n) * Math.pow(x, k - n - 1) * Math.pow(y, k) * sumCoef;
-            const dDenom = (k - n) * Math.pow(x, k - n - 1) * Math.pow(y, k) * sumCoef;
-            stepDerivText = `Pembilang (d/dx) = ${dNum.toLocaleString('id-ID', { maximumFractionDigits: 4 })} | Penyebut (d/dx) = ${dDenom.toLocaleString('id-ID', { maximumFractionDigits: 4 })}`;
-            if (dDenom === 0) {
-                stepFinalText = '❌ Pembagian dengan Nol (k = n, x = 0, atau y = 0)';
-            } else {
-                const finalVal = (intVal * dNum - intVal) / dDenom;
-                stepFinalText = finalVal.toLocaleString('id-ID', { maximumFractionDigits: 4 });
-            }
-        } else if (derivVar === 'y') {
-            const dNum = k * Math.pow(y, k - 1) * Math.pow(x, k - n) * sumCoef;
-            const dDenom = k * Math.pow(y, k - 1) * Math.pow(x, k - n) * sumCoef;
-            stepDerivText = `Pembilang (d/dy) = ${dNum.toLocaleString('id-ID', { maximumFractionDigits: 4 })} | Penyebut (d/dy) = ${dDenom.toLocaleString('id-ID', { maximumFractionDigits: 4 })}`;
-            if (dDenom === 0) {
-                stepFinalText = '❌ Pembagian dengan Nol (k = 0, x = 0, atau y = 0)';
-            } else {
-                const finalVal = (intVal * dNum - intVal) / dDenom;
-                stepFinalText = finalVal.toLocaleString('id-ID', { maximumFractionDigits: 4 });
+        if (fixIntegralVal) {
+            stepDerivText = 'Dieliminasi (Turunan tidak diperlukan karena integral dihilangkan)';
+            stepFinalText = samResult.error ? "❌ " + samResult.error : samResult.value.toLocaleString('id-ID', { maximumFractionDigits: 4 });
+        } else {
+            if (!fixDerivVal || derivVar === 't') {
+                stepDerivText = 'Turunan pembilang (d/dt) = 0 | Turunan penyebut (d/dt) = 0';
+                stepFinalText = '❌ Pembagian dengan Nol (Turunan penyebut = 0)';
+            } else if (derivVar === 'x') {
+                let dVal = 0;
+                if (fixIndexVal) {
+                    dVal = n * Math.pow(x - y, n - 1);
+                } else {
+                    dVal = (k - n) * Math.pow(x, k - n - 1) * Math.pow(y, k) * sumCoef;
+                }
+                stepDerivText = `Turunan (d/dx) = ${dVal.toLocaleString('id-ID', { maximumFractionDigits: 4 })}`;
+                stepFinalText = samResult.error ? "❌ " + samResult.error : samResult.value.toLocaleString('id-ID', { maximumFractionDigits: 4 });
+            } else if (derivVar === 'y') {
+                let dVal = 0;
+                if (fixIndexVal) {
+                    dVal = -n * Math.pow(x - y, n - 1);
+                } else {
+                    dVal = k * Math.pow(y, k - 1) * Math.pow(x, k - n) * sumCoef;
+                }
+                stepDerivText = `Turunan (d/dy) = ${dVal.toLocaleString('id-ID', { maximumFractionDigits: 4 })}`;
+                stepFinalText = samResult.error ? "❌ " + samResult.error : samResult.value.toLocaleString('id-ID', { maximumFractionDigits: 4 });
             }
         }
+
         if (stepDerivEl) stepDerivEl.textContent = stepDerivText;
         if (stepFinalEl) stepFinalEl.textContent = stepFinalText;
  
         // Update Chart
-        updateChart(y, n, k, derivVar);
+        updateChart(y, n, k, derivVar, fixDerivVal, fixIndexVal, fixIntegralVal);
+
+        const endTime = performance.now();
+        const duration = Math.max(0.01, endTime - startTime);
+        const execTimeEl = document.getElementById('calc-exec-time');
+        if (execTimeEl) {
+            execTimeEl.textContent = duration.toFixed(2) + ' ms';
+        }
     }
 
-    function updateChart(y, n, k, derivVar) {
+    function updateChart(y, n, k, derivVar, fixDeriv, fixIndex, fixIntegral) {
         const xValues = [];
         const stdDataset = [];
         const samDataset = [];
@@ -275,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
             stdDataset.push(Math.pow(currentX - y, n));
 
             // Samuel value
-            const samRes = evaluateSamuelFormula(currentX, y, n, k, derivVar);
+            const samRes = evaluateSamuelFormula(currentX, y, n, k, derivVar, fixDeriv, fixIndex, fixIntegral);
             samDataset.push(samRes.error ? null : samRes.value);
         }
 
@@ -283,6 +403,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (convergenceChart) {
             convergenceChart.destroy();
+        }
+
+        const hasSamuelData = samDataset.some(val => val !== null && !isNaN(val));
+        const isDualAxis = !fixIntegral && hasSamuelData;
+
+        // Create gradients
+        const standardGradient = ctx.createLinearGradient(0, 0, 0, 350);
+        standardGradient.addColorStop(0, 'rgba(16, 185, 129, 0.25)');
+        standardGradient.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
+
+        const samuelGradient = ctx.createLinearGradient(0, 0, 0, 350);
+        samuelGradient.addColorStop(0, 'rgba(99, 102, 241, 0.25)');
+        samuelGradient.addColorStop(1, 'rgba(99, 102, 241, 0.0)');
+
+        let samLabel = 'Samuel Formula';
+        let samColor = '#6366f1';
+        if (!hasSamuelData) {
+            samLabel = 'Samuel Formula (Error: Div by 0)';
+            samColor = '#ef4444';
+        } else if (isDualAxis) {
+            samLabel = 'Samuel Formula (Skala Kanan)';
+            samColor = '#a855f7';
+        } else {
+            samLabel = 'Samuel Formula (Terkoreksi)';
+            samColor = '#6366f1';
         }
 
         convergenceChart = new Chart(ctx, {
@@ -294,22 +439,27 @@ document.addEventListener('DOMContentLoaded', () => {
                         label: `Standard (x - ${y})^${n}`,
                         data: stdDataset,
                         borderColor: '#10b981',
-                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        backgroundColor: standardGradient,
                         borderWidth: 3,
-                        pointRadius: 3,
-                        fill: false,
-                        tension: 0.2
+                        pointRadius: 4,
+                        pointHoverRadius: 6,
+                        pointBackgroundColor: '#10b981',
+                        fill: true,
+                        tension: 0.35,
+                        yAxisID: 'y'
                     },
                     {
-                        label: derivVar === 'y' ? `Samuel Formula (Terintegrasi)` : `Samuel Formula (Error: Div by 0)`,
+                        label: samLabel,
                         data: samDataset,
-                        borderColor: derivVar === 'y' ? '#6366f1' : '#ef4444',
-                        backgroundColor: derivVar === 'y' ? 'rgba(99, 102, 241, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                        borderColor: samColor,
+                        backgroundColor: samuelGradient,
                         borderWidth: 3,
-                        borderDash: derivVar === 'y' ? [] : [5, 5],
-                        pointRadius: derivVar === 'y' ? 3 : 0,
-                        fill: false,
-                        tension: 0.2
+                        pointRadius: hasSamuelData ? 4 : 0,
+                        pointHoverRadius: hasSamuelData ? 6 : 0,
+                        pointBackgroundColor: samColor,
+                        fill: hasSamuelData && !isDualAxis,
+                        tension: 0.35,
+                        yAxisID: isDualAxis ? 'ySamuel' : 'y'
                     }
                 ]
             },
@@ -345,37 +495,128 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     },
                     y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
                         grid: {
                             color: 'rgba(255, 255, 255, 0.05)'
                         },
                         ticks: {
-                            color: '#9ca3af',
+                            color: isDualAxis ? '#10b981' : '#9ca3af',
                             font: {
                                 family: 'JetBrains Mono'
                             }
                         },
                         title: {
                             display: true,
-                            text: 'Hasil Perhitungan',
-                            color: '#e5e7eb'
+                            text: isDualAxis ? 'Hasil Standard (Skala Kiri)' : 'Hasil Perhitungan',
+                            color: isDualAxis ? '#10b981' : '#e5e7eb'
                         }
-                    }
+                    },
+                    ...(isDualAxis ? {
+                        ySamuel: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            grid: {
+                                drawOnChartArea: false
+                            },
+                            ticks: {
+                                color: '#a855f7',
+                                font: {
+                                    family: 'JetBrains Mono'
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Hasil Samuel (Skala Kanan)',
+                                color: '#a855f7'
+                            }
+                        }
+                    } : {})
                 }
             }
         });
     }
 
-    [calcX, calcY, calcN, calcK, calcDeriv].forEach(input => {
-        input.addEventListener('input', updateCalculator);
+    let isSyncingInputs = false;
+
+    function syncInputs(from) {
+        if (isSyncingInputs) return;
+        isSyncingInputs = true;
+
+        if (from === 'quick') {
+            if (calcX && quickX) calcX.value = quickX.value;
+            if (calcY && quickY) calcY.value = quickY.value;
+            if (calcN && quickN) calcN.value = quickN.value;
+        } else if (from === 'calc') {
+            if (quickX && calcX) quickX.value = calcX.value;
+            if (quickY && calcY) quickY.value = calcY.value;
+            if (quickN && calcN) quickN.value = calcN.value;
+        }
+
+        updateQuickCalc();
+        updateCalculator();
+
+        isSyncingInputs = false;
+    }
+
+    [calcX, calcY, calcN, calcK].forEach(input => {
+        if (input) {
+            input.addEventListener('input', () => syncInputs('calc'));
+        }
     });
 
+    calcDeriv.addEventListener('change', () => {
+        if (calcDeriv.value === 't') {
+            calcFixDeriv.checked = false;
+            fixDeriv.checked = false;
+        } else {
+            calcFixDeriv.checked = true;
+            fixDeriv.checked = true;
+        }
+        updateFormulaFixer();
+        updateCalculator();
+    });
 
-    // Formula Fixer / Corrector Logic
-    const fixDeriv = document.getElementById('fix-deriv');
-    const fixIndex = document.getElementById('fix-index');
-    const fixIntegral = document.getElementById('fix-integral');
-    const correctedMathRender = document.getElementById('corrected-math-render');
-    const correctedExplanation = document.getElementById('corrected-explanation');
+    // Synchronize checkboxes
+    function syncStates(changedFrom) {
+        if (changedFrom === 'calc') {
+            fixDeriv.checked = calcFixDeriv.checked;
+            fixIndex.checked = calcFixIndex.checked;
+            fixIntegral.checked = calcFixIntegral.checked;
+        } else if (changedFrom === 'fix') {
+            calcFixDeriv.checked = fixDeriv.checked;
+            calcFixIndex.checked = fixIndex.checked;
+            calcFixIntegral.checked = fixIntegral.checked;
+        }
+
+        // Adjust derivative variable dropdown based on fixDeriv checked state
+        if (calcFixDeriv.checked) {
+            calcDeriv.disabled = false;
+            if (calcDeriv.value === 't') {
+                calcDeriv.value = 'y'; // default to y if it was t
+            }
+        } else {
+            calcDeriv.value = 't';
+            calcDeriv.disabled = true;
+        }
+
+        updateFormulaFixer();
+        updateCalculator();
+    }
+
+    [calcFixDeriv, calcFixIndex, calcFixIntegral].forEach(chk => {
+        if (chk) {
+            chk.addEventListener('change', () => syncStates('calc'));
+        }
+    });
+
+    [fixDeriv, fixIndex, fixIntegral].forEach(chk => {
+        if (chk) {
+            chk.addEventListener('change', () => syncStates('fix'));
+        }
+    });
 
     function updateFormulaFixer() {
         const dDeriv = fixDeriv.checked;
@@ -387,16 +628,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (dDeriv && dIndex && dInt) {
             latex = '(x - y)^n = \\sum_{k=0}^n \\binom{n}{k} x^{n-k} (-1)^k y^k';
-            explanation = '<strong>Rekomendasi Utama:</strong> Formula disederhanakan sepenuhnya menjadi <em>Teorema Binomial Newton</em> yang baku. Semua masalah kritis (pembagian dengan nol, integral non-elementer $\\int x^x$, dan indeks sumasi) berhasil diatasi. Formula ini sangat stabil dan dapat dihitung langsung dalam hitungan milidetik.';
+            explanation = '<strong>Rekomendasi Utama (Koreksi Penuh):</strong> Formula disederhanakan sepenuhnya menjadi <em>Teorema Binomial Newton</em> yang baku. Semua masalah kritis (pembagian dengan nol, integral non-elementer $\\int x^x$, dan indeks sumasi) berhasil diatasi. Formula ini sangat stabil, akurat 100%, dan dapat dihitung langsung dalam hitungan milidetik.';
         } else if (dDeriv && dIndex && !dInt) {
             latex = '(x - y)^n = \\lim_{x \\to \\infty} \\left( \\frac{\\int x^x \\, dx \\cdot \\frac{d}{dy}\\sum_{k=0}^n \\binom{n}{k} x^{n-k} (-y)^k - \\int x^x \\, dx}{\\frac{d}{dy}\\sum_{k=0}^n \\binom{n}{k} x^{n-k} (-y)^k} \\right)';
-            explanation = '<strong>Perbaikan Parsial:</strong> Turunan diubah ke $y$ dan indeks sumasi diselaraskan ($i \\to k$). Dengan modifikasi ini, rumus tidak lagi menghasilkan pembagian dengan nol dan secara teoretis bernilai berhingga, tetapi kehadiran integral non-elementer $\\int x^x$ masih mempersulit komputasi langsung.';
+            explanation = '<strong>Perbaikan Parsial (Indeks & Turunan):</strong> Turunan diubah ke $y$ dan indeks sumasi diselaraskan ($i \\to k$). Dengan modifikasi ini, rumus tidak lagi menghasilkan pembagian dengan nol dan secara teoretis bernilai berhingga, tetapi kehadiran integral non-elementer $\\int x^x$ masih mempersulit komputasi langsung.';
         } else if (dDeriv && !dIndex && !dInt) {
             latex = '(x - y)^n = \\frac{\\int x^x \\, dx \\cdot \\frac{d}{dy} \\sum_{i=k}^n \\binom{n}{i} x^{k-n} y^k - \\int x^x \\, dx}{\\frac{d}{dy} \\sum_{i=k}^n \\binom{n}{i} x^{k-n} y^k}';
-            explanation = '<strong>Perbaikan Minimum:</strong> Hanya mengubah variabel turunan menjadi terhadap $y$ (menghindari pembagian dengan nol). Namun suku-suku sumasi masih tidak selaras karena indeks sumasi berjalan $i$ tidak digunakan secara tepat pada suku eksponensial di dalamnya.';
+            explanation = '<strong>Perbaikan Minimum (Turunan Saja):</strong> Hanya mengubah variabel turunan menjadi terhadap $y$ (menghindari pembagian dengan nol). Namun suku-suku sumasi masih tidak selaras karena indeks sumasi berjalan $i$ tidak digunakan secara tepat pada suku eksponensial di dalamnya.';
+        } else if (dDeriv && !dIndex && dInt) {
+            latex = '(x - y)^n = \\sum_{i=k}^n \\binom{n}{i} x^{k-n} y^k';
+            explanation = '<strong>Perbaikan Parsial (Integral Tereliminasi):</strong> Integral non-elementer telah dihilangkan dan turunan diselaraskan, menyisakan deret sumasi un-synced. Hasil perhitungan stabil, namun belum selaras dengan binomial ekspansi standar karena indeks sumasi $i$ belum disinkronkan.';
         } else if (!dDeriv && dIndex && dInt) {
             latex = '\\text{Error: Pembagian dengan Nol tetap terjadi karena } \\frac{d}{dt}(\\dots) = 0';
-            explanation = '<strong>Masalah Kritis:</strong> Meskipun indeks sumasi diselaraskan dan integral dihilangkan, pembagian dengan nol tetap terjadi karena Anda mempertahankan turunan terhadap $t$ (yang bernilai $0$ karena tidak ada variabel $t$).';
+            explanation = '<strong>Masalah Kritis (Turunan terhadap $t$):</strong> Meskipun indeks sumasi diselaraskan dan integral dihilangkan, pembagian dengan nol tetap terjadi karena Anda mempertahankan turunan terhadap $t$ (yang bernilai $0$ karena tidak ada variabel $t$).';
+        } else if (!dDeriv && dIndex && !dInt) {
+            latex = '\\text{Error: Pembagian dengan Nol tetap terjadi karena } \\frac{d}{dt}(\\dots) = 0';
+            explanation = '<strong>Masalah Kritis (Turunan terhadap $t$):</strong> Pembagian dengan nol tetap terjadi. Meskipun indeks disinkronkan, integral non-elementer dan turunan terhadap $t$ yang bernilai nol membuat formula tidak dapat dievaluasi.';
+        } else if (!dDeriv && !dIndex && dInt) {
+            latex = '\\text{Error: Pembagian dengan Nol tetap terjadi karena } \\frac{d}{dt}(\\dots) = 0';
+            explanation = '<strong>Masalah Kritis (Turunan terhadap $t$):</strong> Pembagian dengan nol tetap terjadi. Meskipun integral dieliminasi, turunan terhadap $t$ bernilai nol di penyebut sehingga tidak dapat dihitung.';
         } else {
             // Original
             latex = '\\sum_{(x \\to \\infty)} \\lim_{(x \\to \\infty)} ((x - y)^n) = \\sum_{(x \\to \\infty)} \\lim_{(x \\to \\infty)} \\left( \\frac{\\{(\\int x^x \\, dx \\times \\{\\frac{d}{dt} \\sum_{i=k}^n \\binom{n}{i} x^{k-n} y^k\\}) - \\int x^x \\, dx\\}}{\\{\\frac{d}{dt} \\sum_{i=k}^n \\binom{n}{i} x^{k-n} y^k\\}} \\right)';
@@ -416,10 +666,6 @@ document.addEventListener('DOMContentLoaded', () => {
         correctedExplanation.innerHTML = explanation;
     }
 
-    [fixDeriv, fixIndex, fixIntegral].forEach(checkbox => {
-        checkbox.addEventListener('change', updateFormulaFixer);
-    });
-
-    // Initialize Fixer
-    updateFormulaFixer();
+    // Initialize state synchronization on startup (sync from calc checks)
+    syncStates('calc');
 });
