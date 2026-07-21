@@ -83,7 +83,7 @@
                     <div class="formula-display-container">
                         <div class="formula-label">FORMULA ORIGINAL DARI DOKUMEN:</div>
                         <div class="formula-math" id="original-formula-display">
-                            $$\sum_{(x \to \infty)} \lim_{(x \to \infty)} ((x - y)^n) = \sum_{(x \to \infty)} \lim_{(x \to \infty)} \left( \frac{\{(\int x^x \, dx \times \{\frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{k-n} y^k\}) - \int x^x \, dx\}}{\{\frac{d}{dt} \sum_{i=k}^n \binom{n}{i} y^k\}} \right)$$
+                            $$\sum_{(x \to \infty)} \lim_{(x \to \infty)} ((x - y)^n) = \sum_{(x \to \infty)} \lim_{(x \to \infty)} \left( \frac{\{(\int x^x \, dx \times \{\frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{k-n} y^k\}) - \int x^x \, dx\}}{\{\frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{k-n} y^k\}} \right)$$
                         </div>
                     </div>
                 </div>
@@ -143,6 +143,10 @@
                                 <span class="label">Rumus Original Samuel (d/dt)</span>
                                 <span class="value" id="quick-res-sam">❌ Division by Zero</span>
                             </div>
+                            <div class="result-box success-box">
+                                <span class="label">Rumus Terkoreksi Samuel (d/dy, k=1)</span>
+                                <span class="value" id="quick-res-corr">Calculating...</span>
+                            </div>
                         </div>
                         <button class="btn btn-primary" id="btn-goto-calc">Buka Simulator Grafik &rarr;</button>
                     </div>
@@ -166,7 +170,7 @@
                         <div class="audit-card-body">
                             <p>Di dalam rumus Anda, terdapat operator turunan $\frac{d}{dt}$ yang ditargetkan pada ekspresi deret binomial:</p>
                             <div class="math-block">
-                                $$\frac{d}{dt} \left( \sum_{i=k}^n \binom{n}{i} x^{k-n} y^k \right) \quad \text{dan} \quad \frac{d}{dt} \left( \sum_{i=k}^n \binom{n}{i} y^k \right)$$
+                                $$\frac{d}{dt} \left( \sum_{i=k}^n \binom{n}{i} x^{k-n} y^k \right) \quad \text{dan} \quad \frac{d}{dt} \left( \sum_{i=k}^n \binom{n}{i} x^{k-n} y^k \right)$$
                             </div>
                             <p><strong>Masalah:</strong> Variabel turunan adalah $t$, namun tidak ada variabel $t$ di dalam deret sumasi tersebut (semua variabel adalah $x$, $y$, $n$, $k$, $i$). Secara kalkulus formal, jika variabel-variabel tersebut tidak bergantung pada $t$, maka nilai turunan parsialnya adalah nol:</p>
                             <div class="math-block">
@@ -274,6 +278,11 @@
                                     <h5>Rumus Samuel (Tersimulasi)</h5>
                                     <span class="formula-ref" id="sim-formula-ref">Menggunakan $\frac{d}{dy}$ & Integrasi Numerik $\int x^x$</span>
                                     <span class="comp-value" id="res-sam-val">Calculating...</span>
+                                </div>
+                                <div class="comp-box error-box">
+                                    <h5>Persentase Error</h5>
+                                    <span class="formula-ref">|Std - Samuel| / Std</span>
+                                    <span class="comp-value" id="res-error-val">Calculating...</span>
                                 </div>
                             </div>
                         </div>
@@ -383,7 +392,7 @@
                     <!-- Profile Card -->
                     <div class="glass-card author-card">
                         <div class="avatar-container">
-                            <div class="avatar-placeholder">S</div>
+                            <img src="avatar_profile.jpg" alt="Samuel Hasiholan Omega" class="avatar-img">
                         </div>
                         <div class="author-info">
                             <h4>Samuel Hasiholan Omega, S. Tr. T.</h4>

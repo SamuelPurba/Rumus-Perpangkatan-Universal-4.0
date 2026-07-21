@@ -93,6 +93,17 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Original Samuel formula always divides by zero (derivative wrt t of a non-t expression is 0)
         quickResSam.textContent = "❌ Pembagian dengan Nol (Turunan t = 0)";
+
+        // Corrected Samuel formula (d/dy with k=1)
+        const quickResCorr = document.getElementById('quick-res-corr');
+        if (quickResCorr) {
+            const corrRes = evaluateSamuelFormula(x, y, n, 1, 'y');
+            if (corrRes.error) {
+                quickResCorr.textContent = "❌ " + corrRes.error;
+            } else {
+                quickResCorr.textContent = corrRes.value.toLocaleString('id-ID', { maximumFractionDigits: 4 });
+            }
+        }
     }
 
     [quickX, quickY, quickN].forEach(input => {
@@ -117,17 +128,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const sumCoef = getSumCoef(n, k);
 
         if (derivVar === 't') {
-            return { value: NaN, error: 'Division by Zero: d/dt(f(y)) = 0' };
+            return { value: NaN, error: 'Division by Zero: d/dt(f(x,y)) = 0' };
         } else if (derivVar === 'x') {
-            return { value: NaN, error: 'Division by Zero: d/dx(f(y)) = 0 (penyebut tidak ada unsur x)' };
+            // d/dx of sum_{i=k}^n binomial(n, i) x^{k-n} y^k
+            // = (k - n) * x^{k-n-1} * y^k * sumCoef
+            const derivNum = (k - n) * Math.pow(x, k - n - 1) * Math.pow(y, k) * sumCoef;
+            const derivDenom = (k - n) * Math.pow(x, k - n - 1) * Math.pow(y, k) * sumCoef;
+
+            if (derivDenom === 0) {
+                return { value: NaN, error: 'Division by Zero: turunan penyebut = 0' };
+            }
+
+            const samuelVal = (intVal * derivNum - intVal) / derivDenom;
+            return { value: samuelVal, error: null };
         } else if (derivVar === 'y') {
             // d/dy of sum_{i=k}^n binomial(n, i) x^{k-n} y^k
             // = k * y^{k-1} * x^{k-n} * sumCoef
-            // d/dy of sum_{i=k}^n binomial(n, i) y^k
-            // = k * y^{k-1} * sumCoef
-            
             const derivNum = k * Math.pow(y, k - 1) * Math.pow(x, k - n) * sumCoef;
-            const derivDenom = k * Math.pow(y, k - 1) * sumCoef;
+            const derivDenom = k * Math.pow(y, k - 1) * Math.pow(x, k - n) * sumCoef;
 
             if (derivDenom === 0) {
                 return { value: NaN, error: 'Division by Zero: turunan penyebut = 0' };
@@ -158,6 +176,26 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             resSamVal.textContent = samResult.value.toLocaleString('id-ID', { maximumFractionDigits: 4 });
             resSamVal.classList.remove('error-text');
+        }
+
+        // Calculate and display error rate
+        const resErrorVal = document.getElementById('res-error-val');
+        if (resErrorVal) {
+            if (samResult.error || isNaN(samResult.value)) {
+                resErrorVal.textContent = "N/A (Error)";
+                resErrorVal.parentElement.classList.remove('zero-error');
+            } else {
+                const diff = Math.abs(stdVal - samResult.value);
+                const pctError = stdVal !== 0 ? (diff / Math.abs(stdVal)) * 100 : diff * 100;
+                
+                if (pctError < 1e-9) {
+                    resErrorVal.textContent = "0%";
+                    resErrorVal.parentElement.classList.add('zero-error');
+                } else {
+                    resErrorVal.textContent = pctError.toLocaleString('id-ID', { maximumFractionDigits: 4 }) + "%";
+                    resErrorVal.parentElement.classList.remove('zero-error');
+                }
+            }
         }
 
         // Update reference formula description
@@ -192,14 +230,21 @@ document.addEventListener('DOMContentLoaded', () => {
             stepDerivText = 'Turunan pembilang (d/dt) = 0 | Turunan penyebut (d/dt) = 0';
             stepFinalText = '❌ Pembagian dengan Nol (Turunan penyebut = 0)';
         } else if (derivVar === 'x') {
-            stepDerivText = 'Turunan pembilang (d/dx) = 0 | Turunan penyebut (d/dx) = 0 (penyebut bebas x)';
-            stepFinalText = '❌ Pembagian dengan Nol (Turunan penyebut = 0)';
+            const dNum = (k - n) * Math.pow(x, k - n - 1) * Math.pow(y, k) * sumCoef;
+            const dDenom = (k - n) * Math.pow(x, k - n - 1) * Math.pow(y, k) * sumCoef;
+            stepDerivText = `Pembilang (d/dx) = ${dNum.toLocaleString('id-ID', { maximumFractionDigits: 4 })} | Penyebut (d/dx) = ${dDenom.toLocaleString('id-ID', { maximumFractionDigits: 4 })}`;
+            if (dDenom === 0) {
+                stepFinalText = '❌ Pembagian dengan Nol (k = n, x = 0, atau y = 0)';
+            } else {
+                const finalVal = (intVal * dNum - intVal) / dDenom;
+                stepFinalText = finalVal.toLocaleString('id-ID', { maximumFractionDigits: 4 });
+            }
         } else if (derivVar === 'y') {
             const dNum = k * Math.pow(y, k - 1) * Math.pow(x, k - n) * sumCoef;
-            const dDenom = k * Math.pow(y, k - 1) * sumCoef;
+            const dDenom = k * Math.pow(y, k - 1) * Math.pow(x, k - n) * sumCoef;
             stepDerivText = `Pembilang (d/dy) = ${dNum.toLocaleString('id-ID', { maximumFractionDigits: 4 })} | Penyebut (d/dy) = ${dDenom.toLocaleString('id-ID', { maximumFractionDigits: 4 })}`;
             if (dDenom === 0) {
-                stepFinalText = '❌ Pembagian dengan Nol (k = 0 atau y = 0)';
+                stepFinalText = '❌ Pembagian dengan Nol (k = 0, x = 0, atau y = 0)';
             } else {
                 const finalVal = (intVal * dNum - intVal) / dDenom;
                 stepFinalText = finalVal.toLocaleString('id-ID', { maximumFractionDigits: 4 });
@@ -344,17 +389,17 @@ document.addEventListener('DOMContentLoaded', () => {
             latex = '(x - y)^n = \\sum_{k=0}^n \\binom{n}{k} x^{n-k} (-1)^k y^k';
             explanation = '<strong>Rekomendasi Utama:</strong> Formula disederhanakan sepenuhnya menjadi <em>Teorema Binomial Newton</em> yang baku. Semua masalah kritis (pembagian dengan nol, integral non-elementer $\\int x^x$, dan indeks sumasi) berhasil diatasi. Formula ini sangat stabil dan dapat dihitung langsung dalam hitungan milidetik.';
         } else if (dDeriv && dIndex && !dInt) {
-            latex = '(x - y)^n = \\lim_{x \\to \\infty} \\left( \\frac{\\int x^x \\, dx \\cdot \\frac{d}{dy}\\sum_{k=0}^n \\binom{n}{k} x^{n-k} (-y)^k - \\int x^x \\, dx}{\\frac{d}{dy}\\sum_{k=0}^n \\binom{n}{k} (-y)^k} \\right)';
+            latex = '(x - y)^n = \\lim_{x \\to \\infty} \\left( \\frac{\\int x^x \\, dx \\cdot \\frac{d}{dy}\\sum_{k=0}^n \\binom{n}{k} x^{n-k} (-y)^k - \\int x^x \\, dx}{\\frac{d}{dy}\\sum_{k=0}^n \\binom{n}{k} x^{n-k} (-y)^k} \\right)';
             explanation = '<strong>Perbaikan Parsial:</strong> Turunan diubah ke $y$ dan indeks sumasi diselaraskan ($i \\to k$). Dengan modifikasi ini, rumus tidak lagi menghasilkan pembagian dengan nol dan secara teoretis bernilai berhingga, tetapi kehadiran integral non-elementer $\\int x^x$ masih mempersulit komputasi langsung.';
         } else if (dDeriv && !dIndex && !dInt) {
-            latex = '(x - y)^n = \\frac{\\int x^x \\, dx \\cdot \\frac{d}{dy} \\sum_{i=k}^n \\binom{n}{i} x^{k-n} y^k - \\int x^x \\, dx}{\\frac{d}{dy} \\sum_{i=k}^n \\binom{n}{i} y^k}';
+            latex = '(x - y)^n = \\frac{\\int x^x \\, dx \\cdot \\frac{d}{dy} \\sum_{i=k}^n \\binom{n}{i} x^{k-n} y^k - \\int x^x \\, dx}{\\frac{d}{dy} \\sum_{i=k}^n \\binom{n}{i} x^{k-n} y^k}';
             explanation = '<strong>Perbaikan Minimum:</strong> Hanya mengubah variabel turunan menjadi terhadap $y$ (menghindari pembagian dengan nol). Namun suku-suku sumasi masih tidak selaras karena indeks sumasi berjalan $i$ tidak digunakan secara tepat pada suku eksponensial di dalamnya.';
         } else if (!dDeriv && dIndex && dInt) {
             latex = '\\text{Error: Pembagian dengan Nol tetap terjadi karena } \\frac{d}{dt}(\\dots) = 0';
             explanation = '<strong>Masalah Kritis:</strong> Meskipun indeks sumasi diselaraskan dan integral dihilangkan, pembagian dengan nol tetap terjadi karena Anda mempertahankan turunan terhadap $t$ (yang bernilai $0$ karena tidak ada variabel $t$).';
         } else {
             // Original
-            latex = '\\sum_{(x \\to \\infty)} \\lim_{(x \\to \\infty)} ((x - y)^n) = \\sum_{(x \\to \\infty)} \\lim_{(x \\to \\infty)} \\left( \\frac{\\{(\\int x^x \\, dx \\times \\{\\frac{d}{dt} \\sum_{i=k}^n \\binom{n}{i} x^{k-n} y^k\\}) - \\int x^x \\, dx\\}}{\\{\\frac{d}{dt} \\sum_{i=k}^n \\binom{n}{i} y^k\\}} \\right)';
+            latex = '\\sum_{(x \\to \\infty)} \\lim_{(x \\to \\infty)} ((x - y)^n) = \\sum_{(x \\to \\infty)} \\lim_{(x \\to \\infty)} \\left( \\frac{\\{(\\int x^x \\, dx \\times \\{\\frac{d}{dt} \\sum_{i=k}^n \\binom{n}{i} x^{k-n} y^k\\}) - \\int x^x \\, dx\\}}{\\{\\frac{d}{dt} \\sum_{i=k}^n \\binom{n}{i} x^{k-n} y^k\\}} \\right)';
             explanation = '<strong>Formula Asli:</strong> Memiliki kesalahan fatal pembagian dengan nol karena turunan terhadap $t$ berharga $0$, integral non-elementer $\\int x^x \\, dx$, dan indeks sumasi $i$ yang tidak digunakan dengan benar di dalam deret.';
         }
 

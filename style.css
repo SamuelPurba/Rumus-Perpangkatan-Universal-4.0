@@ -434,6 +434,15 @@ body {
     color: #f87171;
 }
 
+.result-box.success-box {
+    background: rgba(16, 185, 129, 0.05);
+    border-color: rgba(16, 185, 129, 0.2);
+}
+
+.result-box.success-box .value {
+    color: #10b981;
+}
+
 .btn {
     display: inline-flex;
     align-items: center;
@@ -581,7 +590,7 @@ body {
 
 .comparison-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-top: 1rem;
 }
@@ -599,6 +608,25 @@ body {
 .comp-box.highlight {
     background: rgba(99, 102, 241, 0.04);
     border-color: rgba(99, 102, 241, 0.2);
+}
+
+.comp-box.error-box {
+    background: rgba(239, 68, 68, 0.04);
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+.comp-box.error-box .comp-value {
+    color: #ef4444;
+}
+
+.comp-box.error-box.zero-error {
+    background: rgba(16, 185, 129, 0.04);
+    border-color: rgba(16, 185, 129, 0.2);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.1);
+}
+
+.comp-box.error-box.zero-error .comp-value {
+    color: #10b981;
 }
 
 .comp-box h5 {
@@ -802,6 +830,21 @@ body {
 
 .avatar-container {
     margin-bottom: 1.5rem;
+}
+
+.avatar-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.avatar-img:hover {
+    transform: scale(1.05);
+    border-color: #a855f7;
 }
 
 .avatar-placeholder {

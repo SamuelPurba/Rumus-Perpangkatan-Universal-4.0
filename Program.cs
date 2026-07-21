@@ -41,18 +41,26 @@ class Program {
             }
         }
 
-        Console.Title = "Samuel.A.I Server - Rumus Perpangkatan Universal 4.0";
-        Console.Clear();
-        Console.ForegroundColor = ConsoleColor.Cyan;
+        try {
+            Console.Title = "Samuel.A.I Server - Rumus Perpangkatan Universal 4.0";
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+        } catch {}
         Console.WriteLine("==============================================================");
         Console.WriteLine("    SAMUEL.A.I - RUMUS PERPANGKATAN UNIVERSAL 4.0 SERVER");
         Console.WriteLine("==============================================================");
-        Console.ResetColor();
+        try {
+            Console.ResetColor();
+        } catch {}
         Console.WriteLine(" Server berhasil dijalankan!");
         Console.WriteLine(" Silakan akses aplikasi melalui peramban (browser) di:");
-        Console.ForegroundColor = ConsoleColor.Green;
+        try {
+            Console.ForegroundColor = ConsoleColor.Green;
+        } catch {}
         Console.WriteLine(" --> http://localhost:" + port + "/");
-        Console.ResetColor();
+        try {
+            Console.ResetColor();
+        } catch {}
         Console.WriteLine("==============================================================");
         Console.WriteLine(" Membuka peramban otomatis...");
         
@@ -113,7 +121,18 @@ class Program {
         });
 
         Console.WriteLine("\n [Petunjuk] Tekan tombol ENTER pada jendela ini untuk mematikan server...");
-        Console.ReadLine();
+        try {
+            string input = Console.ReadLine();
+            if (input == null) {
+                while (listener.IsListening) {
+                    Thread.Sleep(5000);
+                }
+            }
+        } catch {
+            while (listener.IsListening) {
+                Thread.Sleep(5000);
+            }
+        }
         listener.Stop();
     }
 }
