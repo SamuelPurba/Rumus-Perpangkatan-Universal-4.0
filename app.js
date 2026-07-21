@@ -174,6 +174,40 @@ document.addEventListener('DOMContentLoaded', () => {
             window.renderMathInElement(simFormulaRef);
         }
 
+        // Update Step-by-Step Breakdown in UI
+        const intVal = integralXPowerX(x);
+        const sumCoef = getSumCoef(n, k);
+        const stepIntEl = document.getElementById('calc-step-integral');
+        const stepCoefEl = document.getElementById('calc-step-coef');
+        const stepDerivEl = document.getElementById('calc-step-deriv');
+        const stepFinalEl = document.getElementById('calc-step-final');
+
+        if (stepIntEl) stepIntEl.textContent = intVal.toLocaleString('id-ID', { maximumFractionDigits: 6 });
+        if (stepCoefEl) stepCoefEl.textContent = sumCoef.toLocaleString('id-ID');
+
+        let stepDerivText = '';
+        let stepFinalText = '';
+
+        if (derivVar === 't') {
+            stepDerivText = 'Turunan pembilang (d/dt) = 0 | Turunan penyebut (d/dt) = 0';
+            stepFinalText = '❌ Pembagian dengan Nol (Turunan penyebut = 0)';
+        } else if (derivVar === 'x') {
+            stepDerivText = 'Turunan pembilang (d/dx) = 0 | Turunan penyebut (d/dx) = 0 (penyebut bebas x)';
+            stepFinalText = '❌ Pembagian dengan Nol (Turunan penyebut = 0)';
+        } else if (derivVar === 'y') {
+            const dNum = k * Math.pow(y, k - 1) * Math.pow(x, k - n) * sumCoef;
+            const dDenom = k * Math.pow(y, k - 1) * sumCoef;
+            stepDerivText = `Pembilang (d/dy) = ${dNum.toLocaleString('id-ID', { maximumFractionDigits: 4 })} | Penyebut (d/dy) = ${dDenom.toLocaleString('id-ID', { maximumFractionDigits: 4 })}`;
+            if (dDenom === 0) {
+                stepFinalText = '❌ Pembagian dengan Nol (k = 0 atau y = 0)';
+            } else {
+                const finalVal = (intVal * dNum - intVal) / dDenom;
+                stepFinalText = finalVal.toLocaleString('id-ID', { maximumFractionDigits: 4 });
+            }
+        }
+        if (stepDerivEl) stepDerivEl.textContent = stepDerivText;
+        if (stepFinalEl) stepFinalEl.textContent = stepFinalText;
+ 
         // Update Chart
         updateChart(y, n, k, derivVar);
     }

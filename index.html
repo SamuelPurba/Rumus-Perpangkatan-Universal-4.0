@@ -48,6 +48,10 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
                     Formula Fixer
                 </button>
+                <button class="nav-item" data-tab="profile">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    Profil & Dokumen
+                </button>
             </nav>
 
             <div class="sidebar-footer">
@@ -280,6 +284,36 @@
                                 <canvas id="convergenceChart"></canvas>
                             </div>
                         </div>
+
+                        <div class="glass-card solver-breakdown-card">
+                            <h4>Rincian Komputasi Langkah demi Langkah</h4>
+                            <div class="solver-steps-grid">
+                                <div class="step-detail">
+                                    <span class="step-num">Langkah 1</span>
+                                    <span class="step-name">Evaluasi Integral $\int_0^x t^t dt$</span>
+                                    <span class="step-value" id="calc-step-integral">Calculating...</span>
+                                    <span class="step-desc">Dihitung menggunakan integrasi numerik (Metode Trapesium, 1000 interval) karena fungsi eksponensial diri tidak memiliki antiderivatif elementer.</span>
+                                </div>
+                                <div class="step-detail">
+                                    <span class="step-num">Langkah 2</span>
+                                    <span class="step-name">Koefisien Sumasi $\sum_{i=k}^n \binom{n}{i}$</span>
+                                    <span class="step-value" id="calc-step-coef">Calculating...</span>
+                                    <span class="step-desc">Jumlah dari koefisien binomial kombinatorik dari indeks batas bawah $k$ hingga pangkat $n$.</span>
+                                </div>
+                                <div class="step-detail">
+                                    <span class="step-num">Langkah 3</span>
+                                    <span class="step-name">Turunan Pembilang & Penyebut</span>
+                                    <span class="step-value" id="calc-step-deriv">Calculating...</span>
+                                    <span class="step-desc">Evaluasi turunan parsial pembilang dan penyebut berdasarkan variabel diferensiasi yang dipilih.</span>
+                                </div>
+                                <div class="step-detail">
+                                    <span class="step-num">Langkah 4</span>
+                                    <span class="step-name">Kalkulasi Akhir Samuel</span>
+                                    <span class="step-value" id="calc-step-final">Calculating...</span>
+                                    <span class="step-desc">Menggabungkan seluruh suku sesuai formula: $\frac{\text{Integral} \times \text{Turunan Pembilang} - \text{Integral}}{\text{Turunan Penyebut}}$.</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -333,6 +367,73 @@
 
                         <div class="explanation-box" id="corrected-explanation">
                             Loading explanation...
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB: Profile -->
+            <section id="profile" class="tab-content">
+                <div class="section-header">
+                    <h3>Profil Penemu & Dokumentasi Rumus</h3>
+                    <p>Mengenal lebih dekat pencipta rumus perpangkatan universal dan dokumen akademis pendukungnya.</p>
+                </div>
+
+                <div class="profile-layout">
+                    <!-- Profile Card -->
+                    <div class="glass-card author-card">
+                        <div class="avatar-container">
+                            <div class="avatar-placeholder">S</div>
+                        </div>
+                        <div class="author-info">
+                            <h4>Samuel Hasiholan Omega, S. Tr. T.</h4>
+                            <span class="author-title">Pencetus Rumus Perpangkatan Universal 4.0</span>
+                            <span class="author-major">Robotika & Kecerdasan Buatan (AI)</span>
+                            <span class="author-inst">Politeknik Negeri Batam, Kepulauan Riau, Indonesia</span>
+                        </div>
+                        <div class="author-badges">
+                            <span class="badge blue">Robotika & AI</span>
+                            <span class="badge yellow">Kalkulus Analitis</span>
+                            <span class="badge red">Formula R&D</span>
+                        </div>
+                        <div class="author-quote">
+                            <blockquote>"Melawan kemiskinan dengan pendidikan, melawan pemerintah korup penindas rakyat Indonesia dengan pengetahuan."</blockquote>
+                        </div>
+                    </div>
+
+                    <!-- Documents Card -->
+                    <div class="glass-card documents-card">
+                        <h4>Dokumen Riset & Pendukung</h4>
+                        <p class="docs-desc">Berikut adalah berkas fisik asli yang memuat penjabaran matematis lengkap dari Rumus Perpangkatan Universal 4.0. Anda dapat menelusuri atau mengunduhnya langsung untuk referensi akademis lebih lanjut.</p>
+                        
+                        <div class="files-list">
+                            <div class="file-item">
+                                <div class="file-icon docx"></div>
+                                <div class="file-info">
+                                    <h5>Rumus Perpangkatan Universal 4.0.docx</h5>
+                                    <p>Format: Microsoft Word | Ukuran: 14.6 KB</p>
+                                </div>
+                                <a href="Rumus Perpangkatan Universal 4.0.docx" class="btn btn-secondary btn-sm" download>Unduh Berkas</a>
+                            </div>
+                            <div class="file-item">
+                                <div class="file-icon pdf"></div>
+                                <div class="file-info">
+                                    <h5>Rumus Perpangkatan Universal 4.0.pdf</h5>
+                                    <p>Format: Adobe PDF Reader | Ukuran: 214.4 KB</p>
+                                </div>
+                                <a href="Rumus Perpangkatan Universal 4.0.pdf" class="btn btn-secondary btn-sm" download>Unduh Berkas</a>
+                            </div>
+                        </div>
+
+                        <div class="motto-box">
+                            <h5>Semboyan Juang Mahasiswa:</h5>
+                            <ul class="motto-list">
+                                <li>#NOBELSNOINDONESIANYES</li>
+                                <li>#LAWANKEMISKINANDENGANPENDIDIKAN</li>
+                                <li>#HIDUPMAHASISWA</li>
+                                <li>#HIDUPRAKYATINDONESIA</li>
+                                <li>#HIDUPWANGSAINDONESIA</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
