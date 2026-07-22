@@ -1110,8 +1110,46 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.6rem;
     margin-bottom: 1.5rem;
+}
+
+.author-badges .badge {
+    padding: 0.45rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    backdrop-filter: blur(8px);
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.author-badges .badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.author-badges .badge.blue {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(99, 102, 241, 0.2));
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.35);
+}
+
+.author-badges .badge.yellow {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(217, 119, 6, 0.2));
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.author-badges .badge.red {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(225, 29, 72, 0.2));
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.35);
 }
 
 .author-quote {
