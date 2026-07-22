@@ -6,7 +6,7 @@
 [![Precision](https://img.shields.io/badge/Math--Precision-100%25-emerald.svg)]()
 
 > **Platform Analisis, Simulasi, dan Visualisasi Matematis Terkoreksi untuk Rumus Perpangkatan Universal 4.0**  
-> *Karya Alumni Teknik Robotika & Kecerdasan Buatan (AI) - Politeknik Negeri Batam*
+> *Karya Alumni Teknik Robotika & Kecerdasan Buatan ( A . I ) - Politeknik Negeri Batam*
 
 ---
 
