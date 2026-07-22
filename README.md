@@ -1,28 +1,31 @@
 # 🚀 SAMUEL.A.I - Rumus Perpangkatan Universal 4.0 Analyzer & Simulator
 
 <p align="center">
-  <img src="avatar_profile.png" alt="Samuel Hasiholan Omega Purba" width="140" style="border-radius: 50%; border: 3px solid #6366f1; box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);" />
+  <img src="avatar_profile.png" alt="Samuel Hasiholan Omega Purba" width="145" style="border-radius: 50%; border: 4px solid #6366f1; box-shadow: 0 10px 30px rgba(99, 102, 241, 0.45);" />
 </p>
 
+<h3 align="center">
+  Platform Analisis, Simulasi, dan Visualisasi Matematis Terkoreksi<br>untuk Rumus Perpangkatan Universal 4.0
+</h3>
+
 <p align="center">
-  <strong>Platform Analisis, Simulasi, dan Visualisasi Matematis Terkoreksi untuk Rumus Perpangkatan Universal 4.0</strong><br>
   <em>Karya Alumni Teknik Robotika & Kecerdasan Buatan (A . I) — Politeknik Negeri Batam</em>
 </p>
 
 <p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License MIT"></a>
-  <img src="https://img.shields.io/badge/Build-Passing-brightgreen.svg" alt="Build Status">
-  <img src="https://img.shields.io/badge/Platform-Web%20%7C%20Windows-indigo.svg" alt="Platform">
-  <img src="https://img.shields.io/badge/Math--Precision-100%25-emerald.svg" alt="Precision">
-  <img src="https://img.shields.io/badge/Engine-Gauss--Legendre%2016--Point-purple.svg" alt="Engine">
-  <img src="https://img.shields.io/badge/UI-KaTeX%20%7C%20Chart.js-ff69b4.svg" alt="UI Engine">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="License MIT"></a>
+  <img src="https://img.shields.io/badge/Build-Passing-brightgreen.svg?style=for-the-badge" alt="Build Status">
+  <img src="https://img.shields.io/badge/Platform-Web%20%7C%20Windows-indigo.svg?style=for-the-badge" alt="Platform">
+  <img src="https://img.shields.io/badge/Math--Precision-100%25-emerald.svg?style=for-the-badge" alt="Precision">
+  <img src="https://img.shields.io/badge/Engine-Gauss--Legendre%2016--Point-purple.svg?style=for-the-badge" alt="Engine">
+  <img src="https://img.shields.io/badge/UI-KaTeX%20%7C%20Chart.js-ff69b4.svg?style=for-the-badge" alt="UI Engine">
 </p>
 
 ---
 
 ## 📖 Ringkasan Eksekutif & Deskripsi Proyek
 
-**Samuel.A.I** adalah platform analisis interaktif dan simulator komputasi tingkat lanjut yang dirancang khusus untuk memvisualisasikan, menganalisis, dan menyelaraskan secara formal akademis **Rumus Perpangkatan Universal 4.0** yang dicetuskan oleh **Samuel Hasiholan Omega Purba, S. Tr. T.**.
+**Samuel.A.I** adalah platform analisis interaktif dan simulator komputasi tingkat lanjut yang dirancang khusus untuk memvisualisasikan, menganalisis, dan menyelaraskan secara formal akademis **Rumus Perpangkatan Universal 4.0** yang dicetuskan oleh **Samuel Hasiholan Omega, S. Tr. T.**.
 
 Aplikasi ini menjembatani gagasan penulisan formula intuitif awal dengan kaidah kalkulus analitis dan aljabar formal (Teorema Binomial Newton), dilengkapi dengan engine komputasi berkecepatan tinggi berbasis **16-Point Gauss-Legendre Quadrature**, tabel saringan Pascal $O(1)$, serta visualisasi grafik interaktif dual-axis berbasis Chart.js.
 
@@ -163,10 +166,10 @@ Rumus-Perpangkatan-Universal-4.0/
 <table border="0">
   <tr>
     <td width="150" align="center" valign="top">
-      <img src="avatar_profile.png" width="130" style="border-radius: 50%; border: 2px solid #6366f1;" alt="Samuel Purba" />
+      <img src="avatar_profile.png" width="130" style="border-radius: 50%; border: 3px solid #6366f1;" alt="Samuel Purba" />
     </td>
     <td valign="top">
-      <h3>Samuel Hasiholan Omega Purba, S. Tr. T.</h3>
+      <h3>Samuel Hasiholan Omega, S. Tr. T.</h3>
       <p><strong>Pencetus Rumus Perpangkatan Universal 4.0</strong></p>
       <p>🎓 Program Studi: <em>Teknik Robotika dan Kecerdasan Buatan (A . I)</em><br>
       🏫 Institusi: <em>Politeknik Negeri Batam, Kepulauan Riau, Indonesia</em></p>
@@ -188,4 +191,4 @@ Rumus-Perpangkatan-Universal-4.0/
 
 ## 📜 Lisensi & Hak Cipta
 
-Proyek ini didistribusikan di bawah **[Lisensi MIT](LICENSE)**. Hak Cipta © 2026 Samuel Hasiholan Omega Purba. Semua dokumen riset dan perangkat lunak ini terbuka untuk dikembangkan lebih lanjut demi kemajuan ilmu pengetahuan Indonesia.
+Proyek ini didistribusikan di bawah **[Lisensi MIT](LICENSE)**. Hak Cipta © 2026 Samuel Hasiholan Omega, S. Tr. T. Semua dokumen riset dan perangkat lunak ini terbuka untuk dikembangkan lebih lanjut demi kemajuan ilmu pengetahuan Indonesia.
