@@ -6,13 +6,13 @@
 [![Precision](https://img.shields.io/badge/Math--Precision-100%25-emerald.svg)]()
 
 > **Platform Analisis, Simulasi, dan Visualisasi Matematis Terkoreksi untuk Rumus Perpangkatan Universal 4.0**  
-> *Karya Mahasiswa Robotika & Kecerdasan Buatan (AI) - Politeknik Negeri Batam*
+> *Karya Alumni Robotika & Kecerdasan Buatan (AI) - Politeknik Negeri Batam*
 
 ---
 
 ## 📌 Tentang Proyek
 
-**Samuel.A.I** adalah platform analisis interaktif yang dirancang khusus untuk memvisualisasikan, menganalisis, dan memperbaiki secara formal akademis **Rumus Perpangkatan Universal 4.0** yang dicetuskan oleh **Samuel Hasiholan Omega Purba, S. Tr. T.**.
+**Samuel.A.I** adalah platform analisis interaktif yang dirancang khusus untuk memvisualisasikan, menganalisis, dan memperbaiki secara formal akademis **Rumus Perpangkatan Universal 4.0** yang dicetuskan oleh **Samuel Hasiholan Omega Purba, S. Tr. T. **.
 
 Aplikasi ini menyelaraskan notasi matematika original dengan kaidah kalkulus analitis dan teorema aljabar formal (Teorema Binomial Newton), dilengkapi dengan simulasi grafis interaktif dan komputasi numerik berkecepatan tinggi.
 
@@ -67,7 +67,7 @@ Buka browser Anda dan akses: `http://localhost:3000/`
 
 ## 👨‍🔬 Profil Penemu & Peneliti
 
-- **Nama**: Samuel Hasiholan Omega Purba, S. Tr. T.
+- **Nama**: Samuel Hasiholan Omega Purba, S. Tr. T. 
 - **Prodi**: Teknik Robotika dan Kecerdasan Buatan (AI)
 - **Institusi**: Politeknik Negeri Batam, Kepulauan Riau, Indonesia
 
