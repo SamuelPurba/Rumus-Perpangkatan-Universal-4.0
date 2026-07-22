@@ -68,7 +68,7 @@ Buka browser Anda dan akses: `http://localhost:3000/`
 ## 👨‍🔬 Profil Penemu & Peneliti
 
 - **Nama** : Samuel Hasiholan Omega, S. Tr. T. 
-- **Prodi** : Teknik Robotika dan Kecerdasan Buatan (AI)
+- **Prodi** : Teknik Robotika dan Kecerdasan Buatan ( A . I )
 - **Institusi** : Politeknik Negeri Batam, Kepulauan Riau, Indonesia
 
 ### ✊ Bhinneka Tunggal Ika :
