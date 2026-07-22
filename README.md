@@ -5,7 +5,7 @@
 </p>
 
 <h2 align="center">
-  Fomalisasi Akademis, Audit Kalkulus Analitis, dan Engine Komputasi Interaktif<br>untuk Rumus Perpangkatan Universal 4.0
+  Formalisasi Akademis, Audit Kalkulus Analitis, dan Engine Komputasi Interaktif<br>untuk Rumus Perpangkatan Universal 4.0
 </h2>
 
 <p align="center">
