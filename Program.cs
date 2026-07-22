@@ -104,6 +104,8 @@ class Program {
                             buffer = File.ReadAllBytes(path);
                             if (path.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase)) contentType = "application/pdf";
                             else if (path.EndsWith(".docx", StringComparison.OrdinalIgnoreCase)) contentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+                            else if (path.EndsWith(".png", StringComparison.OrdinalIgnoreCase)) contentType = "image/png";
+                            else if (path.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) || path.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase)) contentType = "image/jpeg";
                             else contentType = "application/octet-stream";
                         }
                     }
