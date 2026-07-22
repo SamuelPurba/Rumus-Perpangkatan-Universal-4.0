@@ -1590,28 +1590,83 @@ body {
     transition: all 0.2s ease;
 }
 
-.btn-speech:hover {
+.dict-translate-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding-top: 0.85rem;
+    border-top: 1px dashed var(--border-color);
+    margin-top: 0.5rem;
+}
+
+.translate-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--primary-glow);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.lang-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.lang-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.4rem 0.85rem;
+    border-radius: 12px;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.lang-btn:hover {
     color: #fff;
-    background: rgba(99, 102, 241, 0.15);
-    border-color: rgba(99, 102, 241, 0.35);
+    border-color: rgba(99, 102, 241, 0.4);
+    background: rgba(99, 102, 241, 0.12);
 }
 
-.btn-speech.speaking {
-    color: #10b981;
-    border-color: rgba(16, 185, 129, 0.4);
-    background: rgba(16, 185, 129, 0.1);
-    animation: pulseSpeech 1.5s infinite;
+.lang-btn.active {
+    color: #fff;
+    background: linear-gradient(135deg, #6366f1, #10b981);
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
-@keyframes pulseSpeech {
-    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-    70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+.btn-translate-card {
+    background: rgba(99, 102, 241, 0.08);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    color: var(--text-primary);
+    padding: 0.45rem 0.9rem;
+    border-radius: 8px;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    transition: all 0.2s ease;
 }
 
-.speech-icon {
+.btn-translate-card:hover {
+    color: #fff;
+    background: rgba(99, 102, 241, 0.2);
+    border-color: var(--primary);
+    transform: translateY(-1px);
+}
+
+.translate-icon {
     width: 14px;
     height: 14px;
+    color: var(--primary);
 }
+
 
 

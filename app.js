@@ -669,13 +669,248 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize state synchronization on startup (sync from calc checks)
     syncStates('calc');
 
-    // Kamus Matematis & A . I Interactive Logic
+    // Kamus Matematis & A . I Interactive Logic & Written Text Autotranslate Engine
     const dictSearchInput = document.getElementById('dict-search-input');
     const dictSearchClear = document.getElementById('dict-search-clear');
     const dictChips = document.querySelectorAll('.dict-chip');
     const dictCards = document.querySelectorAll('.dict-card');
+    const langBtns = document.querySelectorAll('.lang-btn');
+    const translateCardBtns = document.querySelectorAll('.btn-translate-card');
 
     let currentCategory = 'all';
+    let currentLang = 'id';
+
+    // Store original Indonesian text for each card
+    const originalCardTexts = [];
+    dictCards.forEach((card, index) => {
+        const titleEl = card.querySelector('h4');
+        const sections = card.querySelectorAll('.dict-section p');
+        const badgeEl = card.querySelector('.dict-badge');
+        
+        originalCardTexts.push({
+            title: titleEl ? titleEl.textContent : '',
+            layman: sections[0] ? sections[0].innerHTML : '',
+            academic: sections[1] ? sections[1].innerHTML : '',
+            role: sections[2] ? sections[2].innerHTML : '',
+            badge: badgeEl ? badgeEl.textContent : ''
+        });
+    });
+
+    // Translation Data Dictionary (ID, EN, JA, ZH, DE)
+    const dictionaryTranslations = {
+        en: {
+            laymanLabel: "💡 Layman Explanation (Everyone):",
+            academicLabel: "📐 Formal Academic Explanation:",
+            roleLabel: "🎯 Role in Samuel.AI:",
+            placeholder: "Search term (e.g. Derivative, Gauss, Binomial, Non-Elementer, d/dt)...",
+            cards: [
+                {
+                    title: "Partial Derivative",
+                    layman: "Measures how fast a formula's value changes when a single variable inside it shifts slightly. Like checking a speedometer when pressing the gas pedal.",
+                    academic: "The partial differential operator $\\frac{\\partial f}{\\partial x}$ determining the rate of change of a multivariable function with respect to one independent variable.",
+                    role: "In Samuel's original formula, differentiation targeted $t$ ($\\frac{d}{dt}$). Since $t$ is absent, it evaluated to 0, causing division by zero."
+                },
+                {
+                    title: "Division by Zero",
+                    layman: "Logically, dividing something into 0 parts is impossible. In math and computers, dividing by zero causes a fatal error because there is no valid answer.",
+                    academic: "An undefined algebraic expression in real numbers $\\mathbb{R}$ where division $\\frac{a}{0}$ has no unique or finite value.",
+                    role: "Root error in Samuel Purba's original formula. Samuel.AI fixes this by changing the variable of differentiation from $t$ to $y$ or $x$."
+                },
+                {
+                    title: "Non-Elementary Integral",
+                    layman: "Calculating the total area under the curve of $x$ to the power of $x$. The result cannot be written with standard math symbols and requires numerical computation.",
+                    academic: "Integral of self-exponential function $f(x) = x^x$ lacking antiderivative in finite elementary functions (Liouville's Theorem & Sophomore's Dream).",
+                    role: "Samuel.AI utilizes high-precision 16-Point Gauss-Legendre Quadrature to compute $\\int x^x dx$ instantly."
+                },
+                {
+                    title: "Newton's Binomial Theorem",
+                    layman: "A magic algebraic formula for expanding powers of binomial expressions without manual term-by-term multiplication.",
+                    academic: "Classical theorem expanding $(a+b)^n$ into an ordered series using binomial coefficients $\\binom{n}{k}$.",
+                    role: "Standard academic benchmark where Samuel Purba's Universal Power Formula 4.0 is aligned and verified 100% accurate."
+                },
+                {
+                    title: "16-Point Gauss-Legendre Quadrature",
+                    layman: "A smart AI numerical method computing complex integrals using 16 strategically chosen sample points, 100x faster than traditional methods.",
+                    academic: "High-precision numerical integration placing evaluation nodes at orthogonal Legendre polynomial roots with Gauss weighting.",
+                    role: "Core AI engine enabling sub-millisecond (<0.01 ms) computation of $\\int x^x dx$ directly in the browser."
+                },
+                {
+                    title: "Summation Index",
+                    layman: "The Greek letter Sigma ($\\sum$) indicating: 'Sum all consecutive numbers from the lower limit to the upper limit'.",
+                    academic: "Concise notation for ordered summation series with running index variable $i$ from $i=k$ to $i=n$.",
+                    role: "Corrected from un-synced notation $i$ to $k$ to ensure accurate calculation of binomial series."
+                },
+                {
+                    title: "Pascal Triangle Sieve $O(1)$",
+                    layman: "Like a pre-calculated cheat sheet storing all Pascal combinations in memory for instant retrieval.",
+                    academic: "Memoization matrix technique of pre-computed binomial coefficients $\\binom{n}{k}$ giving constant time complexity $O(1)$.",
+                    role: "Ensures UI sliders and graph visualizations in Samuel.AI move smoothly with zero latency."
+                },
+                {
+                    title: "Universal Power Formula 4.0",
+                    layman: "An innovative algebraic expansion concept proposed by Samuel Purba combining limits, derivatives, and integrals.",
+                    academic: "Experimental algebraic formulation of $(x-y)^n$ using binomial derivative ratios and self-exponential integration.",
+                    role: "Primary research subject of Samuel.AI bridging initial invention with modern academic corrections."
+                },
+                {
+                    title: "Self-Exponential Function",
+                    layman: "A number raised to its own power (e.g. $2^2 = 4$, $3^3 = 27$, $7^7 = 823,543$) exhibiting extremely rapid growth.",
+                    academic: "Mathematical function $f(x) = x^x = e^{x \\ln x}$ over domain $x > 0$ with super-exponential growth.",
+                    role: "Core integrand component $\\int x^x dx$ in Samuel Purba's original formulation."
+                },
+                {
+                    title: "Mathematical Limit",
+                    layman: "Observing where a formula's output heads as input values grow infinitely large.",
+                    academic: "Fundamental calculus concept $(\\epsilon, \\delta)$ defining function behavior as variable approaches a point or infinity.",
+                    role: "Used in outer notation ($\\sum \\lim$) to test convergence behavior."
+                },
+                {
+                    title: "Graphical Convergence Analysis",
+                    layman: "A dual-axis interactive graph comparing standard formula curves with Samuel Purba's formula curve side-by-side.",
+                    academic: "Dual Y-axis data visualization technique (Chart.js) mapping data series with large order-of-magnitude differences.",
+                    role: "Used in simulator tab to visually confirm 100% mathematical precision."
+                },
+                {
+                    title: "Indeterminate Form",
+                    layman: "A fraction where both numerator and denominator evaluate to 0 or infinity, requiring algebraic simplification.",
+                    academic: "Calculus limit condition $[0/0], [\\infty/\\infty]$ requiring L'Hôpital's rule or algebraic restructuring.",
+                    role: "Occurred in original formula when $d/dt$ evaluated to zero in denominator."
+                },
+                {
+                    title: "Infinite Series",
+                    layman: "An endless sum of numbers that converges toward a single fixed target value.",
+                    academic: "Infinite sequence sum $S = \\sum_{k=1}^\\infty a_k$ whose partial sum limit converges to a constant.",
+                    role: "Used in Sophomore's Dream expansion to evaluate $\\int_0^1 x^x dx \\approx 0.78343$."
+                },
+                {
+                    title: "AI Memoization & Caching",
+                    layman: "A technique where the computer remembers previous math answers so it never calculates the same thing twice.",
+                    academic: "Software optimization storing expensive computation returns in a key-value lookup cache.",
+                    role: "Applied in `integralXPowerX(x)` to guarantee 0.00 ms response times."
+                },
+                {
+                    title: "Implicit Differentiation",
+                    layman: "Taking the derivative of a multi-variable expression using chain rules.",
+                    academic: "Application of chain rule to implicit equations $F(x,y) = 0$ without explicit variable isolation.",
+                    role: "Key fix changing derivative target to $y$ or $x$, eliminating zero-derivative errors."
+                },
+                {
+                    title: "AI Numerical Computing",
+                    layman: "The science of programming computers and AI to solve complex math problems with lightning speed.",
+                    academic: "Design of numerical algorithms solving continuous analytical problems via floating-point arithmetic.",
+                    role: "Core academic foundation built by Robotics & AI alumni of Politeknik Negeri Batam."
+                }
+            ]
+        },
+        ja: {
+            laymanLabel: "💡 一般向け解説（誰でもわかる）:",
+            academicLabel: "📐 学術的フォーマル解説:",
+            roleLabel: "🎯 Samuel.AIでの役割:",
+            placeholder: "用語を検索（例：偏微分、ガウス、二項定理）...",
+            cards: [
+                { title: "偏微分", layman: "変数の一つを少し動かしたときの変化の速さを測定します。", academic: "多変数関数における単一独立変数に対する変化率を求める演算子です。", role: "Samuelの元数式では変数tによる微分が含まれていましたが、tが存在しないため結果が0となりゼロ除算が発生しました。" },
+                { title: "ゼロ除算", layman: "数学やコンピュータにおいて、何かを0で割ることは不可能です。", academic: "実数体における未定義の代数形式です。", role: "Samuel Purbaの元公式における根本的エラーです。Samuel.AIでは微分変数をtからyまたはxに変更することで解決しました。" },
+                { title: "非初等積分", layman: "xのx乗の面積を計算します。標準的な数学記号では表せません。", academic: "初等関数の有限の組み合わせで原初関数を持たない関数x^xの積分です。", role: "Samuel.AIは16点ガウス・ルジャンドル求積法を使用して即座に計算します。" },
+                { title: "二項定理", layman: "累乗を展開するための魔法のような代数公式です。", academic: "二項の累乗を二項係数を用いて順序付けられた級数に展開する古典的定理です。", role: "Universal Power Formula 4.0が整合され、100％の精度が証明された学術基準です。" },
+                { title: "16点ガウス・ルジャンドル求積法", layman: "複雑な数学計算を16のサンプル点のみで高速計算するAI手法です。", academic: "高精度の数値積分アルゴリズムです。", role: "ブラウザ上で0.01ミリ秒未満の高速積分計算を可能にするコアエンジンです。" }
+            ]
+        },
+        zh: {
+            laymanLabel: "💡 通俗解释（所有人可懂）:",
+            academicLabel: "📐 规范学术解释:",
+            roleLabel: "🎯 在 Samuel.AI 中的作用:",
+            placeholder: "搜索术语（例如：偏导数、高斯、二项式）...",
+            cards: [
+                { title: "偏导数", layman: "测量当其中一个变量微小变动时公式值的变化速度。", academic: "多元函数关于其中一个独立变量的变化率算子。", role: "在 Samuel 的原始公式中，针对变量 t 求导导致结果为 0，从而引发除以零错误。" },
+                { title: "除以零", layman: "在逻辑上，把一个物体分成 0 份是不可能的。", academic: "实数代数中的无定义表达式。", role: "Samuel Purba 原始公式的主要错误根源，Samuel.AI 通过修正求导变量成功予以修复。" },
+                { title: "非初等积分", layman: "计算 x 的 x 次方的图形面积，无法用普通数学符号表示。", academic: "自指数函数 f(x) = x^x 的不可初等表达积分。", role: "Samuel.AI 采用高精度 16 点高斯-勒让德求积算法实现毫秒级瞬时计算。" }
+            ]
+        },
+        de: {
+            laymanLabel: "💡 Einfache Erklärung (Für alle):",
+            academicLabel: "📐 Formale Akademische Erklärung:",
+            roleLabel: "🎯 Rolle in Samuel.AI:",
+            placeholder: "Begriff suchen (z.B. Ableitung, Gauß, Binomial)...",
+            cards: [
+                { title: "Partielle Ableitung", layman: "Misst die Änderungsrate einer Funktion nach einer einzelnen Variablen.", academic: "Partieller Differentialoperator zur Bestimmung der Änderungsrate einer multivariablen Funktion.", role: "In Samuels ursprünglicher Formel führte die Ableitung nach t zu Null und damit zur Division durch Null." },
+                { title: "Division durch Null", layman: "Etwas durch 0 zu teilen ist mathematisch unmöglich.", academic: "Undefinierter algebraischer Ausdruck in den reellen Zahlen.", role: "Hauptfehler in der ursprünglichen Formel, der von Samuel.AI durch Variablenanpassung behoben wurde." }
+            ]
+        }
+    };
+
+    function applyLanguageTranslation(lang) {
+        currentLang = lang;
+
+        // Active state for language buttons
+        langBtns.forEach(b => {
+            if (b.getAttribute('data-lang') === lang) {
+                b.classList.add('active');
+            } else {
+                b.classList.remove('active');
+            }
+        });
+
+        const langData = dictionaryTranslations[lang];
+
+        dictCards.forEach((card, index) => {
+            const titleEl = card.querySelector('h4');
+            const sectionLabels = card.querySelectorAll('.dict-section-label');
+            const sections = card.querySelectorAll('.dict-section p');
+
+            if (lang === 'id' || !langData) {
+                // Restore Indonesian
+                const orig = originalCardTexts[index];
+                if (orig) {
+                    if (titleEl) titleEl.textContent = orig.title;
+                    if (sections[0]) sections[0].innerHTML = orig.layman;
+                    if (sections[1]) sections[1].innerHTML = orig.academic;
+                    if (sections[2]) sections[2].innerHTML = orig.role;
+                }
+                if (sectionLabels[0]) sectionLabels[0].textContent = "💡 Penjelasan Awam (Semua Orang):";
+                if (sectionLabels[1]) sectionLabels[1].textContent = "📐 Penjelasan Formal Akademis:";
+                if (sectionLabels[2]) sectionLabels[2].textContent = "🎯 Peran di Samuel.AI:";
+                if (dictSearchInput) dictSearchInput.placeholder = "Cari istilah (contoh: Turunan, Gauss, Binomial, Non-Elementer, d/dt, Quadrature)...";
+            } else {
+                // Apply translated text
+                if (sectionLabels[0]) sectionLabels[0].textContent = langData.laymanLabel || "💡 Explanation:";
+                if (sectionLabels[1]) sectionLabels[1].textContent = langData.academicLabel || "📐 Academic:";
+                if (sectionLabels[2]) sectionLabels[2].textContent = langData.roleLabel || "🎯 Role:";
+                if (dictSearchInput && langData.placeholder) dictSearchInput.placeholder = langData.placeholder;
+
+                const cardTrans = langData.cards ? langData.cards[index] : null;
+                if (cardTrans) {
+                    if (titleEl && cardTrans.title) titleEl.textContent = cardTrans.title;
+                    if (sections[0] && cardTrans.layman) sections[0].innerHTML = cardTrans.layman;
+                    if (sections[1] && cardTrans.academic) sections[1].innerHTML = cardTrans.academic;
+                    if (sections[2] && cardTrans.role) sections[2].innerHTML = cardTrans.role;
+                }
+            }
+        });
+
+        // Re-render KaTeX math formatting
+        if (window.renderMathInElement) {
+            const container = document.getElementById('dict-cards-container');
+            if (container) {
+                try { window.renderMathInElement(container); } catch (e) {}
+            }
+        }
+    }
+
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            applyLanguageTranslation(lang);
+        });
+    });
+
+    translateCardBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Cycle language between ID -> EN -> JA -> ZH -> DE -> ID
+            const langs = ['id', 'en', 'ja', 'zh', 'de'];
+            let nextIndex = (langs.indexOf(currentLang) + 1) % langs.length;
+            applyLanguageTranslation(langs[nextIndex]);
+        });
+    });
 
     function filterDictionary() {
         const query = dictSearchInput ? dictSearchInput.value.toLowerCase().trim() : '';
@@ -728,55 +963,6 @@ document.addEventListener('DOMContentLoaded', () => {
             filterDictionary();
         });
     });
-
-    // Text-to-Speech AI Speech Synthesizer for Dictionary Terms
-    const speechButtons = document.querySelectorAll('.btn-speech');
-    speechButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const textToSpeak = btn.getAttribute('data-text');
-            if (!textToSpeak || !('speechSynthesis' in window)) {
-                alert('Fitur Suara A . I tidak didukung oleh peramban ini.');
-                return;
-            }
-
-            if (window.speechSynthesis.speaking) {
-                window.speechSynthesis.cancel();
-                btn.classList.remove('speaking');
-                btn.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="speech-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-                    Dengarkan Penjelasan A . I
-                `;
-                return;
-            }
-
-            const utterance = new SpeechSynthesisUtterance(textToSpeak);
-            utterance.lang = 'id-ID';
-            utterance.rate = 0.95;
-
-            btn.classList.add('speaking');
-            btn.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="speech-icon"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
-                Menghentikan Suara A . I...
-            `;
-
-            utterance.onend = () => {
-                btn.classList.remove('speaking');
-                btn.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="speech-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-                    Dengarkan Penjelasan A . I
-                `;
-            };
-
-            utterance.onerror = () => {
-                btn.classList.remove('speaking');
-                btn.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="speech-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-                    Dengarkan Penjelasan A . I
-                `;
-            };
-
-            window.speechSynthesis.speak(utterance);
-        });
-    });
 });
+
 
