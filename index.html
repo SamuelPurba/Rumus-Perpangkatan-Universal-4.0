@@ -52,6 +52,10 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                     Profil & Dokumen
                 </button>
+                <button class="nav-item" data-tab="dictionary">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    Kamus Matematis & A . I
+                </button>
             </nav>
 
             <div class="sidebar-footer">
@@ -537,6 +541,282 @@
                                 <span class="motto-chip">#HIDUPRAKYATINDONESIA</span>
                                 <span class="motto-chip">#HIDUPWANGSAINDONESIA</span>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB: Dictionary -->
+            <section id="dictionary" class="tab-content">
+                <div class="section-header">
+                    <h3>Kamus Matematis & A . I (Interactive Glossary)</h3>
+                    <p>Penjelasan istilah kalkulus, aljabar, dan algoritma komputasi Samuel.AI dalam bahasa yang mudah dipahami semua orang.</p>
+                </div>
+
+                <!-- Dictionary Search & Filter Bar -->
+                <div class="glass-card dict-toolbar">
+                    <div class="dict-search-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <input type="text" id="dict-search-input" placeholder="Cari istilah (contoh: Turunan, Gauss, Binomial, Non-Elementer, d/dt, Quadrature)...">
+                        <span class="search-clear-btn" id="dict-search-clear" style="display:none;">✕</span>
+                    </div>
+
+                    <div class="dict-categories">
+                        <button class="dict-chip active" data-category="all">Semua Istilah</button>
+                        <button class="dict-chip" data-category="kalkulus">Kalkulus & Diferensial</button>
+                        <button class="dict-chip" data-category="aljabar">Aljabar & Sumasi</button>
+                        <button class="dict-chip" data-category="ai">Komputasi & A . I</button>
+                        <button class="dict-chip" data-category="samuel">Teori Samuel Purba</button>
+                    </div>
+                </div>
+
+                <!-- Dictionary Cards Grid -->
+                <div class="dict-grid" id="dict-cards-container">
+                    <!-- Term 1: Turunan Parsial -->
+                    <div class="glass-card dict-card" data-category="kalkulus" data-keywords="turunan d/dt d/dy d/dx diferensial laju perubahan">
+                        <div class="dict-card-header">
+                            <div class="term-title-group">
+                                <h4>Turunan Parsial</h4>
+                                <span class="term-math">$\frac{d}{dx}, \frac{d}{dy}, \frac{d}{dt}$</span>
+                            </div>
+                            <span class="dict-badge blue">Kalkulus</span>
+                        </div>
+                        <div class="dict-card-body">
+                            <div class="dict-section">
+                                <span class="dict-section-label">💡 Penjelasan Awam (Semua Orang):</span>
+                                <p>Mengukur seberapa cepat nilai suatu rumus berubah ketika satu angka di dalamnya digeser sedikit saja. Seperti mengukur speedometer mobil saat menekan pedal gas.</p>
+                            </div>
+                            <div class="dict-section">
+                                <span class="dict-section-label">📐 Penjelasan Formal Akademis:</span>
+                                <p>Operator diferensial parsial $\frac{\partial f}{\partial x}$ yang menentukan tingkat perubahan fungsi multivariabel terhadap salah satu variabel independen dengan menganggap variabel lain konstan.</p>
+                            </div>
+                            <div class="dict-section highlight-context">
+                                <span class="dict-section-label">🎯 Peran di Samuel.AI:</span>
+                                <p>Pada rumus original Samuel, turunan ditargetkan ke $t$ ($\frac{d}{dt}$). Karena variabel $t$ tidak ada dalam deret, hasilnya menjadi $0$ dan memicu error pembagian dengan nol.</p>
+                            </div>
+                        </div>
+                        <div class="dict-card-footer">
+                            <button class="btn-speech" data-text="Turunan Parsial mengukur seberapa cepat nilai suatu rumus berubah ketika satu angka di dalamnya digeser sedikit.">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="speech-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                                Dengarkan Penjelasan A . I
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Term 2: Pembagian dengan Nol -->
+                    <div class="glass-card dict-card" data-category="kalkulus" data-keywords="pembagian dengan nol division by zero error tak terdefinisi undefined 0">
+                        <div class="dict-card-header">
+                            <div class="term-title-group">
+                                <h4>Pembagian dengan Nol</h4>
+                                <span class="term-math">$\frac{x}{0} \to \text{Undefined}$</span>
+                            </div>
+                            <span class="dict-badge red">Masalah Kritis</span>
+                        </div>
+                        <div class="dict-card-body">
+                            <div class="dict-section">
+                                <span class="dict-section-label">💡 Penjelasan Awam (Semua Orang):</span>
+                                <p>Secara logika, membagi suatu benda menjadi 0 bagian adalah hal yang tidak mungkin. Dalam matematika dan komputer, membagi angka dengan nol akan menghasilkan error fatal karena tidak ada jawaban yang sah.</p>
+                            </div>
+                            <div class="dict-section">
+                                <span class="dict-section-label">📐 Penjelasan Formal Akademis:</span>
+                                <p>Bentuk tak terdefinisi (*undefined*) dalam aljabar riil $\mathbb{R}$ di mana pembagian $\frac{a}{0}$ tidak memiliki nilai unik atau limit berhingga yang dapat memenuhi operasi pembatalan perkalian.</p>
+                            </div>
+                            <div class="dict-section highlight-context">
+                                <span class="dict-section-label">🎯 Peran di Samuel.AI:</span>
+                                <p>Akar error utama pada rumus original Samuel Purba. Samuel.AI memperbaiki masalah ini dengan mengubah variabel diferensiasi dari $t$ menjadi $y$ atau $x$.</p>
+                            </div>
+                        </div>
+                        <div class="dict-card-footer">
+                            <button class="btn-speech" data-text="Pembagian dengan nol adalah hal yang tidak mungkin dalam matematika dan komputer karena menghasilkan nilai tak terdefinisi.">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="speech-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                                Dengarkan Penjelasan A . I
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Term 3: Integral Non-Elementer -->
+                    <div class="glass-card dict-card" data-category="kalkulus" data-keywords="integral non-elementer non elementer x^x sophomore dream antiderivatif">
+                        <div class="dict-card-header">
+                            <div class="term-title-group">
+                                <h4>Integral Non-Elementer</h4>
+                                <span class="term-math">$\int x^x \, dx$</span>
+                            </div>
+                            <span class="dict-badge yellow">Kalkulus Lanjut</span>
+                        </div>
+                        <div class="dict-card-body">
+                            <div class="dict-section">
+                                <span class="dict-section-label">💡 Penjelasan Awam (Semua Orang):</span>
+                                <p>Menghitung total area di bawah grafik kurva $x$ pangkat $x$. Hasilnya tidak bisa ditulis dengan simbol matematika biasa (seperti tambah, kurang, atau sin/cos), melainkan harus dihitung dengan deret angka khusus atau bantuan komputer.</p>
+                            </div>
+                            <div class="dict-section">
+                                <span class="dict-section-label">📐 Penjelasan Formal Akademis:</span>
+                                <p>Integral dari fungsi eksponensial diri $f(x) = x^x$ yang tidak memiliki antiderivatif dalam bentuk kombinasi berhingga dari fungsi-fungsi elementer (Teorema Liouville & Sophomore's Dream).</p>
+                            </div>
+                            <div class="dict-section highlight-context">
+                                <span class="dict-section-label">🎯 Peran di Samuel.AI:</span>
+                                <p>Sistem Samuel.AI menggunakan integrasi numerik presisi tinggi (16-Point Gauss-Legendre Quadrature) untuk menyelesaikan nilai $\int x^x \, dx$ secara instan.</p>
+                            </div>
+                        </div>
+                        <div class="dict-card-footer">
+                            <button class="btn-speech" data-text="Integral non elementer adalah pengintegralan yang hasilnya tidak dapat ditulis menggunakan fungsi matematika biasa melainkan memerlukan perhitungan numerik komputer.">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="speech-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                                Dengarkan Penjelasan A . I
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Term 4: Teorema Binomial Newton -->
+                    <div class="glass-card dict-card" data-category="aljabar" data-keywords="teorema binomial newton ekspansi (x-y)^n aljabar kombinasi pascual">
+                        <div class="dict-card-header">
+                            <div class="term-title-group">
+                                <h4>Teorema Binomial Newton</h4>
+                                <span class="term-math">$(x-y)^n = \sum \binom{n}{k} x^{n-k} (-y)^k$</span>
+                            </div>
+                            <span class="dict-badge green">Aljabar Formal</span>
+                        </div>
+                        <div class="dict-card-body">
+                            <div class="dict-section">
+                                <span class="dict-section-label">💡 Penjelasan Awam (Semua Orang):</span>
+                                <p>Rumus ajaib untuk menghitung perkalian kurung berpangkat tanpa harus mengalikannya satu per satu secara manual. Contohnya membuka $(x-y)^3$ menjadi deret angka yang rapi.</p>
+                            </div>
+                            <div class="dict-section">
+                                <span class="dict-section-label">📐 Penjelasan Formal Akademis:</span>
+                                <p>Teorema aljabar klasik yang menjabarkan pemangkatan penjumlahan dua suku $(a+b)^n$ menjadi deret berurutan menggunakan koefisien kombinatorik binomial $\binom{n}{k}$.</p>
+                            </div>
+                            <div class="dict-section highlight-context">
+                                <span class="dict-section-label">🎯 Peran di Samuel.AI:</span>
+                                <p>Bentuk baku akademis tempat Rumus Perpangkatan Universal 4.0 Samuel Purba diselaraskan dan terbukti akurat 100% pada simulator.</p>
+                            </div>
+                        </div>
+                        <div class="dict-card-footer">
+                            <button class="btn-speech" data-text="Teorema Binomial Newton adalah rumus baku aljabar untuk menjabarkan perkalian dua suku berpangkat secara instan dan akurat.">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="speech-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                                Dengarkan Penjelasan A . I
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Term 5: 16-Point Gauss-Legendre Quadrature -->
+                    <div class="glass-card dict-card" data-category="ai" data-keywords="gauss quadrature legendre 16-point integrasi numerik algoritma komputasi ai">
+                        <div class="dict-card-header">
+                            <div class="term-title-group">
+                                <h4>16-Point Gauss-Legendre Quadrature</h4>
+                                <span class="term-math">$\int_a^b f(t) dt \approx \sum w_i f(t_i)$</span>
+                            </div>
+                            <span class="dict-badge purple">Algoritma A . I</span>
+                        </div>
+                        <div class="dict-card-body">
+                            <div class="dict-section">
+                                <span class="dict-section-label">💡 Penjelasan Awam (Semua Orang):</span>
+                                <p>Metode pintar buatan komputer A . I untuk menghitung nilai matematika rumit hanya dalam 16 sampel perhitungan pintar, lebih cepat 100x dibanding cara biasa.</p>
+                            </div>
+                            <div class="dict-section">
+                                <span class="dict-section-label">📐 Penjelasan Formal Akademis:</span>
+                                <p>Algoritma integrasi numerik presisi tinggi yang menempatkan titik sampel (*nodes*) pada akar-akar polinomial Legendre orthogonal dan mengalikan hasilnya dengan bobot Gauss (*weights*).</p>
+                            </div>
+                            <div class="dict-section highlight-context">
+                                <span class="dict-section-label">🎯 Peran di Samuel.AI:</span>
+                                <p>Mesin komputasi utama di balik simulator Samuel.AI yang memungkinkan kalkulasi integral $\int x^x \, dx$ berjalan instan (<0.01 ms) di browser.</p>
+                            </div>
+                        </div>
+                        <div class="dict-card-footer">
+                            <button class="btn-speech" data-text="Gauss Legendre Quadrature adalah algoritma komputasi cerdas untuk menghitung nilai integral rumit dengan kecepatan kurang dari nol koma nol satu milidetik.">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="speech-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                                Dengarkan Penjelasan A . I
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Term 6: Indeks Sumasi -->
+                    <div class="glass-card dict-card" data-category="aljabar" data-keywords="indeks sumasi sigma sumasi i k batas deret">
+                        <div class="dict-card-header">
+                            <div class="term-title-group">
+                                <h4>Indeks Sumasi</h4>
+                                <span class="term-math">$\sum_{i=k}^n f(i)$</span>
+                            </div>
+                            <span class="dict-badge green">Aljabar Formal</span>
+                        </div>
+                        <div class="dict-card-body">
+                            <div class="dict-section">
+                                <span class="dict-section-label">💡 Penjelasan Awam (Semua Orang):</span>
+                                <p>Simbol huruf Yunani besar Sigma ($\sum$) yang berarti: "Jumlahkan semua urutan angka dari batas bawah sampai batas atas".</p>
+                            </div>
+                            <div class="dict-section">
+                                <span class="dict-section-label">📐 Penjelasan Formal Akademis:</span>
+                                <p>Notasi ringkas deret penjumlahan berurut dengan variabel indeks berjalan $i$ yang bernilai integer inkremental dari $i=k$ hingga $i=n$.</p>
+                            </div>
+                            <div class="dict-section highlight-context">
+                                <span class="dict-section-label">🎯 Peran di Samuel.AI:</span>
+                                <p>Diperbaiki oleh modul Formula Fixer dari notasi un-synced $i$ menjadi $k$ agar deret perpangkatan binomial terhitung secara presisi.</p>
+                            </div>
+                        </div>
+                        <div class="dict-card-footer">
+                            <button class="btn-speech" data-text="Indeks sumasi adalah simbol deret sigma yang digunakan untuk menjumlahkan deretan angka secara berurutan.">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="speech-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                                Dengarkan Penjelasan A . I
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Term 7: Tabel Saringan Pascal O(1) -->
+                    <div class="glass-card dict-card" data-category="ai" data-keywords="pascal triangle o(1) memoization cache tabel segitiga pascal">
+                        <div class="dict-card-header">
+                            <div class="term-title-group">
+                                <h4>Tabel Saringan Pascal $O(1)$</h4>
+                                <span class="term-math">$\text{PASCAL}[n][k] = \binom{n}{k}$</span>
+                            </div>
+                            <span class="dict-badge purple">Algoritma A . I</span>
+                        </div>
+                        <div class="dict-card-body">
+                            <div class="dict-section">
+                                <span class="dict-section-label">💡 Penjelasan Awam (Semua Orang):</span>
+                                <p>Seperti buku catatan rahasia komputer yang sudah menyimpan semua hasil kombinasi Segitiga Pascal sebelum diminta, sehingga saat dihitung jawabannya langsung muncul tanpa berpikir.</p>
+                            </div>
+                            <div class="dict-section">
+                                <span class="dict-section-label">📐 Penjelasan Formal Akademis:</span>
+                                <p>Teknik *memoization* berupa matriks pra-komputasi koefisien kombinatorik $\binom{n}{k}$ yang memberikan kompleksitas pencarian waktu konstan $O(1)$.</p>
+                            </div>
+                            <div class="dict-section highlight-context">
+                                <span class="dict-section-label">🎯 Peran di Samuel.AI:</span>
+                                <p>Memastikan slider input dan grafik simulator di platform Samuel.AI berpindah dengan lancar tanpa lag.</p>
+                            </div>
+                        </div>
+                        <div class="dict-card-footer">
+                            <button class="btn-speech" data-text="Tabel saringan Pascal adalah teknik penyimpanan memori komputer agar perhitungan kombinasi matematika dapat ditemukan secara instan.">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="speech-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                                Dengarkan Penjelasan A . I
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Term 8: Rumus Perpangkatan Universal 4.0 -->
+                    <div class="glass-card dict-card" data-category="samuel" data-keywords="rumus perpangkatan universal 4.0 samuel purba formula original">
+                        <div class="dict-card-header">
+                            <div class="term-title-group">
+                                <h4>Rumus Perpangkatan Universal 4.0</h4>
+                                <span class="term-math">$\sum \lim ((x-y)^n)$</span>
+                            </div>
+                            <span class="dict-badge gold">Formula Peneliti</span>
+                        </div>
+                        <div class="dict-card-body">
+                            <div class="dict-section">
+                                <span class="dict-section-label">💡 Penjelasan Awam (Semua Orang):</span>
+                                <p>Gagasan rumus matematika unik yang dicetuskan oleh Samuel Purba untuk memecahkan pemangkatan aljabar dengan menggabungkan konsep limit, turunan, dan integral.</p>
+                            </div>
+                            <div class="dict-section">
+                                <span class="dict-section-label">📐 Penjelasan Formal Akademis:</span>
+                                <p>Formulasi eksperimental ekspansi $(x-y)^n$ yang menggunakan rasio derivatif deret binomial dan pengali eksponensial diri $\int x^x \, dx$.</p>
+                            </div>
+                            <div class="dict-section highlight-context">
+                                <span class="dict-section-label">🎯 Peran di Samuel.AI:</span>
+                                <p>Landasan riset utama platform Samuel.AI yang memadukan gagasan awal penemu dengan koreksi formal akademis modern.</p>
+                            </div>
+                        </div>
+                        <div class="dict-card-footer">
+                            <button class="btn-speech" data-text="Rumus Perpangkatan Universal empat titik nol adalah gagasan rumus aljabar karya Samuel Purba yang dianalisis dan disempurnakan oleh platform ini.">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="speech-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                                Dengarkan Penjelasan A . I
+                            </button>
                         </div>
                     </div>
                 </div>

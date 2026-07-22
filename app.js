@@ -668,4 +668,115 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize state synchronization on startup (sync from calc checks)
     syncStates('calc');
+
+    // Kamus Matematis & A . I Interactive Logic
+    const dictSearchInput = document.getElementById('dict-search-input');
+    const dictSearchClear = document.getElementById('dict-search-clear');
+    const dictChips = document.querySelectorAll('.dict-chip');
+    const dictCards = document.querySelectorAll('.dict-card');
+
+    let currentCategory = 'all';
+
+    function filterDictionary() {
+        const query = dictSearchInput ? dictSearchInput.value.toLowerCase().trim() : '';
+
+        if (dictSearchClear) {
+            dictSearchClear.style.display = query.length > 0 ? 'inline' : 'none';
+        }
+
+        dictCards.forEach(card => {
+            const cardCat = card.getAttribute('data-category');
+            const cardKeywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+            const cardText = card.textContent.toLowerCase();
+
+            const matchesCategory = (currentCategory === 'all' || cardCat === currentCategory);
+            const matchesQuery = query === '' || cardKeywords.includes(query) || cardText.includes(query);
+
+            if (matchesCategory && matchesQuery) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        // Trigger KaTeX rendering on visible math blocks if needed
+        if (window.renderMathInElement) {
+            const container = document.getElementById('dict-cards-container');
+            if (container) {
+                try { window.renderMathInElement(container); } catch (e) {}
+            }
+        }
+    }
+
+    if (dictSearchInput) {
+        dictSearchInput.addEventListener('input', filterDictionary);
+    }
+
+    if (dictSearchClear) {
+        dictSearchClear.addEventListener('click', () => {
+            dictSearchInput.value = '';
+            filterDictionary();
+            dictSearchInput.focus();
+        });
+    }
+
+    dictChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            dictChips.forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            currentCategory = chip.getAttribute('data-category');
+            filterDictionary();
+        });
+    });
+
+    // Text-to-Speech AI Speech Synthesizer for Dictionary Terms
+    const speechButtons = document.querySelectorAll('.btn-speech');
+    speechButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const textToSpeak = btn.getAttribute('data-text');
+            if (!textToSpeak || !('speechSynthesis' in window)) {
+                alert('Fitur Suara A . I tidak didukung oleh peramban ini.');
+                return;
+            }
+
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+                btn.classList.remove('speaking');
+                btn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="speech-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                    Dengarkan Penjelasan A . I
+                `;
+                return;
+            }
+
+            const utterance = new SpeechSynthesisUtterance(textToSpeak);
+            utterance.lang = 'id-ID';
+            utterance.rate = 0.95;
+
+            btn.classList.add('speaking');
+            btn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="speech-icon"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                Menghentikan Suara A . I...
+            `;
+
+            utterance.onend = () => {
+                btn.classList.remove('speaking');
+                btn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="speech-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                    Dengarkan Penjelasan A . I
+                `;
+            };
+
+            utterance.onerror = () => {
+                btn.classList.remove('speaking');
+                btn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="speech-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                    Dengarkan Penjelasan A . I
+                `;
+            };
+
+            window.speechSynthesis.speak(utterance);
+        });
+    });
 });
+
