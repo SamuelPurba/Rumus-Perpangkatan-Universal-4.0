@@ -20,15 +20,15 @@ Aplikasi ini menyelaraskan notasi matematika original dengan kaidah kalkulus ana
 
 ## 🧮 Formula Matematika Original vs Terkoreksi
 
-### 1. Formula Original (Dokumen Research):
+### 1. Formula Original (Dokumen Research) :
 $$ \sum_{(x \to \infty)} \lim_{(x \to \infty)} ((x - y)^n) = \sum_{(x \to \infty)} \lim_{(x \to \infty)} \left( \frac{\{(\int x^x \, dx \times \{\frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{k-n} y^k\}) - \int x^x \, dx\}}{\{\frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{k-n} y^k\}} \right) $$
 
-### 2. Hasil Audit Teknis:
+### 2. Hasil Audit Teknis :
 1. **Turunan terhadap $t$ ($\frac{d}{dt}$)** : Deret tidak mengandung variabel $t$, sehingga $\frac{d}{dt}(\dots) = 0$. Hal ini menyebabkan masalah kritis pembagian dengan nol.
 2. **Integral Non-Elementer $\int x^x \, dx$** : Fungsi eksponensial diri ini tidak memiliki antiderivatif dasar.
 3. **Indeks Sumasi $i$ vs Exponent $k$** : Eksponen deret menggunakan $k$ alih-alih indeks berjalan $i$.
 
-### 3. Formula Rekomendasi Terkoreksi (Newton Binomial):
+### 3. Formula Rekomendasi Terkoreksi (Newton Binomial) :
 $$ (x - y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-y)^k $$
 
 ---
@@ -71,7 +71,7 @@ Buka browser Anda dan akses: `http://localhost:3000/`
 - **Prodi** : Teknik Robotika dan Kecerdasan Buatan (AI)
 - **Institusi** : Politeknik Negeri Batam, Kepulauan Riau, Indonesia
 
-### ✊ Semboyan Juang Mahasiswa:
+### ✊ Bhinneka Tunggal Ika :
 > *"Melawan kemiskinan dengan pendidikan, melawan pemerintah korup penindas rakyat Indonesia dengan pengetahuan."*
 - `#NOBELSNOINDONESIANYES`
 - `#LAWANKEMISKINANDENGANPENDIDIKAN`
