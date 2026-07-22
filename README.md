@@ -12,7 +12,7 @@
 
 ## 📌 Tentang Proyek
 
-**Samuel.A.I** adalah platform analisis interaktif yang dirancang khusus untuk memvisualisasikan, menganalisis, dan memperbaiki secara formal akademis **Rumus Perpangkatan Universal 4.0** yang dicetuskan oleh **Samuel Hasiholan Omega Purba, S. Tr. T. **.
+**Samuel.A.I** adalah platform analisis interaktif yang dirancang khusus untuk memvisualisasikan, menganalisis, dan memperbaiki secara formal akademis **Rumus Perpangkatan Universal 4.0** yang dicetuskan oleh **Samuel Hasiholan Omega Purba, S. Tr. T. .
 
 Aplikasi ini menyelaraskan notasi matematika original dengan kaidah kalkulus analitis dan teorema aljabar formal (Teorema Binomial Newton), dilengkapi dengan simulasi grafis interaktif dan komputasi numerik berkecepatan tinggi.
 
