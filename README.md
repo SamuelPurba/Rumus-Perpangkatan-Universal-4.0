@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Platform Analisis, Simulasi, dan Visualisasi Matematis Terkoreksi untuk Rumus Perpangkatan Universal 4.0</strong><br>
-  <em>Karya Mahasiswa Teknik Robotika & Kecerdasan Buatan (AI) — Politeknik Negeri Batam</em>
+  <em>Karya Alumni Teknik Robotika & Kecerdasan Buatan (AI) — Politeknik Negeri Batam</em>
 </p>
 
 <p align="center">
@@ -109,7 +109,7 @@ $$(x - y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-1)^k y^k$$
 | 🛡️ **Audit Matematis** | Uraian mendalam per bab teknis mengenai pembagian dengan nol, integral $x^x$, dan notasi indeks deret. |
 | 🧮 **Kalkulator & Grafik Dual-Axis** | Simulator parameter interaktif $(x, y, n, k)$ dengan grafik konvergensi Chart.js (Dual Y-Axis untuk menangani lonjakan nilai integral). |
 | 🛠️ **Formula Fixer (Live Engine)** | Sakelar koreksi interaktif 3-langkah untuk menguji dampak matematis saat turunan, indeks, dan integral diubah secara parsial maupun penuh. |
-| 👨‍🔬 **Profil Penemu & Riset** | Profil lengkap penemu, akses unduhan dokumen berkas fisik asli (`.docx`, `.pdf`, `.exe`), dan semboyan juang mahasiswa. |
+| 👨‍🔬 **Profil Penemu & Riset** | Profil lengkap penemu, akses unduhan dokumen berkas fisik asli (`.docx`, `.pdf`, `.exe`), dan semboyan juang alumni. |
 
 ---
 
@@ -177,7 +177,7 @@ Rumus-Perpangkatan-Universal-4.0/
   </tr>
 </table>
 
-### ✊ Semboyan Juang Mahasiswa:
+### ✊ Semboyan Juang Alumni:
 - `#NOBELSNOINDONESIANYES`
 - `#LAWANKEMISKINANDENGANPENDIDIKAN`
 - `#HIDUPMAHASISWA`
