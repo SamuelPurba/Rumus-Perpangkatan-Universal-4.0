@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Platform Analisis, Simulasi, dan Visualisasi Matematis Terkoreksi untuk Rumus Perpangkatan Universal 4.0</strong><br>
-  <em>Karya Alumni Teknik Robotika & Kecerdasan Buatan (AI) — Politeknik Negeri Batam</em>
+  <em>Karya Alumni Teknik Robotika & Kecerdasan Buatan (A . I) — Politeknik Negeri Batam</em>
 </p>
 
 <p align="center">
@@ -168,7 +168,7 @@ Rumus-Perpangkatan-Universal-4.0/
     <td valign="top">
       <h3>Samuel Hasiholan Omega Purba, S. Tr. T.</h3>
       <p><strong>Pencetus Rumus Perpangkatan Universal 4.0</strong></p>
-      <p>🎓 Program Studi: <em>Teknik Robotika dan Kecerdasan Buatan (AI)</em><br>
+      <p>🎓 Program Studi: <em>Teknik Robotika dan Kecerdasan Buatan (A . I)</em><br>
       🏫 Institusi: <em>Politeknik Negeri Batam, Kepulauan Riau, Indonesia</em></p>
       <blockquote style="margin: 0; padding-left: 10px; border-left: 3px solid #a855f7; color: #a855f7;">
         <em>"Melawan kemiskinan dengan pendidikan, melawan pemerintah korup penindas rakyat Indonesia dengan pengetahuan."</em>
