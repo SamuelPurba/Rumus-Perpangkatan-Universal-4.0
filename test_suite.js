@@ -45,6 +45,16 @@ function integralXPowerX(x) {
     return halfLength * sum;
 }
 
+function computeBinomialDerivY(x, y, n, k) {
+    let sum = 0;
+    const start = Math.max(1, k);
+    for (let i = start; i <= n; i++) {
+        const coef = Number(binomial(n, i));
+        sum += coef * Math.pow(x, n - i) * Math.pow(-1, i) * i * Math.pow(y, i - 1);
+    }
+    return sum;
+}
+
 function evaluateNewtonBinomial(x, y, n) {
     let sum = 0;
     for (let k = 0; k <= n; k++) {
@@ -95,6 +105,11 @@ testCases.forEach((tc, idx) => {
     const err = Math.abs(directVal - expansionVal);
     assert(err < 1e-7, `Teorema 3 Case #${idx + 1}: (x-y)^n Equivalence for x=${tc.x}, y=${tc.y}, n=${tc.n}`);
 });
+
+// Explicit Test: Rumus Terkoreksi Samuel (d/dy, k=1)
+const derivY_k1 = computeBinomialDerivY(7, 2, 3, 1);
+const expectedDerivY = -3 * Math.pow(7 - 2, 3 - 1); // -3 * 25 = -75
+assert(Math.abs(derivY_k1 - expectedDerivY) < 1e-7, `Derivative d/dy with k=1 for x=7, y=2, n=3: Calculated ${derivY_k1}, Expected ${expectedDerivY}`);
 
 // PILLAR 2: CALCULATOR & SPEED BENCHMARK
 console.log("\n--- PILLAR 2: Calculator Engine & Sub-Millisecond Speed ---");

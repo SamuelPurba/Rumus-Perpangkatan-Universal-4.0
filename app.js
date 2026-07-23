@@ -185,60 +185,66 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let convergenceChart = null;
 
+    function computeBinomialSum(x, y, n, k) {
+        let sum = 0;
+        for (let i = k; i <= n; i++) {
+            const coef = Number(binomial(n, i));
+            sum += coef * Math.pow(x, n - i) * Math.pow(-1, i) * Math.pow(y, i);
+        }
+        return sum;
+    }
+
+    function computeBinomialDerivY(x, y, n, k) {
+        let sum = 0;
+        const start = Math.max(1, k);
+        for (let i = start; i <= n; i++) {
+            const coef = Number(binomial(n, i));
+            sum += coef * Math.pow(x, n - i) * Math.pow(-1, i) * i * Math.pow(y, i - 1);
+        }
+        return sum;
+    }
+
+    function computeBinomialDerivX(x, y, n, k) {
+        let sum = 0;
+        for (let i = k; i <= n; i++) {
+            if (n - i <= 0) continue;
+            const coef = Number(binomial(n, i));
+            sum += coef * (n - i) * Math.pow(x, n - i - 1) * Math.pow(-1, i) * Math.pow(y, i);
+        }
+        return sum;
+    }
+
     function evaluateSamuelFormula(x, y, n, k, derivVar, fixDerivVal, fixIndexVal, fixIntegralVal) {
         if (!fixDerivVal || derivVar === 't') {
             return { value: NaN, error: 'Pembagian dengan Nol: d/dt = 0' };
         }
 
-        // If integral is eliminated
+        // Determine derivative D w.r.t y or x
+        let D = 0;
+        if (derivVar === 'y') {
+            D = computeBinomialDerivY(x, y, n, k);
+        } else if (derivVar === 'x') {
+            D = computeBinomialDerivX(x, y, n, k);
+        }
+
+        if (D === 0 || isNaN(D)) {
+            return { value: NaN, error: 'Pembagian dengan Nol: turunan = 0' };
+        }
+
+        // If integral is eliminated (fully corrected formula)
         if (fixIntegralVal) {
-            if (fixIndexVal) {
-                // Fully corrected: Standard binomial expansion (x-y)^n
+            if (fixIndexVal || k === 1 || k === 0) {
+                // For k=0 or k=1 with d/dy, the normalized binomial expansion yields exactly (x-y)^n
                 return { value: Math.pow(x - y, n), error: null };
             } else {
-                // Integral eliminated but index not synced
-                const sumCoef = getSumCoef(n, k);
-                const sumVal = Math.pow(x, k - n) * Math.pow(y, k) * sumCoef;
-                return { value: sumVal, error: null };
+                return { value: computeBinomialSum(x, y, n, k), error: null };
             }
         }
 
-        // If integral is not eliminated
-        const intVal = integralXPowerX(x);
-        
-        if (fixIndexVal) {
-            // Synced index (sum is (x-y)^n)
-            let derivVal = 0;
-            if (derivVar === 'y') {
-                derivVal = -n * Math.pow(x - y, n - 1);
-            } else if (derivVar === 'x') {
-                derivVal = n * Math.pow(x - y, n - 1);
-            }
-
-            if (derivVal === 0) {
-                return { value: NaN, error: 'Pembagian dengan Nol: turunan = 0' };
-            }
-
-            const samuelVal = (intVal * derivVal - intVal) / derivVal;
-            return { value: samuelVal, error: null };
-        } else {
-            // Un-synced index
-            const sumCoef = getSumCoef(n, k);
-            let derivVal = 0;
-
-            if (derivVar === 'y') {
-                derivVal = k * Math.pow(y, k - 1) * Math.pow(x, k - n) * sumCoef;
-            } else if (derivVar === 'x') {
-                derivVal = (k - n) * Math.pow(x, k - n - 1) * Math.pow(y, k) * sumCoef;
-            }
-
-            if (derivVal === 0) {
-                return { value: NaN, error: 'Pembagian dengan Nol: turunan = 0' };
-            }
-
-            const samuelVal = (intVal * derivVal - intVal) / derivVal;
-            return { value: samuelVal, error: null };
-        }
+        // If integral is retained:
+        const I = integralXPowerX(x);
+        const samuelVal = (I * D - I) / D;
+        return { value: samuelVal, error: null };
     }
 
     function updateCalculator() {
