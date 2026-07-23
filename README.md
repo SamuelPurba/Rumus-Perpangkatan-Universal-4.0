@@ -146,18 +146,12 @@ $$(x - y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-1)^k y^k \quad \blacksquare$$
 ```
 *Aplikasi akan otomatis mengaktifkan HTTP Server lokal pada port 3000 dan membuka peramban web bawaan.*
 
-### Opsi B: Development Mode (Python Server)
+### Opsi C: Running Automated Test Suite & Benchmarking (Node.js)
 ```bash
-# 1. Clone repositori dari GitHub
-git clone https://github.com/SamuelPurba/Rumus-Perpangkatan-Universal-4.0.git
-
-# 2. Masuk ke direktori proyek
-cd Rumus-Perpangkatan-Universal-4.0
-
-# 3. Jalankan HTTP Server lokal
-python -m http.server 3000
+# Jalankan pengujian otomatis & audit matematis
+node test_suite.js
 ```
-Buka browser dan navigasi ke: `http://localhost:3000/`
+*Menguji 16-point Gauss-Legendre Quadrature, Pascal Triangle Sieve BigInt, pembagian dengan nol, dan benchmark kecepatan sub-milidetik (<0.01 ms).*
 
 ---
 
@@ -168,11 +162,14 @@ Rumus-Perpangkatan-Universal-4.0/
 ├── 📄 index.html                       # Layout Utama UI Web, Tab Menu, & Modul Autotranslate
 ├── 🎨 style.css                        # Design System, Glassmorphism, & Autotranslate Styling
 ├── ⚡ app.js                           # Math Engine, Gauss Quadrature, Chart.js, & Autotranslate JS
+├── 🧪 test_suite.js                    # Automated Test Suite & Sub-Millisecond Benchmark Node.js
+├── 📜 CITATION.cff                     # Scopus Q1 / IEEE / Elsevier Citation Metadata File
 ├── 🖼️ avatar_profile.png               # Foto Profil Samuel Hasiholan Omega Purba, S. Tr. T.
 ├── 💻 Program.cs                       # Source Code Server HttpListener C# .NET
 ├── ⚙️ SamuelAI.exe                      # Standalone Executable Application Windows
 ├── 📝 Rumus Perpangkatan Universal 4.0.docx # Berkas Asli Riset Formula (Word)
 ├── 📕 Rumus Perpangkatan Universal 4.0.pdf  # Berkas Asli Riset Formula (PDF)
+├── ⚙️ .github/workflows/ci.yml         # GitHub Actions CI Audit Pipeline
 ├── ⚖️ LICENSE                           # Lisensi Perangkat Lunak (MIT)
 └── 📘 README.md                        # Publikasi Akademis Berstandar Scopus Q1
 ```
