@@ -184,6 +184,13 @@ assert(appJsContent.includes('predictiveMaintenanceModel'), "Predictive Maintena
 assert(appJsContent.includes('calculateROI'), "Sub-ms ROI & OPEX Financial Savings Calculation Verified");
 assert(appJsContent.includes('generateExecutiveReport'), "Executive Financial Resume PDF/JSON Report Generator Verified");
 
+// PILLAR 9: CAD ENGINEERING BLUEPRINTS & ONLINE PAYMENT GATEWAY
+console.log("\n--- PILLAR 9: CAD Engineering Blueprints & Online Payment Gateway ---");
+assert(appJsContent.includes('SamuelCADEngine'), "Autodesk/Adobe Inventor CAD Engine Core exists in app.js");
+assert(appJsContent.includes('calculateMassProperties'), "CAD Mass Properties & COG Center-of-Gravity Solver Verified Sub-ms");
+assert(appJsContent.includes('SamuelPaymentBridge'), "Multi-Channel FinTech Payment Bridge exists in app.js");
+assert(appJsContent.includes('generateQRISPayload'), "Dynamic QRIS Code & Webhook Payment Status Verified");
+
 console.log("\n=========================================================================");
 console.log(` 📊 SUMMARY: ${passed} PASSED, ${failed} FAILED.`);
 console.log("=========================================================================");

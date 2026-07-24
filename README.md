@@ -212,6 +212,7 @@ graph LR
 | 📡 **Dashboard Edge IoT & Robotika** | **Real-Time Telemetry Systems**: Sensor streaming MQTT/WebSocket payload, integrasi Raspberry Pi / Jetson / ESP32, bare-metal C++ core, dan latensi sub-milidetik (<0.01 ms). |
 | 🤖 **Rancang Bangun Robotika 3D** | **Kinematics & Dynamics Engine**: Kinematika Maju & Balik (FK/IK) 3-DOF, peredam getaran torsi eksponensial $(x-y)^n$, visualisator canvas 3D, serta ekspor spesifikasi URDF/ROS2. |
 | 💼 **Sistem Bisnis IoT & Industri** | **Enterprise BI & Predictive Analytics**: Model matematika $P(x,y,n) = (x-y)^n + \int_0^1 x^x dx$, kalkulator ROI/OPEX instan ($<0.01\text{ ms}$), multi-valuta (IDR/USD/EUR/JPY), dan cetak laporan eksekutif. |
+| 📐 **Design CAD & Payment Gateway** | **Autodesk Inventor Engine & FinTech Core**: Visualisator cetak biru CAD 2D/3D (ISO Standards), ekspor PDF/.JPG, generator QRIS Dynamic Code real-time, GoPay/OVO/DANA, dan Bank Virtual Accounts. |
 | 👨‍🔬 **Profil Penemu & Riset** | Profil lengkap penemu, akses unduhan berkas riset fisik asli (`.docx`, `.pdf`, `.exe`), dan semboyan juang alumni. |
 
 ---

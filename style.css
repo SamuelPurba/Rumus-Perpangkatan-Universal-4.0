@@ -2108,10 +2108,24 @@ body {
 }
 
 @media (max-width: 900px) {
-    .biz-display-grid {
+    .biz-display-grid, .cad-grid {
         grid-template-columns: 1fr !important;
     }
 }
+
+/* ==========================================================================
+   📐 CAD ENGINEERING BLUEPRINTS & FINTECH PAYMENT GATEWAY STYLES
+   ========================================================================== */
+.cad-welcome-card {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.12) 0%, rgba(168, 85, 247, 0.12) 50%, rgba(52, 211, 153, 0.08) 100%);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15);
+}
+
+.qris-box {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
 
 
 
