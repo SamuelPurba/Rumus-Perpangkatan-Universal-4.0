@@ -228,20 +228,22 @@ graph LR
 
 #### 📄 Format Telemetri MQTT JSON Payload Resmi:
 ```json
-{
-  "device_id": "samuel-edge-node-01",
-  "timestamp_iso": "2026-07-24T11:28:00.000Z",
-  "protocol": "mqtt/ws",
-  "author": "Samuel Hasiholan Omega Purba, S. Tr. T.",
-  "sensor_imu": { "ax": 0.12, "ay": -0.05, "az": 9.81 },
-  "power_telemetry": { "x": 7, "y": 2, "n": 3, "computed_power": 125, "error_pct": 0.0 },
-  "gauss_integration": { "bounds": [0, 1], "integral_val": 0.7833273, "compute_ms": 0.002 },
-  "status": "SUB_MS_OK"
-}
-```
+5. 🤖 **Formulasi Kinematika Maju & Balik (3-DOF FK/IK Solver)**:
+   - **Forward Kinematics (FK)**:
+     $$X = (l_1 + l_2 \cos \theta_2 + l_3 \cos(\theta_2 + \theta_3)) \cos \theta_1$$
+     $$Y = (l_1 + l_2 \cos \theta_2 + l_3 \cos(\theta_2 + \theta_3)) \sin \theta_1$$
+     $$Z = l_2 \sin \theta_2 + l_3 \sin(\theta_2 + \theta_3)$$
+   - **Inverse Kinematics (IK)**:
+     $$\theta_1 = \text{atan2}(Y, X), \quad \theta_3 = \text{atan2}\left(-\sqrt{1-D^2}, D\right), \quad D = \frac{r^2 + Z^2 - l_2^2 - l_3^2}{2 l_2 l_3}$$
 
-5. 📐 **Autodesk Inventor CAD Engine & FinTech Payment Gateway**:
-   Modul perancangan mekanikal cetak biru CAD 2D/3D (ISO 128 Standards) dengan kalkulasi titik pusat massa (*Center of Gravity*), pengekspor berkas `.PDF` & `.JPG` high-res, serta Gerbang Pembayaran Online Real-Time berbasis kode **Dynamic QRIS**, E-Wallet (*GoPay, OVO, DANA*), dan *Virtual Account Bank*.
+6. 💼 **Enterprise Business Intelligence & Predictive Maintenance Model**:
+   $$P(x,y,n) = (x-y)^n + \int_{0}^{1} x^x \, dx$$
+   Digunakan untuk menghitung keausan mesin pabrik pintar, ROI, CAPEX, OPEX, serta proyeksi keuntungan dalam waktu $<0.01\text{ ms}$.
+
+7. 📐 **Autodesk Inventor CAD Engine & FinTech Payment Gateway**:
+   Modul perancangan mekanikal cetak biru CAD 2D/3D (ISO 128 Standards) dengan kalkulasi titik pusat massa (*Center of Gravity*):
+   $$\text{Mass } M = V \cdot \rho, \quad \text{Center of Gravity } \text{COG} = (\bar{x}, \bar{y}, \bar{z})$$
+   serta Gerbang Pembayaran Online Real-Time berbasis kode **Dynamic QRIS (EMVCo Standards)**, E-Wallet (*GoPay, OVO, DANA*), dan *Virtual Account Bank*.
 
 ```mermaid
 graph TD
