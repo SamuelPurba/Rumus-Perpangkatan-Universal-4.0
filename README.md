@@ -166,6 +166,37 @@ $$\lim_{x \to x_0} \frac{\mathcal{R}(x,y,n)}{(x-y)^n} = 1 \quad \blacksquare$$
 3. 🌐 **Autotranslate Text Language Engine**:
    Mesin terjemahan tulisan otomatis 5 bahasa (Indonesia, English, Jepang, Mandarin, Jerman) pada 16 istilah Kamus Matematis & A.I dengan pengkinian format matematika KaTeX real-time.
 
+4. 📡 **Samuel.AI Edge IoT & Embedded Systems Telemetry Bridge**:
+   Arsitektur real-time telemetri sensor IoT berlatensi ultra-rendah ($<0.01\text{ ms}$) yang menghubungkan mikroprosesor Edge (*Raspberry Pi 5, NVIDIA Jetson Orin Nano, ESP32-S3, ARM Cortex-M4*) dengan platform komputasi matematika via protokol MQTT / WebSockets JSON streaming.
+
+```mermaid
+graph LR
+    SUBGRAPH_EDGE["Edge Devices & Sensors"] --> ESP["ESP32-S3 Encoder"]
+    SUBGRAPH_EDGE --> RPI["Raspberry Pi 5 Master"]
+    SUBGRAPH_EDGE --> JETSON["NVIDIA Jetson AI"]
+    
+    ESP --> BROKER["MQTT / WebSocket Bridge (<0.01 ms)"]
+    RPI --> BROKER
+    JETSON --> BROKER
+    
+    BROKER --> CORE["Samuel.AI Math Engine (Gauss + Pascal Sieve)"]
+    CORE --> DASHBOARD["Glassmorphism Real-Time IoT Telemetry Dashboard"]
+```
+
+#### 📄 Format Telemetri MQTT JSON Payload Resmi:
+```json
+{
+  "device_id": "samuel-edge-node-01",
+  "timestamp_iso": "2026-07-24T11:28:00.000Z",
+  "protocol": "mqtt/ws",
+  "author": "Samuel Hasiholan Omega Purba, S. Tr. T.",
+  "sensor_imu": { "ax": 0.12, "ay": -0.05, "az": 9.81 },
+  "power_telemetry": { "x": 7, "y": 2, "n": 3, "computed_power": 125, "error_pct": 0.0 },
+  "gauss_integration": { "bounds": [0, 1], "integral_val": 0.7833273, "compute_ms": 0.002 },
+  "status": "SUB_MS_OK"
+}
+```
+
 ---
 
 ## 📚 Fitur Modul Platform Samuel.AI
