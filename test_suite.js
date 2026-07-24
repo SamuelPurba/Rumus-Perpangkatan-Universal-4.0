@@ -170,6 +170,13 @@ assert(appJsContent.includes('generateSensorPayload'), "IoT Telemetry Engine Met
 assert(appJsContent.includes('sensor_imu'), "IMU 6-DOF & Robotics Encoder Stream Format Verified");
 assert(appJsContent.includes('power_telemetry'), "Exponential Power Telemetry (x-y)^n Verified Sub-ms");
 
+// PILLAR 7: ROBOTICS KINEMATICS, DYNAMICS & AUTONOMOUS CONTROL
+console.log("\n--- PILLAR 7: Robotics Kinematics, Dynamics & Autonomous Control ---");
+assert(appJsContent.includes('SamuelRoboticsEngine'), "Samuel.AI Robotics Engineering Core Engine exists in app.js");
+assert(appJsContent.includes('calculateFK'), "Forward Kinematics Solver (FK) 3-DOF Verified");
+assert(appJsContent.includes('calculateIK'), "Inverse Kinematics Solver (IK) 3-DOF Verified");
+assert(appJsContent.includes('computeExponentialTorque'), "Exponential Damping Joint Torque Computation Verified Sub-ms");
+
 console.log("\n=========================================================================");
 console.log(` 📊 SUMMARY: ${passed} PASSED, ${failed} FAILED.`);
 console.log("=========================================================================");

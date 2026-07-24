@@ -210,6 +210,7 @@ graph LR
 | 🌐 **Kamus Matematis & A.I** | **Glosarium Interaktif 16 Istilah**: Live search, filter kategori, dua penjelasan (Awam & Akademis), serta **Autotranslate Teks 5 Bahasa (ID, EN, JA, ZH, DE)**. |
 | 🤖 **Samuel-Tosh AI Assistant** | **Claude-Class Math Reasoning Engine**: Glassmorphic chat interface, 0% Hallucination Guardrail, audit singularitas live, ekspansi binomial, dan integrasi Gauss 16-point. |
 | 📡 **Dashboard Edge IoT & Robotika** | **Real-Time Telemetry Systems**: Sensor streaming MQTT/WebSocket payload, integrasi Raspberry Pi / Jetson / ESP32, bare-metal C++ core, dan latensi sub-milidetik (<0.01 ms). |
+| 🤖 **Rancang Bangun Robotika 3D** | **Kinematics & Dynamics Engine**: Kinematika Maju & Balik (FK/IK) 3-DOF, peredam getaran torsi eksponensial $(x-y)^n$, visualisator canvas 3D, serta ekspor spesifikasi URDF/ROS2. |
 | 👨‍🔬 **Profil Penemu & Riset** | Profil lengkap penemu, akses unduhan berkas riset fisik asli (`.docx`, `.pdf`, `.exe`), dan semboyan juang alumni. |
 
 ---
