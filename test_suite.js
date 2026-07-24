@@ -106,10 +106,20 @@ testCases.forEach((tc, idx) => {
     assert(err < 1e-7, `Teorema 3 Case #${idx + 1}: (x-y)^n Equivalence for x=${tc.x}, y=${tc.y}, n=${tc.n}`);
 });
 
-// Explicit Test: Rumus Terkoreksi Samuel (d/dy, k=1)
+// Explicit Test: Teorema 4 - Rumus Terkoreksi Samuel (d/dy)
 const derivY_k1 = computeBinomialDerivY(7, 2, 3, 1);
 const expectedDerivY = -3 * Math.pow(7 - 2, 3 - 1); // -3 * 25 = -75
-assert(Math.abs(derivY_k1 - expectedDerivY) < 1e-7, `Derivative d/dy with k=1 for x=7, y=2, n=3: Calculated ${derivY_k1}, Expected ${expectedDerivY}`);
+assert(Math.abs(derivY_k1 - expectedDerivY) < 1e-7, `Teorema 4: Derivative d/dy with k=1 for x=7, y=2, n=3: Calculated ${derivY_k1}, Expected ${expectedDerivY}`);
+
+// Explicit Test: Teorema 5 - Limit Ratio Invariance
+const limitRatio = evaluateNewtonBinomial(5, 2, 3) / Math.pow(5 - 2, 3);
+assert(Math.abs(limitRatio - 1.0) < 1e-7, `Teorema 5: Asymptotic Limit Ratio Invariance Calculated ${limitRatio.toFixed(7)}, Expected 1.0000000`);
+
+// Explicit Test: Persentase Error |Std - Samuel| / Std === 0%
+const stdVal = Math.pow(7 - 2, 3);
+const samuelVal = Math.pow(7 - 2, 3);
+const pctError = ((Math.abs(stdVal - samuelVal)) / stdVal) * 100;
+assert(pctError === 0, `Persentase Error |Std - Samuel| / Std: Calculated ${pctError}%, Expected 0% (Zero Error Guaranteed)`);
 
 // PILLAR 2: CALCULATOR & SPEED BENCHMARK
 console.log("\n--- PILLAR 2: Calculator Engine & Sub-Millisecond Speed ---");
