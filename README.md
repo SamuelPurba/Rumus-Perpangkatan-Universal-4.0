@@ -297,9 +297,9 @@ graph TD
 ### 1. 🦾 Diagram Kinematika & Dinamika Lengan Robot (3-DOF Robotic Arm)
 ```mermaid
 graph TD
-    BASE["Base Node (X0, Y0, Z0)"] -->|"Joint 1: Base θ1 (-180°..180°)"| LINK1["Link 1 (l1 = 100mm)"]
-    LINK1 -->|"Joint 2: Shoulder θ2 (-90°..90°)"| LINK2["Link 2 (l2 = 80mm)"]
-    LINK2 -->|"Joint 3: Elbow θ3 (-135°..135°)"| LINK3["Link 3 (l3 = 60mm)"]
+    BASE["Base Node (X0, Y0, Z0)"] -- "Joint 1: Base theta1 (-180 to 180 deg)" --> LINK1["Link 1 (l1 = 100mm)"]
+    LINK1 -- "Joint 2: Shoulder theta2 (-90 to 90 deg)" --> LINK2["Link 2 (l2 = 80mm)"]
+    LINK2 -- "Joint 3: Elbow theta3 (-135 to 135 deg)" --> LINK3["Link 3 (l3 = 60mm)"]
     LINK3 --> EE["End-Effector (X, Y, Z) Position"]
     
     EE --> FK_SOLVER["Forward Kinematics (FK) Math Engine"]
