@@ -61,25 +61,25 @@ Untuk menjamin kualitas publikasi akademis kelas dunia (Top 1% Scopus Q1 Grade),
 
 ```mermaid
 graph TD
-    A["Original Formula: Rumus Perpangkatan Universal 4.0"] --> T1["Teorema 1: Eliminasi Div-by-Zero (d/dt -> d/dy)"]
-    A --> T2["Teorema 2: Integrasi Non-Elementer ∫ x^x dx"]
+    A["Original Formula: Rumus Perpangkatan Universal 4.0"] --> T1["Teorema 1: Eliminasi Div-by-Zero"]
+    A --> T2["Teorema 2: Integrasi Non-Elementer"]
     A --> T3["Teorema 3: Sinkronisasi Indeks Sumasi k"]
     A --> T4["Teorema 4: Turunan Parsial Basis d/dy"]
     A --> T5["Teorema 5: Invariansi Limit Asimptotik"]
 
-    T1 --> T1_RES["d/dt(S)=0 Tereliminasi -> Pembagi Tak Nol Valid"]
-    T2 --> T2_RES["Identitas Sophomore's Dream & Gauss-Legendre 16-Pt"]
-    T3 --> T3_RES["Indeks Terpenuhi: k = 0 ... n"]
-    T4 --> T4_RES["Identitas Turunan: -n(x - y)^(n-1) Verified"]
+    T1 --> T1_RES["d/dt(S)=0 Tereliminasi - Pembagi Tak Nol Valid"]
+    T2 --> T2_RES["Identitas Sophomore Dream dan Gauss-Legendre 16-Pt"]
+    T3 --> T3_RES["Indeks Terpenuhi: k = 0 to n"]
+    T4 --> T4_RES["Identitas Turunan Parsial Terverifikasi"]
     T5 --> T5_RES["Konvergensi Limit Terbukti 100% Invarian"]
 
-    T1_RES --> EQUAL["Koreksi Sempurna Scopus Q1: Equivalence to Newton Binomial (x - y)^n"]
+    T1_RES --> EQUAL["Koreksi Sempurna Scopus Q1: Newton Binomial Theorem"]
     T2_RES --> EQUAL
     T3_RES --> EQUAL
     T4_RES --> EQUAL
     T5_RES --> EQUAL
 
-    EQUAL --> ENGINE["Samuel.AI Analytical Engine (<0.01 ms Compute Time)"]
+    EQUAL --> ENGINE["Samuel.AI Analytical Engine Sub-ms Compute Time"]
 ```
 
 ---
@@ -297,32 +297,32 @@ graph TD
 ### 1. 🦾 Diagram Kinematika & Dinamika Lengan Robot (3-DOF Robotic Arm)
 ```mermaid
 graph TD
-    BASE["Base Node (X0, Y0, Z0)"] -- "Joint 1: Base theta1 (-180 to 180 deg)" --> LINK1["Link 1 (l1 = 100mm)"]
-    LINK1 -- "Joint 2: Shoulder theta2 (-90 to 90 deg)" --> LINK2["Link 2 (l2 = 80mm)"]
-    LINK2 -- "Joint 3: Elbow theta3 (-135 to 135 deg)" --> LINK3["Link 3 (l3 = 60mm)"]
-    LINK3 --> EE["End-Effector (X, Y, Z) Position"]
+    BASE["Base Node X0 Y0 Z0"] --> LINK1["Link 1 l1 = 100mm"]
+    LINK1 --> LINK2["Link 2 l2 = 80mm"]
+    LINK2 --> LINK3["Link 3 l3 = 60mm"]
+    LINK3 --> EE["End-Effector XYZ Position"]
     
-    EE --> FK_SOLVER["Forward Kinematics (FK) Math Engine"]
-    FK_SOLVER --> DAMPING["Exponential Torque Damping (x-y)^n (<0.01 ms)"]
+    EE --> FK_SOLVER["Forward Kinematics FK Math Engine"]
+    FK_SOLVER --> DAMPING["Exponential Torque Damping Sub-ms Engine"]
 ```
 
 ### 2. 💼 Diagram Analitik Prediktif Bisnis IoT & Multi-Valuta
 ```mermaid
 graph LR
-    DATA["Industrial IoT Sensors (1,250 Nodes)"] --> MODEL["Predictive Model: P(x,y,n) = (x-y)^n + Integral x^x dx"]
-    MODEL --> ROI["ROI & OPEX Savings Solver (<0.01 ms)"]
-    ROI --> CURRENCY["Multi-Currency Engine (IDR / USD / EUR / JPY)"]
-    CURRENCY --> REPORT["Executive Financial Resume PDF/JSON Report"]
+    DATA["Industrial IoT Sensors 1250 Nodes"] --> MODEL["Predictive Model: P(x,y,n)"]
+    MODEL --> ROI["ROI and OPEX Savings Solver"]
+    ROI --> CURRENCY["Multi-Currency Engine IDR USD EUR JPY"]
+    CURRENCY --> REPORT["Executive Financial Resume PDF JSON Report"]
 ```
 
 ### 3. 📐 Diagram Cetak Biru Mekanikal CAD (ISO 128 / ANSI Standards)
 ```mermaid
 graph TD
     CAD_INPUT["3D Solid Geometry Input"] --> ROUGH["Rough Sketch View Generator"]
-    CAD_INPUT --> PROJ_2D["2D Orthographic Projection (Top, Front, Side)"]
-    CAD_INPUT --> ISO_3D["3D Isometric Render (Center of Gravity & Mass)"]
+    CAD_INPUT --> PROJ_2D["2D Orthographic Projection"]
+    CAD_INPUT --> ISO_3D["3D Isometric Render COG and Mass"]
 
-    ROUGH --> EXPORT["Multi-Format Exporter (.JPG High-Res & .PDF Blueprint)"]
+    ROUGH --> EXPORT["Multi-Format Exporter JPG and PDF"]
     PROJ_2D --> EXPORT
     ISO_3D --> EXPORT
 ```
@@ -331,14 +331,14 @@ graph TD
 ```mermaid
 graph LR
     CHECKOUT["Client Checkout Request"] --> QRIS_ENGINE["SamuelPaymentBridge Core"]
-    QRIS_ENGINE --> QR_GEN["Dynamic QRIS Code (EMVCo Standards)"]
-    QRIS_ENGINE --> WALLET["GoPay / OVO / DANA / ShopeePay"]
-    QRIS_ENGINE --> VA["Bank Virtual Accounts (BCA / Mandiri / BNI / BRI)"]
+    QRIS_ENGINE --> QR_GEN["Dynamic QRIS Code EMVCo Standard"]
+    QRIS_ENGINE --> WALLET["GoPay OVO DANA ShopeePay"]
+    QRIS_ENGINE --> VA["Bank Virtual Accounts BCA Mandiri BNI BRI"]
 
-    QR_GEN --> WEBHOOK["Webhook Notification (<0.01 ms)"]
+    QR_GEN --> WEBHOOK["Webhook Notification Sub-ms"]
     WALLET --> WEBHOOK
     VA --> WEBHOOK
-    WEBHOOK --> RECEIPT["Instant Digital Receipt (PAID Status 100%)"]
+    WEBHOOK --> RECEIPT["Instant Digital Receipt PAID Status 100%"]
 ```
 
 ---
