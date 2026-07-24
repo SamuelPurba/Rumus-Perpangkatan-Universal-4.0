@@ -292,14 +292,14 @@ graph TD
 
 ---
 
-## 🎨 Visual Showcase & Diagram Arsitektur Sistem 9-Pilar
+## 🎨 Visual Showcase & Diagram Arsitektur Sistem 9-Pillar (World-Class Grade)
 
 ### 1. 🦾 Diagram Kinematika & Dinamika Lengan Robot (3-DOF Robotic Arm)
 ```mermaid
 graph TD
-    BASE["Base Node (X0, Y0, Z0)"] -->|Joint 1: Base θ1 (-180°..180°)| LINK1["Link 1 (l1 = 100mm)"]
-    LINK1 -->|Joint 2: Shoulder θ2 (-90°..90°)| LINK2["Link 2 (l2 = 80mm)"]
-    LINK2 -->|Joint 3: Elbow θ3 (-135°..135°)| LINK3["Link 3 (l3 = 60mm)"]
+    BASE["Base Node (X0, Y0, Z0)"] -->|"Joint 1: Base θ1 (-180°..180°)"| LINK1["Link 1 (l1 = 100mm)"]
+    LINK1 -->|"Joint 2: Shoulder θ2 (-90°..90°)"| LINK2["Link 2 (l2 = 80mm)"]
+    LINK2 -->|"Joint 3: Elbow θ3 (-135°..135°)"| LINK3["Link 3 (l3 = 60mm)"]
     LINK3 --> EE["End-Effector (X, Y, Z) Position"]
     
     EE --> FK_SOLVER["Forward Kinematics (FK) Math Engine"]
@@ -309,7 +309,7 @@ graph TD
 ### 2. 💼 Diagram Analitik Prediktif Bisnis IoT & Multi-Valuta
 ```mermaid
 graph LR
-    DATA["Industrial IoT Sensors (1,250 Nodes)"] --> MODEL["Predictive Model: P(x,y,n) = (x-y)^n + ∫_0^1 x^x dx"]
+    DATA["Industrial IoT Sensors (1,250 Nodes)"] --> MODEL["Predictive Model: P(x,y,n) = (x-y)^n + Integral x^x dx"]
     MODEL --> ROI["ROI & OPEX Savings Solver (<0.01 ms)"]
     ROI --> CURRENCY["Multi-Currency Engine (IDR / USD / EUR / JPY)"]
     CURRENCY --> REPORT["Executive Financial Resume PDF/JSON Report"]
@@ -345,9 +345,9 @@ graph LR
 
 ### 📊 Matriks Automasi Verifikasi 9-Pillar (Scopus Q1 Test Suite)
 
-| Pillar | Deskripsi Modul & Fitur | Status Verification | Latensi & Kecepatan |
+| Pillar | Deskripsi Modul & Fitur Utama | Status Verification | Latensi Komputasi |
 | :--- | :--- | :---: | :---: |
-| **Pillar 1** | Mathematical Rigor & Formal Theorems | ✅ **100% PASS** | $<0.01\text{ ms}$ |
+| **Pillar 1** | Mathematical Rigor & Formal Calculus Proofs | ✅ **100% PASS** | $<0.01\text{ ms}$ |
 | **Pillar 2** | Calculator Engine & Sub-Millisecond Speed ($0.0021\text{ ms/op}$) | ✅ **100% PASS** | $<0.01\text{ ms}$ |
 | **Pillar 3** | Multi-Language Dictionary (5 Languages: ID, EN, JA, ZH, DE) | ✅ **100% PASS** | $<0.01\text{ ms}$ |
 | **Pillar 4** | Repository, Assets & Scopus Q1 Documentation | ✅ **100% PASS** | $<0.01\text{ ms}$ |
