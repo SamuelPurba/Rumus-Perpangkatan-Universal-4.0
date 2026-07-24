@@ -56,6 +56,10 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
                     Kamus Matematis & A . I
                 </button>
+                <button class="nav-item" data-tab="ai-assistant">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"></path><path d="M12 8v4l3 3"></path><circle cx="12" cy="12" r="9"></circle></svg>
+                    🤖 Samuel-Tosh AI
+                </button>
             </nav>
 
             <div class="sidebar-footer">
@@ -1077,6 +1081,91 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="speech-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
                                 Dengarkan Penjelasan A . I
                             </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB: Samuel-Tosh AI Assistant -->
+            <section id="ai-assistant" class="tab-content">
+                <div class="welcome-card ai-welcome-card">
+                    <div class="welcome-text">
+                        <h3>🤖 Samuel-Tosh Math LLM Engine</h3>
+                        <p>Specialized Exponentiation & Binomial Calculus Intelligence Engine sekelas <strong>Anthropic Claude 3.7 / Tosh Math Reasoning</strong>. Menggabungkan komputasi eksak fisika (16-Point Gauss-Legendre & Pascal BigInt Sieve) dengan penalaran generatif kognitif tanpa halusinasi (0% Error Guardrail).</p>
+                    </div>
+                    <div class="ai-badge-row">
+                        <span class="badge green">🛡️ 0% Hallucination Guardrail Active</span>
+                        <span class="badge purple">⚡ 16-Point Gauss-Legendre Synced</span>
+                        <span class="badge blue">🌐 5-Language Autotranslate Engine</span>
+                    </div>
+                </div>
+
+                <div class="glass-card ai-chat-main-card">
+                    <div class="ai-quick-bar">
+                        <span class="quick-label">⚡ Tombol Aksi Cepat:</span>
+                        <button class="ai-quick-btn" data-action="audit">🛡️ Audit Singularity (d/dt)</button>
+                        <button class="ai-quick-btn" data-action="binomial">🧮 Expand Binomial (x-y)^n</button>
+                        <button class="ai-quick-btn" data-action="gauss">⚡ Gauss Quadrature ∫x^x dx</button>
+                        <button class="ai-quick-btn" data-action="prove">📜 Prove Newton Equivalence</button>
+                    </div>
+
+                    <div class="ai-chat-box">
+                        <div class="ai-chat-header">
+                            <div class="author-mini-info">
+                                <img src="avatar_profile.png" alt="Samuel Hasiholan Omega, S. Tr. T." class="avatar-mini">
+                                <div>
+                                    <h5>Samuel-Tosh AI Engine Core</h5>
+                                    <span class="author-sub">Karya Samuel Hasiholan Omega, S. Tr. T. • Alumni Politeknik Negeri Batam</span>
+                                </div>
+                            </div>
+                            <div class="ai-engine-status">
+                                <span class="status-dot green"></span>
+                                <span>Engine Ready (Sub-ms)</span>
+                            </div>
+                        </div>
+
+                        <div class="ai-chat-log" id="ai-chat-log">
+                            <!-- Preloaded AI Welcome Message -->
+                            <div class="chat-message ai-message">
+                                <div class="msg-header">
+                                    <span class="msg-sender">🤖 Samuel-Tosh Core</span>
+                                    <span class="msg-time">Sekarang</span>
+                                </div>
+                                <div class="msg-content">
+                                    <p>Halo! Saya adalah <strong>Samuel-Tosh Math LLM Engine</strong>, mesin AI spesialis perpangkatan aljabar universal $(x-y)^n$, deret Newton, dan kalkulus transendental.</p>
+                                    <p>Silakan masukkan notasi matematika Anda atau klik tombol aksi cepat di atas untuk memulai analisis matematis Scopus Q1 Grade!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ai-chat-controls">
+                            <div class="ai-options-row">
+                                <div class="select-wrapper">
+                                    <label for="ai-mode-select">Mode Penjelasan:</label>
+                                    <select id="ai-mode-select">
+                                        <option value="academic">🎓 Mode Akademis Scopus Q1 (Formal LaTeX)</option>
+                                        <option value="intuitive">💡 Mode Awam (Intuitif & Ringkas)</option>
+                                    </select>
+                                </div>
+                                <div class="select-wrapper">
+                                    <label for="ai-lang-select">Bahasa Teks:</label>
+                                    <select id="ai-lang-select">
+                                        <option value="ID">🇮🇩 Indonesia</option>
+                                        <option value="EN">🇬🇧 English</option>
+                                        <option value="JA">🇯🇵 日本語</option>
+                                        <option value="ZH">🇨🇳 中文</option>
+                                        <option value="DE">🇩🇪 Deutsch</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="ai-input-row">
+                                <input type="text" id="ai-prompt-input" placeholder="Masukkan notasi atau soal matematika (misal: Audit (7-2)^3 atau Hitung ∫0..1 x^x dx)...">
+                                <button id="btn-ai-send" class="btn-primary">
+                                    <span>Kirim ke Engine</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="send-icon"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
