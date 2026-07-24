@@ -152,7 +152,50 @@ $$\lim_{x \to x_0} \frac{\mathcal{R}(x,y,n)}{(x-y)^n} = 1 \quad \blacksquare$$
 |  |       [🇮🇩 Indonesia | 🇬🇧 English | 🇯🇵 日本語 | 🇨🇳 中文 | 🇩🇪 Deutsch]         |  |
 |  +-----------------------------------------------------------------------------+  |
 +-----------------------------------------------------------------------------------+
+```mermaid
+graph TB
+    subgraph S1["1. Core System & Host Layer"]
+        EXE["SamuelAI.exe Standalone Windows Host"]
+        CSHARP["C# HttpListener Multi-Port Server"]
+        EXE --> CSHARP
+    end
+
+    subgraph S2["2. Front-End Glassmorphism Web App"]
+        INDEX["index.html UI Layout"]
+        CSS["style.css Design System"]
+        JS["app.js Math & AI Engine"]
+        INDEX --- CSS
+        INDEX --- JS
+    end
+
+    subgraph S3["3. Mathematical & AI Intelligence Core"]
+        GAUSS["16-Point Gauss-Legendre Quadrature"]
+        PASCAL["Pascal Triangle Sieve BigInt O(1)"]
+        AI_ENGINE["Samuel-Tosh LLM Engine (Claude-Class)"]
+        DICT["Autotranslate Engine (ID, EN, JA, ZH, DE)"]
+    end
+
+    subgraph S4["4. Advanced Engineering & FinTech Modules"]
+        IOT["Edge IoT Telemetry (MQTT/WebSockets)"]
+        ROBOT["3-DOF Robotics Kinematics & URDF"]
+        BI["Enterprise BI & Predictive Model P(x,y,n)"]
+        CAD["Autodesk Inventor CAD (2D/3D & JPG/PDF)"]
+        FINTECH["Multi-Channel Payment (QRIS, E-Wallet, VA)"]
+    end
+
+    CSHARP --> INDEX
+    JS --> GAUSS
+    JS --> PASCAL
+    JS --> AI_ENGINE
+    JS --> DICT
+    JS --> IOT
+    JS --> ROBOT
+    JS --> BI
+    JS --> CAD
+    JS --> FINTECH
 ```
+
+---
 
 ### Spesifikasi Algoritma Utama:
 1. 🚀 **16-Point Gauss-Legendre Quadrature**:
