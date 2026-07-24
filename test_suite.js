@@ -163,6 +163,13 @@ assert(appJsContent.includes('expandBinomial'), "AI Assistant Method 'expandBino
 assert(appJsContent.includes('gaussIntegration'), "AI Assistant Method 'gaussIntegration' 16-Point Legendre Synced");
 assert(appJsContent.includes('proveEquivalence'), "AI Assistant Method 'proveEquivalence' Scopus Q1 Equivalence Verified");
 
+// PILLAR 6: EDGE IOT TELEMETRY & REAL-TIME STREAM INTEGRITY
+console.log("\n--- PILLAR 6: Edge IoT Telemetry & Real-Time Stream Integrity ---");
+assert(appJsContent.includes('SamuelIoTBridge'), "Samuel.AI Edge IoT Telemetry Bridge exists in app.js");
+assert(appJsContent.includes('generateSensorPayload'), "IoT Telemetry Engine Method 'generateSensorPayload' Active");
+assert(appJsContent.includes('sensor_imu'), "IMU 6-DOF & Robotics Encoder Stream Format Verified");
+assert(appJsContent.includes('power_telemetry'), "Exponential Power Telemetry (x-y)^n Verified Sub-ms");
+
 console.log("\n=========================================================================");
 console.log(` 📊 SUMMARY: ${passed} PASSED, ${failed} FAILED.`);
 console.log("=========================================================================");

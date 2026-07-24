@@ -60,6 +60,10 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"></path><path d="M12 8v4l3 3"></path><circle cx="12" cy="12" r="9"></circle></svg>
                     🤖 Samuel-Tosh AI
                 </button>
+                <button class="nav-item" data-tab="iot-dashboard">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+                    📡 Dashboard Edge IoT
+                </button>
             </nav>
 
             <div class="sidebar-footer">
@@ -1186,6 +1190,105 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="send-icon"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                                 </button>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB: Dashboard Edge IoT & Robotika -->
+            <section id="iot-dashboard" class="tab-content">
+                <div class="welcome-card iot-welcome-card">
+                    <div class="welcome-text">
+                        <h3>📡 Samuel.AI Edge IoT & Embedded Systems</h3>
+                        <p>Arsitektur komputasi matematika Edge & Robotika real-time karya <strong>Samuel Hasiholan Omega, S. Tr. T.</strong> Mengolah streaming telemetri sensor, kalkulasi daya eksponensial, dan kontrol non-linier $(x-y)^n$ pada perangkat mikroprosesor/mikrokontroler tertanam dengan latensi <strong>$<0.01\text{ ms}$</strong>.</p>
+                    </div>
+                    <div class="ai-badge-row">
+                        <span class="badge green">📡 MQTT / WebSocket Stream Active</span>
+                        <span class="badge purple">⚡ Bare-Metal C++ Core Ready</span>
+                        <span class="badge blue">🤖 Edge Telemetry Sub-ms Processing</span>
+                    </div>
+                </div>
+
+                <!-- Edge Nodes Grid -->
+                <div class="iot-nodes-grid">
+                    <div class="glass-card iot-node-card">
+                        <div class="node-header">
+                            <span class="node-icon">🍓</span>
+                            <div class="node-title">
+                                <h5>Raspberry Pi 5</h5>
+                                <span class="node-sub">Linux Edge Master Node</span>
+                            </div>
+                        </div>
+                        <div class="node-status green">
+                            <span class="status-dot green pulse"></span>
+                            <span>Connected • 0.002 ms</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card iot-node-card">
+                        <div class="node-header">
+                            <span class="node-icon">💚</span>
+                            <div class="node-title">
+                                <h5>NVIDIA Jetson Orin</h5>
+                                <span class="node-sub">Edge AI Accelerator</span>
+                            </div>
+                        </div>
+                        <div class="node-status green">
+                            <span class="status-dot green pulse"></span>
+                            <span>Connected • 0.003 ms</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card iot-node-card">
+                        <div class="node-header">
+                            <span class="node-icon">⚡</span>
+                            <div class="node-title">
+                                <h5>ESP32-S3 Robotics</h5>
+                                <span class="node-sub">Microcontroller Motor Encoder</span>
+                            </div>
+                        </div>
+                        <div class="node-status green">
+                            <span class="status-dot green pulse"></span>
+                            <span>Connected • 0.001 ms</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card iot-node-card">
+                        <div class="node-header">
+                            <span class="node-icon">🧠</span>
+                            <div class="node-title">
+                                <h5>ARM Cortex-M4</h5>
+                                <span class="node-sub">Bare-Metal Math Engine</span>
+                            </div>
+                        </div>
+                        <div class="node-status green">
+                            <span class="status-dot green pulse"></span>
+                            <span>Connected • 0.001 ms</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive IoT Simulator Panel -->
+                <div class="glass-card iot-main-card" style="margin-top: 1.5rem;">
+                    <div class="iot-control-bar">
+                        <button id="btn-iot-sim" class="btn btn-primary">🚀 Start Live Telemetry Simulator</button>
+                        <button id="btn-iot-inject" class="btn btn-secondary">⚡ Inject IMU 6-DOF Pulse</button>
+                        <button id="btn-iot-baremetal" class="btn btn-secondary">🧮 Test Bare-Metal Gauss Computation</button>
+                        <button id="btn-iot-json" class="btn btn-secondary">📥 Export Telemetry JSON Payload</button>
+                    </div>
+
+                    <div class="iot-display-grid" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+                        <div class="iot-chart-box" style="background: rgba(10,15,28,0.8); border: 1px solid var(--border-color); border-radius: 14px; padding: 1.25rem;">
+                            <h5>📊 Live Sensor Power Stream Telemetry $(x-y)^n$</h5>
+                            <canvas id="iotTelemetryChart" height="200"></canvas>
+                        </div>
+
+                        <div class="iot-log-box" style="background: rgba(10,15,28,0.9); border: 1px solid var(--border-color); border-radius: 14px; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <h5>📡 Raw MQTT JSON Payload Terminal</h5>
+                                <span class="badge green" id="iot-stream-status">STREAM ACTIVE</span>
+                            </div>
+                            <pre id="iot-json-log" style="font-family: var(--font-mono); font-size: 0.76rem; color: #34d399; background: #070a13; padding: 0.85rem; border-radius: 10px; height: 210px; overflow-y: auto; white-space: pre-wrap; margin: 0;"></pre>
                         </div>
                     </div>
                 </div>

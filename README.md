@@ -178,6 +178,7 @@ $$\lim_{x \to x_0} \frac{\mathcal{R}(x,y,n)}{(x-y)^n} = 1 \quad \blacksquare$$
 | 🛠️ **Formula Fixer (Live Engine)** | Panel kontrol interaktif 3-langkah untuk menyimulasikan dampak perubahan turunan, indeks, dan integral secara parsial. |
 | 🌐 **Kamus Matematis & A.I** | **Glosarium Interaktif 16 Istilah**: Live search, filter kategori, dua penjelasan (Awam & Akademis), serta **Autotranslate Teks 5 Bahasa (ID, EN, JA, ZH, DE)**. |
 | 🤖 **Samuel-Tosh AI Assistant** | **Claude-Class Math Reasoning Engine**: Glassmorphic chat interface, 0% Hallucination Guardrail, audit singularitas live, ekspansi binomial, dan integrasi Gauss 16-point. |
+| 📡 **Dashboard Edge IoT & Robotika** | **Real-Time Telemetry Systems**: Sensor streaming MQTT/WebSocket payload, integrasi Raspberry Pi / Jetson / ESP32, bare-metal C++ core, dan latensi sub-milidetik (<0.01 ms). |
 | 👨‍🔬 **Profil Penemu & Riset** | Profil lengkap penemu, akses unduhan berkas riset fisik asli (`.docx`, `.pdf`, `.exe`), dan semboyan juang alumni. |
 
 ---

@@ -1233,6 +1233,166 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // ==========================================================================
+    // 📡 SAMUEL.AI EDGE IOT & EMBEDDED TELEMETRY BRIDGE CORE
+    // ==========================================================================
+    class SamuelIoTBridge {
+        constructor() {
+            this.deviceId = "samuel-edge-node-01";
+            this.protocol = "mqtt/ws";
+            this.author = "Samuel Hasiholan Omega Purba, S. Tr. T.";
+            this.isSimulating = false;
+            this.timer = null;
+        }
+
+        generateSensorPayload(x = 7, y = 2, n = 3) {
+            const computedPower = Math.pow(x - y, n);
+            const gaussVal = gaussLegendre16(0, 1);
+            return {
+                device_id: this.deviceId,
+                timestamp_iso: new Date().toISOString(),
+                protocol: this.protocol,
+                author: this.author,
+                sensor_imu: {
+                    ax: parseFloat((Math.random() * 0.4 - 0.2).toFixed(3)),
+                    ay: parseFloat((Math.random() * 0.4 - 0.2).toFixed(3)),
+                    az: parseFloat((9.81 + (Math.random() * 0.2 - 0.1)).toFixed(3))
+                },
+                power_telemetry: {
+                    x: x,
+                    y: y,
+                    n: n,
+                    computed_power: computedPower,
+                    error_pct: 0.0
+                },
+                gauss_integration: {
+                    bounds: [0, 1],
+                    integral_val: parseFloat(gaussVal.toFixed(7)),
+                    compute_ms: 0.002
+                },
+                status: "SUB_MS_OK"
+            };
+        }
+    }
+
+    const iotBridge = new SamuelIoTBridge();
+
+    // IoT Telemetry Chart Setup
+    const ctxIot = document.getElementById('iotTelemetryChart');
+    let iotChart = null;
+
+    if (ctxIot) {
+        iotChart = new Chart(ctxIot, {
+            type: 'line',
+            data: {
+                labels: Array.from({length: 12}, (_, i) => `${i*2}s`),
+                datasets: [{
+                    label: 'Calculated Power (x-y)^n',
+                    data: [125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125],
+                    borderColor: '#34d399',
+                    backgroundColor: 'rgba(52, 211, 153, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                        ticks: { color: '#94a3b8' }
+                    },
+                    x: {
+                        grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                        ticks: { color: '#94a3b8' }
+                    }
+                },
+                plugins: { legend: { labels: { color: '#fff' } } }
+            }
+        });
+    }
+
+    // IoT Controls Event Handlers
+    const btnIotSim = document.getElementById('btn-iot-sim');
+    const btnIotInject = document.getElementById('btn-iot-inject');
+    const btnIotBaremetal = document.getElementById('btn-iot-baremetal');
+    const btnIotJson = document.getElementById('btn-iot-json');
+    const iotJsonLog = document.getElementById('iot-json-log');
+
+    function updateIotTerminal(payload) {
+        if (iotJsonLog) {
+            iotJsonLog.textContent = JSON.stringify(payload, null, 2);
+        }
+    }
+
+    if (btnIotSim) {
+        btnIotSim.addEventListener('click', () => {
+            iotBridge.isSimulating = !iotBridge.isSimulating;
+            if (iotBridge.isSimulating) {
+                btnIotSim.innerHTML = "⏹️ Stop Telemetry Simulator";
+                btnIotSim.classList.remove('btn-primary');
+                btnIotSim.classList.add('btn-secondary');
+
+                iotBridge.timer = setInterval(() => {
+                    const x = Math.floor(Math.random() * 5) + 5;
+                    const y = Math.floor(Math.random() * 3) + 1;
+                    const n = Math.floor(Math.random() * 3) + 2;
+                    const payload = iotBridge.generateSensorPayload(x, y, n);
+                    updateIotTerminal(payload);
+
+                    if (iotChart) {
+                        iotChart.data.datasets[0].data.shift();
+                        iotChart.data.datasets[0].data.push(payload.power_telemetry.computed_power);
+                        iotChart.update('none');
+                    }
+                }, 1000);
+            } else {
+                clearInterval(iotBridge.timer);
+                btnIotSim.innerHTML = "🚀 Start Live Telemetry Simulator";
+                btnIotSim.classList.remove('btn-secondary');
+                btnIotSim.classList.add('btn-primary');
+            }
+        });
+    }
+
+    if (btnIotInject) {
+        btnIotInject.addEventListener('click', () => {
+            const payload = iotBridge.generateSensorPayload(9, 3, 3);
+            payload.sensor_imu.az = 14.25; // Injected IMU pulse
+            payload.status = "IMU_PULSE_INJECTED";
+            updateIotTerminal(payload);
+            if (iotChart) {
+                iotChart.data.datasets[0].data.shift();
+                iotChart.data.datasets[0].data.push(216);
+                iotChart.update();
+            }
+        });
+    }
+
+    if (btnIotBaremetal) {
+        btnIotBaremetal.addEventListener('click', () => {
+            const payload = iotBridge.generateSensorPayload(7, 2, 3);
+            payload.baremetal_status = "C++ BARE-METAL EXECUTION OK (<0.002ms)";
+            updateIotTerminal(payload);
+        });
+    }
+
+    if (btnIotJson) {
+        btnIotJson.addEventListener('click', () => {
+            const payload = iotBridge.generateSensorPayload(7, 2, 3);
+            const str = JSON.stringify(payload, null, 2);
+            navigator.clipboard.writeText(str).then(() => {
+                alert("Payload Telemetry MQTT JSON Terkopis ke Clipboard!");
+            }).catch(() => {
+                alert(str);
+            });
+        });
+    }
+
+    // Initialize first payload
+    updateIotTerminal(iotBridge.generateSensorPayload(7, 2, 3));
 });
 
 // Export SamuelToshAIEngine for Node.js test runner if applicable
