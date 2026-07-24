@@ -1217,6 +1217,22 @@ document.addEventListener('DOMContentLoaded', () => {
             handleUserSubmit(query);
         });
     });
+
+    // Copy BibTeX Citation Handler
+    const btnCopyBibtex = document.getElementById('btn-copy-bibtex');
+    const bibtexCodeBlock = document.getElementById('bibtex-code-block');
+    if (btnCopyBibtex && bibtexCodeBlock) {
+        btnCopyBibtex.addEventListener('click', () => {
+            const textToCopy = bibtexCodeBlock.textContent.trim();
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const origText = btnCopyBibtex.innerHTML;
+                btnCopyBibtex.innerHTML = "✅ Terkoip Sitasi BibTeX Scopus Q1!";
+                setTimeout(() => { btnCopyBibtex.innerHTML = origText; }, 2000);
+            }).catch(() => {
+                alert("BibTeX Citation: \n" + textToCopy);
+            });
+        });
+    }
 });
 
 // Export SamuelToshAIEngine for Node.js test runner if applicable
