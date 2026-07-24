@@ -230,7 +230,7 @@ Rumus-Perpangkatan-Universal-4.0/
     <td valign="top">
       <h3>Samuel Hasiholan Omega, S. Tr. T.</h3>
       <p><strong>Pencetus Rumus Perpangkatan Universal 4.0</strong></p>
-      <p>🎓 Gelar Akademis: <em>Sarjana Terapan Teknik (S. Tr. T.)</em><br>
+      <p>🎓 Gelar Akademis: <em>Sarjana Teknik Terapan (S. Tr. T.)</em><br>
       🤖 Program Studi: <em>Teknik Robotika dan Kecerdasan Buatan (A . I)</em><br>
       🏫 Institusi: <em>Politeknik Negeri Batam, Kepulauan Riau, Indonesia</em></p>
       <blockquote style="margin: 0; padding-left: 12px; border-left: 4px solid #a855f7; color: #a855f7;">
@@ -271,4 +271,4 @@ Jika Anda menggunakan platform **Samuel.A.I** atau dokumen riset **Rumus Perpang
 
 ## 📜 Lisensi & Hak Cipta Publikasi
 
-Proyek ini didistribusikan di bawah **[Lisensi MIT](LICENSE)**. Hak Cipta © 2026 Samuel Hasiholan Omega, S. Tr. T. .Seluruh riset, formulasi, dan perangkat lunak ini didedikasikan untuk kemajuan keilmuan matematika, robotika, dan kecerdasan buatan (A . I) Indonesia.
+Proyek ini didistribusikan di bawah **[Lisensi MIT](LICENSE)**. Hak Cipta © 2026 Samuel Hasiholan Omega, S. Tr. T. Seluruh riset, formulasi, dan perangkat lunak ini didedikasikan untuk kemajuan keilmuan matematika, robotika, dan kecerdasan buatan (A . I) Indonesia.
