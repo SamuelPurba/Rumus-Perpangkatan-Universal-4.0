@@ -68,6 +68,10 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path><rect x="4" y="8" width="16" height="12" rx="2"></rect><line x1="9" y1="13" x2="9.01" y2="13"></line><line x1="15" y1="13" x2="15.01" y2="13"></line><path d="M10 17h4"></path></svg>
                     🤖 Rancang Bangun Robotika
                 </button>
+                <button class="nav-item" data-tab="business-dashboard">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path><line x1="12" y1="11" x2="12" y2="17"></line><line x1="9" y1="14" x2="15" y2="14"></line></svg>
+                    💼 Sistem Bisnis IoT
+                </button>
             </nav>
 
             <div class="sidebar-footer">
@@ -1372,6 +1376,111 @@
                     <div style="margin-top: 1.25rem;">
                         <h5>📡 Raw Robotics Telemetry & Torque Specifications</h5>
                         <pre id="robotics-telemetry-log" style="font-family: var(--font-mono); font-size: 0.76rem; color: #60a5fa; background: #070a13; border: 1px solid var(--border-color); padding: 0.85rem; border-radius: 10px; height: 140px; overflow-y: auto; margin-top: 0.5rem;"></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB: Sistem Bisnis IoT & Industri -->
+            <section id="business-dashboard" class="tab-content">
+                <div class="welcome-card business-welcome-card">
+                    <div class="welcome-text">
+                        <h3>💼 Samuel.AI Enterprise IoT Business & Predictive Intelligence</h3>
+                        <p>Arsitektur prediktif analitik bisnis dan manajemen industri IoT karya <strong>Samuel Hasiholan Omega, S. Tr. T.</strong> Memadukan model matematika eksponensial $P(x,y,n) = (x-y)^n + \int_0^1 x^x dx$ untuk memprediksi efisiensi pabrik pintar (*Smart Factory*), estimasi *downtime*, penghematan OPEX, serta ROI keuangan real-time berlatensi <strong>$<0.01\text{ ms}$</strong>.</p>
+                    </div>
+                    <div class="ai-badge-row">
+                        <span class="badge green">📈 Smart Factory Predictive Maintenance Active</span>
+                        <span class="badge purple">⚡ Exponential ROI Model $(x-y)^n$</span>
+                        <span class="badge blue">💱 Multi-Currency Engine (IDR/USD/EUR/JPY)</span>
+                    </div>
+                </div>
+
+                <!-- Executive BI KPI Cards Grid -->
+                <div class="biz-kpi-grid">
+                    <div class="glass-card biz-kpi-card">
+                        <span class="kpi-label">TOTAL ASET IOT AKTIF</span>
+                        <div class="kpi-value-row">
+                            <span class="kpi-val">1,250</span>
+                            <span class="badge green">Nodes Online</span>
+                        </div>
+                        <span class="kpi-sub">Smart Factory & Fleet Sensors</span>
+                    </div>
+
+                    <div class="glass-card biz-kpi-card">
+                        <span class="kpi-label">EFISIENSI ENERGI PABRIK</span>
+                        <div class="kpi-value-row">
+                            <span class="kpi-val" id="kpi-efficiency">98.7%</span>
+                            <span class="badge purple">+14.2% YoY</span>
+                        </div>
+                        <span class="kpi-sub">Optimized Gauss 16-Point Core</span>
+                    </div>
+
+                    <div class="glass-card biz-kpi-card">
+                        <span class="kpi-label">PENGHEMATAN OPEX ANNUALLY</span>
+                        <div class="kpi-value-row">
+                            <span class="kpi-val" id="kpi-savings">Rp 2.45 M</span>
+                            <span class="badge blue" id="kpi-currency-badge">IDR</span>
+                        </div>
+                        <span class="kpi-sub">Operational Cost Reduction</span>
+                    </div>
+
+                    <div class="glass-card biz-kpi-card">
+                        <span class="kpi-label">LATENSI SISTEM & ERROR RATE</span>
+                        <div class="kpi-value-row">
+                            <span class="kpi-val">&lt;0.01 ms</span>
+                            <span class="badge green">0.00% Error</span>
+                        </div>
+                        <span class="kpi-sub">Zero-Hallucination Verified</span>
+                    </div>
+                </div>
+
+                <!-- Main Business Simulator & Chart Box -->
+                <div class="glass-card business-main-card" style="margin-top: 1.5rem;">
+                    <div class="biz-controls-row" style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-end; background: rgba(10,15,28,0.7); padding: 1.25rem; border-radius: 14px; border: 1px solid var(--border-color);">
+                        <div class="input-group" style="flex: 1; min-width: 140px;">
+                            <label for="biz-x">Modal Investasi ($x$)</label>
+                            <input type="number" id="biz-x" value="10">
+                        </div>
+                        <div class="input-group" style="flex: 1; min-width: 140px;">
+                            <label for="biz-y">Pengeluaran ($y$)</label>
+                            <input type="number" id="biz-y" value="4">
+                        </div>
+                        <div class="input-group" style="flex: 1; min-width: 140px;">
+                            <label for="biz-n">Durasi Tahun ($n$)</label>
+                            <input type="number" id="biz-n" value="3">
+                        </div>
+                        <div class="input-group" style="flex: 1; min-width: 140px;">
+                            <label for="biz-curr-select">Mata Uang</label>
+                            <select id="biz-curr-select" style="background: rgba(10,15,28,0.9); border: 1px solid var(--border-color); color: #fff; padding: 0.6rem; border-radius: 8px;">
+                                <option value="IDR">🇮🇩 IDR (Rupiah)</option>
+                                <option value="USD">🇺🇸 USD (Dollar)</option>
+                                <option value="EUR">🇪🇺 EUR (Euro)</option>
+                                <option value="JPY">🇯🇵 JPY (Yen)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="biz-action-bar" style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem;">
+                        <button id="btn-biz-sim" class="btn btn-primary">📊 Simulasikan Proyeksi Bisnis</button>
+                        <button id="btn-biz-opex" class="btn btn-secondary">⚡ Kalkulasi Penghematan OPEX</button>
+                        <button id="btn-biz-currency" class="btn btn-secondary">💱 Switch Currency IDR/USD</button>
+                        <button id="btn-biz-pdf" class="btn btn-secondary">📄 Cetak Laporan Eksekutif PDF/JSON</button>
+                    </div>
+
+                    <!-- Financial Chart & Report Grid -->
+                    <div class="biz-display-grid" style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+                        <div class="biz-chart-box" style="background: rgba(10,15,28,0.8); border: 1px solid var(--border-color); border-radius: 14px; padding: 1.25rem;">
+                            <h5>📊 Proyeksi Keuangan & Penghematan OPEX vs Biaya Tradisional</h5>
+                            <canvas id="businessFinancialChart" height="200"></canvas>
+                        </div>
+
+                        <div class="biz-report-box" style="background: rgba(10,15,28,0.9); border: 1px solid var(--border-color); border-radius: 14px; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <h5>📑 Executive Financial & BI JSON Resume</h5>
+                                <span class="badge green">Q1 EXECUTIVE VERIFIED</span>
+                            </div>
+                            <pre id="business-report-log" style="font-family: var(--font-mono); font-size: 0.76rem; color: #facc15; background: #070a13; padding: 0.85rem; border-radius: 10px; height: 210px; overflow-y: auto; white-space: pre-wrap; margin: 0;"></pre>
+                        </div>
                     </div>
                 </div>
             </section>

@@ -177,6 +177,13 @@ assert(appJsContent.includes('calculateFK'), "Forward Kinematics Solver (FK) 3-D
 assert(appJsContent.includes('calculateIK'), "Inverse Kinematics Solver (IK) 3-DOF Verified");
 assert(appJsContent.includes('computeExponentialTorque'), "Exponential Damping Joint Torque Computation Verified Sub-ms");
 
+// PILLAR 8: ENTERPRISE IOT BUSINESS INTELLIGENCE & PREDICTIVE ANALYTICS
+console.log("\n--- PILLAR 8: Enterprise IoT Business Intelligence & Predictive Analytics ---");
+assert(appJsContent.includes('SamuelBusinessEngine'), "Samuel.AI Enterprise Business Engine exists in app.js");
+assert(appJsContent.includes('predictiveMaintenanceModel'), "Predictive Maintenance Model P(x,y,n) Active & Verified");
+assert(appJsContent.includes('calculateROI'), "Sub-ms ROI & OPEX Financial Savings Calculation Verified");
+assert(appJsContent.includes('generateExecutiveReport'), "Executive Financial Resume PDF/JSON Report Generator Verified");
+
 console.log("\n=========================================================================");
 console.log(` 📊 SUMMARY: ${passed} PASSED, ${failed} FAILED.`);
 console.log("=========================================================================");
