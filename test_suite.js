@@ -97,13 +97,15 @@ assert(diff < 0.001, `Teorema 2: 16-Point Gauss-Legendre Quadrature (Calculated:
 const testCases = [
     { x: 5, y: 2, n: 3 },
     { x: 10, y: 4, n: 4 },
-    { x: 7, y: 3, n: 5 }
+    { x: 7, y: 3, n: 5 },
+    { x: 12, y: 5, n: 10 },
+    { x: 100, y: 99, n: 0 }
 ];
 testCases.forEach((tc, idx) => {
     const directVal = Math.pow(tc.x - tc.y, tc.n);
     const expansionVal = evaluateNewtonBinomial(tc.x, tc.y, tc.n);
     const err = Math.abs(directVal - expansionVal);
-    assert(err < 1e-7, `Teorema 3 Case #${idx + 1}: (x-y)^n Equivalence for x=${tc.x}, y=${tc.y}, n=${tc.n}`);
+    assert(err < 1e-7, `Teorema 3 Case #${idx + 1}: (x-y)^n Equivalence for x=${tc.x}, y=${tc.y}, n=${tc.n} (Error = ${err})`);
 });
 
 // Explicit Test: Teorema 4 - Rumus Terkoreksi Samuel (d/dy)
