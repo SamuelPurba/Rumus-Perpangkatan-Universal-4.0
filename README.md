@@ -197,6 +197,36 @@ graph LR
 }
 ```
 
+5. 📐 **Autodesk Inventor CAD Engine & FinTech Payment Gateway**:
+   Modul perancangan mekanikal cetak biru CAD 2D/3D (ISO 128 Standards) dengan kalkulasi titik pusat massa (*Center of Gravity*), pengekspor berkas `.PDF` & `.JPG` high-res, serta Gerbang Pembayaran Online Real-Time berbasis kode **Dynamic QRIS**, E-Wallet (*GoPay, OVO, DANA*), dan *Virtual Account Bank*.
+
+```mermaid
+graph TD
+    USER_CAD["User Interface Dashboard"] --> CAD_ENGINE["SamuelCADEngine (Autodesk Inventor Core)"]
+    USER_CAD --> PAY_ENGINE["SamuelPaymentBridge (FinTech Core)"]
+
+    CAD_ENGINE --> VIEW_3D["3D Isometric View / 2D Projection"]
+    CAD_ENGINE --> EXPORT_DOC["High-Res .JPG & Blueprint PDF Export"]
+
+    PAY_ENGINE --> QRIS_GEN["Dynamic QRIS Code Generator (EMVCo)"]
+    PAY_ENGINE --> WALLET_VA["E-Wallet & Bank Virtual Accounts (BCA/Mandiri/BNI)"]
+    PAY_ENGINE --> WEBHOOK["Real-Time Webhook PAID Status & Receipt"]
+```
+
+#### 💳 Format Payload Transaksi QRIS & Payment Webhook:
+```json
+{
+  "merchant": "SAMUEL.AI ENTERPRISE STORE",
+  "nmid": "ID1020267781992",
+  "order_id": "ORD-2026-9901",
+  "payment_method": "QRIS_DYNAMIC",
+  "transaction_status": "PAID",
+  "timestamp_iso": "2026-07-24T11:45:00.000Z",
+  "digital_receipt_no": "RCT-PURBA-892104",
+  "message": "Pembayaran Berhasil! Lisensi Enterprise Samuel.AI Terverifikasi 100%."
+}
+```
+
 ---
 
 ## 📚 Fitur Modul Platform Samuel.AI
