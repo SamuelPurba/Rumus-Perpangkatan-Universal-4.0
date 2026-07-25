@@ -42,12 +42,12 @@ class Program {
         }
 
         try {
-            Console.Title = "Samuel.A.I Server - Rumus Perpangkatan Universal 4.0";
+            Console.Title = "Samuel.A.I Server - Rumus Perpangkatan Universal 4.0 & Exponential Energy";
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
         } catch {}
         Console.WriteLine("==============================================================");
-        Console.WriteLine("    SAMUEL.A.I - RUMUS PERPANGKATAN UNIVERSAL 4.0 SERVER");
+        Console.WriteLine("  SAMUEL.A.I - EXPONENTIAL DELTA EXPONENT ENERGY SERVER");
         Console.WriteLine("==============================================================");
         try {
             Console.ResetColor();
