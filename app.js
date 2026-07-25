@@ -1547,7 +1547,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (roboticsLog) {
             roboticsLog.textContent = JSON.stringify({
                 author: "Samuel Hasiholan Omega Purba, S. Tr. T.",
-                program_study: "Teknik Robotika & Kecerdasan Buatan (A.I) - Politeknik Negeri Batam",
+                program_study: "Teknik Robotika & Kecerdasan Buatan (A . I) - Politeknik Negeri Batam",
                 joint_angles_deg: { joint1: t1, joint2: t2, joint3: t3 },
                 end_effector_mm: fk,
                 exponential_torques_nm: torques,

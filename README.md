@@ -10,7 +10,7 @@
 
 <p align="center">
   <strong>Publikasi Akademis Berstandar Scopus Q1 (Top Tier Journal Grade)</strong><br>
-  <em>Karya Orisinal: Samuel Hasiholan Omega, S. Tr. T.<br>Alumni Teknik Robotika & Kecerdasan Buatan (A.I), Politeknik Negeri Batam</em>
+  <em>Karya Orisinal: Samuel Hasiholan Omega, S. Tr. T.<br>Alumni Teknik Robotika & Kecerdasan Buatan (A . I), Politeknik Negeri Batam</em>
 </p>
 
 <p align="center">
@@ -28,9 +28,9 @@
 
 > **Manifes Riset & Abstrak Scopus Q1** — *“Melawan kemiskinan dengan pendidikan, melawan pemerintah korup penindas rakyat Indonesia dengan pengetahuan.”* 
 > 
-> Makalah publikasi dan repositori ini menyajikan **formalisasi akademis berstandar Scopus Q1**, audit kalkulus kritis, serta implementasi *engine* perangkat lunak kecerdasan buatan (A.I) interaktif untuk **Rumus Perpangkatan Universal 4.0** karya **Samuel Hasiholan Omega, S. Tr. T.**. Penulisan notasi eksperimental awal yang memadukan ekspansi deret binomial, operator diferensial parsial, dan integrasi eksponensial diri $\int x^x \, dx$ dianalisis secara ketat menggunakan kaidah kalkulus analitis modern. Ditemukan tiga titik krusial dalam notasi original: pembagian dengan nol akibat diferensiasi terhadap variabel non-eksisten ($t$), sifat non-elementer dari $\int x^x \, dx$, serta ketidaksesuaian indeks sumasi. Melalui penyelarasan ke bentuk baku **Teorema Binomial Newton** $(x-y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-1)^k y^k$, platform **Samuel.A.I** membuktikan kepresisian komputasi $100\%$ dengan kecepatan eksekusi sub-milidetik ($<0.01\text{ ms}$) berbasis **16-Point Gauss-Legendre Quadrature**, matriks **Pascal Triangle Sieve $O(1)$**, serta modul **Kamus Matematis & A.I Autotranslate 5 Bahasa Tulisan (Indonesia, English, Jepang, Mandarin, Jerman)**.
+> Makalah publikasi dan repositori ini menyajikan **formalisasi akademis berstandar Scopus Q1**, audit kalkulus kritis, serta implementasi *engine* perangkat lunak kecerdasan buatan (A . I) interaktif untuk **Rumus Perpangkatan Universal 4.0** karya **Samuel Hasiholan Omega, S. Tr. T.**. Penulisan notasi eksperimental awal yang memadukan ekspansi deret binomial, operator diferensial parsial, dan integrasi eksponensial diri $\int x^x \, dx$ dianalisis secara ketat menggunakan kaidah kalkulus analitis modern. Ditemukan tiga titik krusial dalam notasi original: pembagian dengan nol akibat diferensiasi terhadap variabel non-eksisten ($t$), sifat non-elementer dari $\int x^x \, dx$, serta ketidaksesuaian indeks sumasi. Melalui penyelarasan ke bentuk baku **Teorema Binomial Newton** $(x-y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-1)^k y^k$, platform **Samuel.A.I** membuktikan kepresisian komputasi $100\%$ dengan kecepatan eksekusi sub-milidetik ($<0.01\text{ ms}$) berbasis **16-Point Gauss-Legendre Quadrature**, matriks **Pascal Triangle Sieve $O(1)$**, serta modul **Kamus Matematis & A.I Autotranslate 5 Bahasa Tulisan (Indonesia, English, Jepang, Mandarin, Jerman)**.
 
-**Kata Kunci (Scopus Index Terms)**: *Rumus Perpangkatan Universal 4.0, Audit Kalkulus Analitis, Teorema Binomial Newton, Gauss-Legendre Quadrature, Autotranslate Engine, Kecerdasan Buatan (A.I), Politeknik Negeri Batam*.
+**Kata Kunci (Scopus Index Terms)**: *Rumus Perpangkatan Universal 4.0, Audit Kalkulus Analitis, Teorema Binomial Newton, Gauss-Legendre Quadrature, Autotranslate Engine, Kecerdasan Buatan (A . I), Politeknik Negeri Batam*.
 
 ---
 
@@ -419,7 +419,7 @@ Rumus-Perpangkatan-Universal-4.0/
       <h3>Samuel Hasiholan Omega, S. Tr. T.</h3>
       <p><strong>Pencetus Rumus Perpangkatan Universal 4.0</strong></p>
       <p>🎓 Gelar Akademis: <em>Sarjana Teknik Terapan (S. Tr. T.)</em><br>
-      🤖 Program Studi: <em>Teknik Robotika dan Kecerdasan Buatan (A.I)</em><br>
+      🤖 Program Studi: <em>Teknik Robotika dan Kecerdasan Buatan (A . I)</em><br>
       🏫 Institusi: <em>Politeknik Negeri Batam, Kepulauan Riau, Indonesia</em></p>
       <blockquote style="margin: 0; padding-left: 12px; border-left: 4px solid #a855f7; color: #a855f7;">
         <em>"Melawan kemiskinan dengan pendidikan, melawan pemerintah korup penindas rakyat Indonesia dengan pengetahuan."</em>
@@ -459,4 +459,4 @@ Jika Anda menggunakan platform **Samuel.A.I** atau dokumen riset **Rumus Perpang
 
 ## 📜 Lisensi & Hak Cipta Publikasi
 
-Proyek ini didistribusikan di bawah **[Lisensi MIT](LICENSE)**. Hak Cipta © 2026 Samuel Hasiholan Omega, S. Tr. T. .Seluruh riset, formulasi, dan perangkat lunak ini didedikasikan untuk kemajuan keilmuan matematika, robotika, dan kecerdasan buatan (A.I) Indonesia.
+Proyek ini didistribusikan di bawah **[Lisensi MIT](LICENSE)**. Hak Cipta © 2026 Samuel Hasiholan Omega, S. Tr. T. .Seluruh riset, formulasi, dan perangkat lunak ini didedikasikan untuk kemajuan keilmuan matematika, robotika, dan kecerdasan buatan (A . I) Indonesia.
