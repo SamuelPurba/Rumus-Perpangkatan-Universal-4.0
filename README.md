@@ -26,9 +26,10 @@
 
 ## 📜 Manifesto & Abstrak Akademis (Scopus Q1 Executive Abstract)
 
+> [!NOTE]
 > **Manifes Riset & Abstrak Scopus Q1** — *“Melawan kemiskinan dengan pendidikan, melawan pemerintah korup penindas rakyat Indonesia dengan pengetahuan.”* 
 > 
-> Makalah publikasi dan repositori ini menyajikan **formalisasi akademis berstandar Scopus Q1**, audit kalkulus kritis, serta implementasi *engine* perangkat lunak kecerdasan buatan (A . I) interaktif untuk **Rumus Perpangkatan Universal 4.0** karya **Samuel Hasiholan Omega, S. Tr. T.**. Penulisan notasi eksperimental awal yang memadukan ekspansi deret binomial, operator diferensial parsial, dan integrasi eksponensial diri $\int x^x \, dx$ dianalisis secara ketat menggunakan kaidah kalkulus analitis modern. Ditemukan tiga titik krusial dalam notasi original: pembagian dengan nol akibat diferensiasi terhadap variabel non-eksisten ($t$), sifat non-elementer dari $\int x^x \, dx$, serta ketidaksesuaian indeks sumasi. Melalui penyelarasan ke bentuk baku **Teorema Binomial Newton** $(x-y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-1)^k y^k$, platform **Samuel.A.I** membuktikan kepresisian komputasi $100\%$ dengan kecepatan eksekusi sub-milidetik ($<0.01\text{ ms}$) berbasis **16-Point Gauss-Legendre Quadrature**, matriks **Pascal Triangle Sieve $O(1)$**, serta modul **Kamus Matematis & A.I Autotranslate 5 Bahasa Tulisan (Indonesia, English, Jepang, Mandarin, Jerman)**.
+> Saya, **Samuel Hasiholan Omega, S. Tr. T.**, merumuskan **Rumus Perpangkatan Universal 4.0** untuk memberikan pembuktian analitis atas kalkulus deret binomial, operator diferensial parsial, dan integrasi eksponensial diri $\int x^x \, \mathrm{d}x$. Dalam karya riset ini, saya menuntaskan tiga anomali matematika: singularitas pembagian dengan nol dari diferensiasi variabel $t$, sifat non-elementer dari $\int x^x \, \mathrm{d}x$, serta penyelarasan indeks sumasi ke bentuk baku **Teorema Binomial Newton** $(x-y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-1)^k y^k$. Seluruh modul komputasi **Samuel.A.I** saya bangun berbasis **16-Point Gauss-Legendre Quadrature**, matriks **Pascal Triangle Sieve $O(1)$**, dan engine **Autotranslate 5 Bahasa Tulisan (Indonesia, English, Jepang, Mandarin, Jerman)** dengan kecepatan eksekusi sub-milidetik ($<0.01\text{ ms}$).
 
 **Kata Kunci (Scopus Index Terms)**: *Rumus Perpangkatan Universal 4.0, Audit Kalkulus Analitis, Teorema Binomial Newton, Gauss-Legendre Quadrature, Autotranslate Engine, Kecerdasan Buatan (A . I), Politeknik Negeri Batam*.
 
@@ -37,13 +38,13 @@
 ## 🧮 Formalisasi Matematika & Pembuktian Teorema (Scopus Q1 Rigorous Proofs)
 
 ### 1. Formulasi Notation Original (Karya Peneliti Samuel Purba)
-$$\sum_{(x \to \infty)} \lim_{(x \to \infty)} ((x - y)^n) = \sum_{(x \to \infty)} \lim_{(x \to \infty)} \left( \frac{\{(\int x^x \, dx \times \{\frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{k-n} y^k\}) - \int x^x \, dx\}}{\{\frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{k-n} y^k\}} \right)$$
+$$\sum_{(x \to \infty)} \lim_{(x \to \infty)} ((x - y)^n) = \sum_{(x \to \infty)} \lim_{(x \to \infty)} \left( \frac{\{(\int x^x \, \mathrm{d}x \times \{\frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{k-n} y^k\}) - \int x^x \, \mathrm{d}x\}}{\{\frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{k-n} y^k\}} \right)$$
 
 ---
 
 ### 2. Teorema Audit Kritis & Matriks Pembuktian Scopus Q1 (5-Pillar Formal Proofs)
 
-Untuk menjamin kualitas publikasi akademis kelas dunia (Top 1% Scopus Q1 Grade), notasi awal dianalisis secara komprehensif melalui **Matriks Audit Kritis 5 Teorema Formal**. Matriks ini mendeteksi titik singularitas matematis, mendefinisikan koreksi operator diferensial, serta membuktikan konvergensi numerik secara eksak.
+Dalam riset ini, saya menyusun matriks pembuktian yang terbagi ke dalam 5 Teorema Formal untuk mendeteksi singularitas matematis, mengoreksi operator diferensial, dan menjamin konvergensi numerik secara presisi.
 
 #### 📊 Matriks Audit Komparatif Notasi Original vs Koreksi Scopus Q1
 
