@@ -16,11 +16,15 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Scopus-Q1%20Top%201%25-gold.svg?style=for-the-badge&logo=scopus" alt="Scopus Q1 Top 1%">
   <img src="https://img.shields.io/badge/Journal--Grade-Elsevier%20%7C%20IEEE%20Standard-blue.svg?style=for-the-badge" alt="Elsevier IEEE Standard">
+  <a href="PROMPT_ANTIGRAVITY_Q1.md"><img src="https://img.shields.io/badge/Google%20Antigravity.AI-Master%20Prompt%20Q1-ff4500.svg?style=for-the-badge&logo=google" alt="Antigravity Master Prompt"></a>
   <img src="https://img.shields.io/badge/Precision-100%25%20Verified-emerald.svg?style=for-the-badge" alt="100% Verified">
   <img src="https://img.shields.io/badge/Engine-Gauss--Legendre%2016--Point-purple.svg?style=for-the-badge" alt="Gauss-Legendre">
-  <img src="https://img.shields.io/badge/AI--Glossary-Autotranslate%205%20Languages-ff69b4.svg?style=for-the-badge" alt="Autotranslate 5 Languages">
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-brightgreen.svg?style=for-the-badge" alt="MIT License"></a>
 </p>
+
+> [!TIP]
+> **🤖 Google Antigravity.AI Master Prompt Available!**
+> Untuk melakukan audit otomatis, penyempurnaan format IEEE LaTeX, dan kompilasi riset ini secara real-time dengan standar Scopus Q1 Top 1%, gunakan berkas Master Directive: [`PROMPT_ANTIGRAVITY_Q1.md`](PROMPT_ANTIGRAVITY_Q1.md).
 
 ---
 
