@@ -96,7 +96,7 @@ $$\text{Rasio} = \frac{\left(\int x^x \, dx \cdot 0\right) - \int x^x \, dx}{0} 
 ---
 
 #### **Teorema 2 (Transendensi & Integrasi Numerik Non-Elementer $\int x^x \, dx$)**
-> **Pernyataan Teorema**: Fungsi eksponensial diri $f(x) = x^x = e^{x \ln x}$ tidak memiliki antiderivatif $F(x) = \int x^x \, dx$ dalam bentuk rantai berhingga fungsi elementer (Berdasarkan Teorema Liouville tentang Diferensiasi Aljabar Transendental).
+> **Pernyataan Teorema**: Fungsi eksponensial diri $f(x) = x^x = e^{x \ln x}$ tidak memiliki antiderivatif $F(x) = \int x^x\ , dx$ dalam bentuk rantai berhingga fungsi elementer (Berdasarkan Teorema Liouville tentang Diferensiasi Aljabar Transendental).
 
 **Pembuktian Identitas Deret (Sophomore's Dream)**:
 $$\int_{0}^{1} x^x \, dx = \sum_{m=1}^{\infty} \frac{(-1)^{m-1}}{m^m} = 1 - \frac{1}{4} + \frac{1}{27} - \frac{1}{256} + \dots \approx 0.783430510712134$$
