@@ -100,7 +100,7 @@ $$\text{Rasio} = \frac{\left(\int x^x \, dx \cdot 0\right) - \int x^x \, dx}{0} 
 
 **Pembuktian Identitas Deret (Sophomore's Dream)**:
 $$\int_{0}^{1} x^x \, dx = \sum_{m=1}^{\infty} \frac{(-1)^{m-1}}{m^m} = 1 - \frac{1}{4} + \frac{1}{27} - \frac{1}{256} + \dots \approx 0.783430510712134$$
-*Untuk mengevaluasi integral ini secara real-time dengan error $<10^(-7)$, platform Samuel.AI mengimplementasikan **16-Point Gauss-Legendre Quadrature**:*
+*Untuk mengevaluasi integral ini secara real-time dengan error $$<10^{-7}$$, platform Samuel.AI mengimplementasikan **16-Point Gauss-Legendre Quadrature**:*
 $$\int_a^b x^x \, dx \approx \frac{b-a}{2} \sum_{i=1}^{16} w_i \exp\left( t_i \ln t_i \right), \quad t_i = \frac{b-a}{2} x_i + \frac{b+a}{2} \quad \blacksquare$$
 
 ---
