@@ -100,7 +100,7 @@ $$\text{Rasio} = \frac{\left(\int x^x \, dx \cdot 0\right) - \int x^x \, dx}{0} 
 
 **Pembuktian Identitas Deret (Sophomore's Dream)**:
 $$\int_{0}^{1} x^x \, dx = \sum_{m=1}^{\infty} \frac{(-1)^{m-1}}{m^m} = 1 - \frac{1}{4} + \frac{1}{27} - \frac{1}{256} + \dots \approx 0.783430510712134$$
-*Untuk mengevaluasi integral ini secara real-time dengan error $$10^{-7}$$, platform Samuel.AI mengimplementasikan **16-Point Gauss-Legendre Quadrature**:*
+*Untuk mengevaluasi integral ini secara real-time dengan error $$\10^{-7}$$, platform Samuel.AI mengimplementasikan **16-Point Gauss-Legendre Quadrature**:*
 $$\int_a^b x^x \, dx \approx \frac{b-a}{2} \sum_{i=1}^{16} w_i \exp\left( t_i \ln t_i \right), \quad t_i = \frac{b-a}{2} x_i + \frac{b+a}{2} \quad \blacksquare$$
 
 ---
@@ -115,6 +115,7 @@ $$(x - y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-1)^k y^k \quad \blacksquare$$
 
 #### **Teorema 4 (Operasi Diferensial Terkoreksi Parsial Terhadap Variabel Basis $\frac{d}{dy}$)**
 > **Pernyataan Teorema**: Jika turunan parsial dievaluasi terhadap variabel basis $y$ alih-alih $t$, maka diferensiasi dari ekspansi binomial Newton secara persis menghasilkan turunan suku-per-suku yang valid:
+
 
 **Bukti Matematika Formal**:
 $$\frac{\partial}{\partial y} (x - y)^n = -n(x - y)^{n-1}$$
