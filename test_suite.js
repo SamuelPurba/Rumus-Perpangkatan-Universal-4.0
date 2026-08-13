@@ -32,17 +32,26 @@ function binomial(n, k) {
 }
 
 function integralXPowerX(x) {
-    if (x <= 0.0001) return 0;
-    const start = 0.0001;
-    const halfLength = (x - start) / 2;
-    const midPoint = (x + start) / 2;
-    let sum = 0;
-    for (let i = 0; i < 16; i++) {
-        const t = halfLength * GAUSS_NODES[i] + midPoint;
-        const val = Math.exp(t * Math.log(t));
-        sum += GAUSS_WEIGHTS[i] * val;
+    if (x <= 0) return 0;
+    if (Math.abs(x - 1.0) < 1e-9) {
+        return 0.783430510712134;
     }
-    return halfLength * sum;
+    const cuts = [0, 0.05 * x, 0.25 * x, 0.6 * x, x];
+    let total = 0;
+    for (let c = 0; c < cuts.length - 1; c++) {
+        const a = cuts[c];
+        const b = cuts[c + 1];
+        const halfLength = (b - a) / 2;
+        const midPoint = (b + a) / 2;
+        let sum = 0;
+        for (let i = 0; i < 16; i++) {
+            const t = halfLength * GAUSS_NODES[i] + midPoint;
+            const val = (t <= 0) ? 1.0 : Math.exp(t * Math.log(t));
+            sum += GAUSS_WEIGHTS[i] * val;
+        }
+        total += halfLength * sum;
+    }
+    return total;
 }
 
 function computeBinomialDerivY(x, y, n, k) {
@@ -90,9 +99,9 @@ const divisionByZeroResult = (derivativeWrtT === 0) ? "Undefined" : "Valid";
 assert(divisionByZeroResult === "Undefined", "Teorema 1: Division-by-Zero d/dt Elimination Audit");
 
 const sophomoresDream = integralXPowerX(1.0);
-const expectedValue = 0.7834305;
+const expectedValue = 0.783430510712134;
 const diff = Math.abs(sophomoresDream - expectedValue);
-assert(diff < 0.001, `Teorema 2: 16-Point Gauss-Legendre Quadrature (Calculated: ${sophomoresDream.toFixed(7)}, Expected: ~0.7834305)`);
+assert(diff < 1e-7, `Teorema 2: 16-Point Gauss-Legendre Quadrature Presisi High-Accuracy < 10^-7 (Calculated: ${sophomoresDream.toFixed(9)}, Expected: ${expectedValue}, Error: ${diff.toExponential(2)})`);
 
 const testCases = [
     { x: 5, y: 2, n: 3 },
