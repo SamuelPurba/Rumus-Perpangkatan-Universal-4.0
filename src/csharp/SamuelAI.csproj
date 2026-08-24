@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>SamuelAI</AssemblyName>
+    <RootNamespace>SamuelAI</RootNamespace>
+    <Authors>Samuel Hasiholan Omega Purba, S. Tr. T.</Authors>
+    <Company>Politeknik Negeri Batam &amp; BeruangLaut.ID</Company>
+    <Product>Rumus Perpangkatan Universal 4.0 - Samuel.A.I High Precision Engine</Product>
+    <Version>4.0.0</Version>
+  </PropertyGroup>
+
+</Project>

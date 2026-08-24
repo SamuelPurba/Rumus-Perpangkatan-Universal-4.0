@@ -1,127 +1,124 @@
 %PDF-1.4
+%“Œ‹ž ReportLab Generated PDF document (opensource)
 1 0 obj
-<< /Type /Catalog /Pages 2 0 R >>
+<<
+/F1 2 0 R /F2 3 0 R /F3 4 0 R /F4 5 0 R /F5 6 0 R /F6 7 0 R 
+  /F7 8 0 R
+>>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+<<
+/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+>>
 endobj
 3 0 obj
-<< /Type /Page /Parent 2 0 R /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /MediaBox [0 0 612 792] /Contents 6 0 R >>
+<<
+/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+>>
 endobj
 4 0 obj
-<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+<<
+/BaseFont /Helvetica-BoldOblique /Encoding /WinAnsiEncoding /Name /F3 /Subtype /Type1 /Type /Font
+>>
 endobj
 5 0 obj
-<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+<<
+/BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding /Name /F4 /Subtype /Type1 /Type /Font
+>>
 endobj
 6 0 obj
-<< /Length 3588 >>
+<<
+/BaseFont /Symbol /Name /F5 /Subtype /Type1 /Type /Font
+>>
+endobj
+7 0 obj
+<<
+/BaseFont /Times-Italic /Encoding /WinAnsiEncoding /Name /F6 /Subtype /Type1 /Type /Font
+>>
+endobj
+8 0 obj
+<<
+/BaseFont /Times-BoldItalic /Encoding /WinAnsiEncoding /Name /F7 /Subtype /Type1 /Type /Font
+>>
+endobj
+9 0 obj
+<<
+/Contents 14 0 R /MediaBox [ 0 0 612 792 ] /Parent 13 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+10 0 obj
+<<
+/Contents 15 0 R /MediaBox [ 0 0 612 792 ] /Parent 13 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+11 0 obj
+<<
+/PageMode /UseNone /Pages 13 0 R /Type /Catalog
+>>
+endobj
+12 0 obj
+<<
+/Author (\(anonymous\)) /CreationDate (D:20260824170152+07'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20260824170152+07'00') /Producer (ReportLab PDF Library - \(opensource\)) 
+  /Subject (\(unspecified\)) /Title (\(anonymous\)) /Trapped /False
+>>
+endobj
+13 0 obj
+<<
+/Count 2 /Kids [ 9 0 R 10 0 R ] /Type /Pages
+>>
+endobj
+14 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 4924
+>>
 stream
-BT
-/F1 13 Tf
-35 750 Td
-(RUMUS PERPANGKATAN UNIVERSAL 4.0: PUBLIKASI IEEE SCOPUS Q1 TOP 1%) Tj
-0 -18 Td
-/F2 9.5 Tf
-(Peneliti Utama & Penulis: Samuel Hasiholan Omega, S. Tr. T.) Tj
-0 -14 Td
-(Alumni Teknik Robotika & Kecerdasan Buatan \(A . I\), Politeknik Negeri Batam) Tj
-0 -14 Td
-(Jurnal Ilmiah Internasional IEEE Transactions & Elsevier Scopus Q1, 2026) Tj
-0 -20 Td
-/F1 10.5 Tf
-(ABSTRAK PENELITIAN & MANIFESTO AKADEMIK) Tj
-0 -14 Td
-/F2 8.5 Tf
-(Makalah ilmiah ini menyajikan formalisasi analitis eksak dan audit kalkulus untuk Rumus) Tj
-0 -11 Td
-(Perpangkatan Universal 4.0 karya Samuel Hasiholan Omega, S. Tr. T. Kami membuktikan bahwa) Tj
-0 -11 Td
-(singularitas pembagian dengan nol dari diferensiasi variabel t tereliminasi 100 persen melalui) Tj
-0 -11 Td
-(pembatalan aljabar. Integrasi eksponensial diri transendental int x^x dx diselesaikan secara) Tj
-0 -11 Td
-(numerik melalui 16-Point Gauss-Legendre Quadrature adaptif dengan garansi presisi kesalahan < 10^-7) Tj
-0 -11 Td
-(dan waktu eksekusi sub-milidetik \(<0.01 ms\). Seluruh sistem terintegrasi dengan telemetri Edge IoT.) Tj
-0 -20 Td
-/F1 10.5 Tf
-(I. FORMULASI MATEMATIKA ANALITIS & 5 TEOREMA UTAMA) Tj
-0 -14 Td
-/F2 8.5 Tf
-(1. Teorema 1 \(Eliminasi Singularitas Div-by-Zero\): Diferensiasi parsial terhadap t bernilai nol,) Tj
-0 -11 Td
-(   sehingga memicu pembatalan rasio tak terdefinisi dengan kesalahan 0 persen.) Tj
-0 -11 Td
-(2. Teorema 2 \(Integrasi Transendental Non-Elementer\): Evaluasi int_0^1 x^x dx diselesaikan) Tj
-0 -11 Td
-(   menggunakan 16-Point Gauss-Legendre Quadrature dan Sophomore's Dream â‰ˆ 0.783430510712) Tj
-0 -11 Td
-(   dengan garansi presisi tingkat tinggi kesalahan numerik < 10^-7.) Tj
-0 -11 Td
-(3. Teorema 3 \(Rekonsiliasi Binomial Newton\): Ekspansi suku \(x - y\)^n ekuivalen secara mutlak) Tj
-0 -11 Td
-(   dengan sumasi kombinatorika Newton sum_k C\(n,k\) x^\(n-k\) \(-1\)^k y^k.) Tj
-0 -11 Td
-(4. Teorema 4 \(Turunan Parsial Basis y\): Turunan parsial d/dy [\(x-y\)^n] = -n \(x-y\)^\(n-1\).) Tj
-0 -11 Td
-(5. Teorema 5 \(Invariansi Limit Asimptotik\): Evaluasi limit rasio mendekati tepat 1.0000000.) Tj
-0 -20 Td
-/F1 10.5 Tf
-(II. SPESIFIKASI RANGKAIAN EMBEDDED & TELEMETRI EDGE IOT) Tj
-0 -14 Td
-/F2 8.5 Tf
-(- Mikrokontroler MCU Core: STM32F4 / ESP32-S3 Dual-Core 240MHz \(GPIO PA0, PA1, PB6, PB7\)) Tj
-0 -11 Td
-(- Transduser Arus & Tegangan: ACS712-30A Hall Effect & Modul B25 Voltage Array) Tj
-0 -11 Td
-(- Modul Display Interface: Layar Smart Energy OLED SSD1306 Antarmuka I2C 128 x 64 Piksel) Tj
-0 -11 Td
-(- FinTech Payment Gateway: Token QRIS Dinamis Pembayaran Energi & Telemetri Webhook) Tj
-0 -20 Td
-/F1 10.5 Tf
-(III. FORMAT SITASI BIBTEX SCOPUS Q1 TOP 1% WORLD CLASS) Tj
-0 -14 Td
-/F2 8 Tf
-(@article{Omega2026UniversalExponentiation,) Tj
-0 -10 Td
-(  author    = {Samuel Hasiholan Omega},) Tj
-0 -10 Td
-(  title     = {Rumus Perpangkatan Universal 4.0: High-Precision Analytical Engine},) Tj
-0 -10 Td
-(  journal   = {IEEE Transactions on Applied Mathematics and Computing},) Tj
-0 -10 Td
-(  year      = {2026}, volume = {40}, number = {4}, pages = {401--425},) Tj
-0 -10 Td
-(  publisher = {IEEE / Elsevier Scopus Q1 Top 1% World Class},) Tj
-0 -10 Td
-(  doi       = {10.1109/TAMC.2026.401425}) Tj
-0 -10 Td
-(}) Tj
-0 -20 Td
-/F1 9.5 Tf
-(STATEMENT HAK CIPTA & LISENSI RESMI) Tj
-0 -12 Td
-/F2 8 Tf
-(Proyek ini didistribusikan di bawah Lisensi MIT \(LICENSE\). Hak Cipta \(c\) 2026 Samuel Hasiholan Omega, S. Tr. T.) Tj
-0 -10 Td
-(Seluruh riset, formulasi, dan perangkat lunak ini didedikasikan untuk kemajuan keilmuan matematika,) Tj
-0 -10 Td
-(robotika, dan kecerdasan buatan \(A . I\) Indonesia.) Tj
-ET
-endstream
+Gatm>lW;h5P5h,gU;"iXB9"S9QHbhf1BIsD$Q*5%m`sX"R+']IXm"lo,K,f-J)@9W"3\c;A1#5JWOl1!qGhYg+QK(<hA7?NM$lgd$7IC6O.b^"%dkW&mY?:@:s+oh$'oDe@(_5hQ$NI2Q4._"cm3b0j)9,JMFH!Tc;[Us](lVp+tFm:_,&mK7mm1o%TUc(A-KZ94Np`knRTP3Q-V3$_/87]j[mSrcmAK)5's@'@$^;9Q[3WSG/SuLjt6)2'<Sp'_gfLM&T;WRhis2[IKB2hJ<,m`R\CN2p$;ido$CUV=i*N)'IS>eE1k@ZUoHmE&t/_.s7R:2M"/0ZVId,j6SSsg-mM/97]'$T7&qRg.KgrJU]QFA">FIsc3*jc;K!Q\aSp>'=0)pR$/>YjOs!cOWgL(K)C`R5eY=q&>-DQDGo1hbE^0,B\;;<ebju]Ek(572Z=GDeH]ed$hXt]H?ul"H&$n7bZ=:t@YB]'C#n@8]g0'q99:ipRSF@doc!7P:P:#<nCmloCZ>LP8`FbR62R/[I1b8d-TF@F]hQJ"NESR(6Lr@XO%%TQaR("WJ&$$upZIacf9i]V3UIt#j/bh[!oLD6W:Zh))I/u-:l<I*>M*4;)YO(N7baH)p?shPrk@ucUfki@rb-#&+[WgQ31eDJVeheY1#Th'MXH-%#oEc5j9LQ)p(9Z42q24u!?u,7`d%_+NGK?O2qgs]ci%[tn(3h93&MWhg0Cr*"I`d%?ibau7]aSi\57c+<ngM]/9\s_O*1q$bF;nm>,+08jB(4]6^@tk=/m(YDL(Che#r3UTqM@N'7B8OYM3kI]2L(^n4M85cd0`+43'`q[(mj)(:O&+M`7.l$_B+f!$o5I6GbGr$F[_VrKT?C@OF+rM)'^>.n:a$0"9a-CB1=2o9#eP+eMPI=qQ$+WUS"$BFZn&K&'b7p>r'Rt.RBXE,/rK9X%"70eE80=KLAX)*f;@==HmiJeHi_RGd_4-4T!n32d#'h0BE41R8?l*(G&u+jWT?^^D=%_%VDs^AT5rc1`]h1e;0CsLYm-\9N[V@=12Y/b^1%9k7M,hb8<ot#4m)GNl*j8^SD;c<CsW0c*RV?j+LnNqDhm]+l=db5G,O<d#GqYHk/FjchAH;m$NajFeIN<]`0#_Pinh2^5ETRd^fk()JZi1)iAG\WhSaCHYa=d@O?a:SS7-Do6f%*"pXXg;HnXeFmd!TXQR3V64H`7cZ4mIgs>`>9,f>N:rkfE*sSDTT[(ncEEt<%pD9V.'4@3aI?\-bK079-i:B?i%/TOKM-,F+M/M].EE!(7P_Y_jM-*3Tb>IXMK+fnq6aGSuJ')4m8)FMT'Nk!Gkf`uO5Mspf&M2LQS9"+]o5FB\UOiHXa0'$Q_ns\k:&2$,p\TKLRn"`1Q3d4OIb&&PY_=\"9!NQI7`GN#N^6X,NK6o-qoEW;@9iD\__k)Q:CKAeK+VHCq%?")jl4<XQG`eNe[^%'WFu'i1S8CH@'7oL.#emJ8`')tSp`Xim:3T4lTl@5R#pNgC@iZW>7>QDq,l#UT3Yebj1\@cR2<D]Z%h.R-?J6^Mr\NT@MsZ)gH&rUjY9-3>4WJ<3L00#A=8011n3`%H_%;lp_Il#1-OLG>OThLdg'*QX,AH5fk!M9+0qX?iHU#(VfWc,,ONGo:Y9.2Dp$a9XuK*a(EX4XOCu]/+?Fg9H:ilc:c8KgOXsd8/<_?W'8T,uQF2kO::-d#C)>1^6C&:AnBKVbI!^.N#B4;#c*)BZgn%R%o_("8)gf/j(W9:!DGm;=6pme=iLpSjLTt-i1eeX(StQrtNYVhX81)BANE7mDc3XL/.mt>q(STFlis3DU,i9a<M&I:"n2So,9+e3gTQ0!IOJ@+Ui*\AMa^5G:9E+5J[C=(S#_5=DPY!PEK*8u(XK+puBrZl8pFrcCM*Ohe-O<#UV=i\5:'+hj/Nd!f'u:$0-rO!V.FA_nQ3t*XJ5aF47d6*l5A#5FaJ2JaIAhOE`)f==([r,<0s/oF28f1qeY3ZZ%9G*tkG<]TU-^B4V039^>Tn98&k]qY^)+I*4WLj$Q6_3^4.;=aF[?B>_K%[E$:T\/#LcJ--:+uO#SdaSo=$8<r3Sk2KT)5?2ZpfYdO_4;G/r[>?SKV6aJBT*0dm!aP>Va8N*9]0Dh$%2L"`6=7n1,"2AXMWZ#W_X?@<eqf3JojlE393pL?m^ffnokmI4%bHSdQ]k)m]q'r`ZI*AB0VS6b#Wfp@o54eH,pE#j=#/o7bi2UtB?N$:7+\\>m!Fm->Xm?_0s1o[AG_o?7Y#^n0IW8bOC@WZAO5MrRf`no=`_fkN64GiMj*okSh_d9s6V!<ZJk*X0cgO@ZH$/M7#E!._5'_[[roqUYm$BIA#%FqkI'Pc.'6i:hed,8ZJZ?Y!rCbP-hek";JY8=.\Mrk(?>+BP?cr=8g3s?EETQXdN+SOYq"gl#@GU0ba$Y@_n:U4m&C/MgC(l/d41(pb!aEJ$#P,tDU/)nI(,pMR'#e0%@=SU_")f!*#%66um-`G-^;j?qjpF%Rh1)7L0\:W\.rtep==e^f"Xt)C]KQladBcIR%_@_#W+_/1E&K4AE_3b+h)=:ZH$Ea"S]f?&W"TdTuL8>R;Y4n2Y3H^(RMP0[l!HWTTA#2aASu!:`72R\Gn-tKa+8DmYAOs+=<*DZO1?RQ"Ut"72N`jj6?L`i:6&\CUX"09DOg;I%+WD.;fWAHu<K"=O;SBR)cDEb;=bQ4-T-1/Xj"<u%YYI1)APs8bZK/%C=Z2\lU<,e'JrFCC'9.dS-H6`uG-trMhOpL,,eC5_S\fK+`\%Hr^Qdk;=^6Vup!n)+2>g\En7I[8,cn/XhBWMfj^$;lnkIqG9\ijQEGM2>U*;\;"BO$SC`G`cE(]GLG*ZL8nHR/gQ$?.C_r6ZO1TOUZmCQguoU:!KVUac";-0>gNKu[U@6IX7RjpC3.*<Kh'dqS5U3j=M02YECCAB^\.1X*Xg".7XiG^cVO].hckT/[q%%o$)0a%anM`<T7GST^/,D:=X:uEc(3cul+@IGG3#DOKD..+TO<,4"EKSp`c_$i^,;&AWMC`Tg\W7@dE"-2GlCAN2PK21l]=RM(G`^'q:Id>L$pM->,rNY>Mo*KQ[-Q7;Ge+'BCjD8rF75@BEWi?N#d#igeKPn+/]"(h)k6,WW-*88A]*If''tjicPTa)h<o&oR(o=CPFrEl1Sl+PPPgI&KM_e&>#b(l+RatM$7-TW(UGW$N>,N0=#P40o8ij?urnT^0!`#5inYk:-%h7F5s2%S.fAFun#15ME+%R%51JDZ+0H7<5mIeP;Fd??Nl3nEN)SQSO)?NNg3eK!J'$HaQm*lD%)-)l2PR[oJS,t^joWLA[;.0ud(mm'8P](mPkt%tH(a6^n1a]E55d\jrn6XR)MpgNL1`I"h<C7?N2HG8Y#A"2;@A%_(G=?<^iP5?"G)ZPb:cpniBPgY5<A)C#Ylr!mUYs+Kf=mYK>j&u;]n%,LH@B;ODP2&nif(q')!bJZ\TFtopL^__1)uoJ0Y)A=a]+%$dAsL;='ZQsX9%l\h.a']"E-5k1=7I`fh:T6eGV`#rmH<gb"+l?rNtupGD$oE8lgG/.EO!4Yp."aZQ"@9H4-Y7#ffqP*!'?q)2E4WJcX[2<L9mQs/X8e?13/!\V?M(p[Lto[hFt^XNh^q3RB>KLH,o0D(/*)_,I2)k$-ssnmEhjMH*uqbQE*(fu%G<"Q2C+ncaa<?\PGXcRD4Y7l@iN)><=Bq".;GX2slWnsAH8)39)IK6F`Z:T3JA_3FeC*+Wm)OfsFTha+hgaM/teD\B3qp)(1Q\pM#AomOCXO:EbLP=N&H;k]22HIlZ$SdN-"(,`%B55,L[*G1n8o&*6:jO(e'DFgY[*Q&>chJ/ID].E-a0$A6__2WjG`+(H0e/>)'RATUgeG7`pY61:#K=aW>Vqd's@%N5Rd/W5=lT"UMGu;0aV0%I/h^,e"9WNX"c1T19IHeZEO/[OR)Lp&^F`(e^^@SXE0XWS6E$qP(]*:Z(ld6kc-q\2fBN\pFE_snlR69,=R?m5D$sK-e2TACGoY%3[6ssBm^#kqbf1U>$ZT*5>aV$5K)2f39_>*kcg9`rB4<RbtM_pE5QL>58qminfVW%VF4.\tMA$cEljAG%c[$A,mT^3GXIu3$:)^k[03K.+N5p$a\8\Ui3]\gmj/*JGUF",rj<Ser58fOsPD<($eIrT4Vp@0gKmi_s(.@q/NNhD@:+_&ubd#,[Sf1h@0!PQn'1;`!(4c22[NcR[`S^:'ZdQ=n;]+%s^[McOI%_F'oG35!hg$PWg!u(WM(GOrLL\kV&i];RAq<@S=G.r$HXITX!p"5Bu1_A`J\ss#MpcY%WW2$DBC:,:nDdh'jf;e7DD>#]E0$_@6?qRdr79:2KEsaT=kK?'%;Sugh@uUo%nkM]X050AVFHhF'jr?@t'?*8B^!X(+V@fJ8XDqYWcT!!K?(/Sl7pg__!n>LIK\"pu7co]2HWe_uH#WT:?HrnP^MQ73;`E8F[P\n$d4M4Vn:sZ;hHsE;@3a^f`@39:<mB>$qS;Z<*@IJn=!t*C:0p*8gLMWLJ6ng:lXaB<n5%s!ZEE@SI#7)Y7e#[>`,V:K"Op>iTV]hP[ALXj":3O[[[(mhQ8>=oLrCHC1!PIJ4IoO.+A>>j]/%`5j8&M+H=QeH\Re@0C*"k5:_D:E6^W,k"US0Mh\mY]@RC_YH8j-;F5osWP?6HSLLJ`MN^a^t`DP:]#>jr-#lj?.'#ao]DP+M(lffClVdRh_QP2b:(i_`tb^);THTHo1CQ(dOA:!*fhle[Z7+?XP?K5Z?I_EGm"%^j%K^G:jPUnjr&;_e#6TR89(#S6E5^AB6O*!rFX`3b#'e>_(34Vrs78WKnaZj_jpqMhFV!TO"OeA8C)Oc5U\pEq+0W,!B,H*]A"gbdFnu>dS,iHT?"0\0uD#~>endstream
+endobj
+15 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 899
+>>
+stream
+Gat=hDf=)Y&B<W%;`q6#T[(L$T;K9e]$b`dg9>03`:h'D?>GkZSWdlY`/!N=FD(ga#oY\+/c4sb^3bmXUPH>IX8l!n]_fL\"k$WEJ-AL,R&%Fm*oHGY,7JfbRq^,_fA*5na7q;\S.6:9RCKZA)]L>cr@j1l52u6:IY/BQ)8hU\WSKMda3eI(e0PahG1(3pA0h\fN.+U+PW8g-]uQPtCl]7-10nX1hB;cWoI]lS9TG(UT.6DZhMKp!U\[KJ9dUOL:7@>S[+j[N(UDc#4ru87"0[dAY5.YK5_OOk:IOR&.Ns;;k5[R^HN/pU=<%S)J9Tf."uD!fHE=1kjCG<4>M@n698/)$C+"'sGMojMoM3Rf?<,($Mg-lAPKXQB=#SO-HKo!Xc+:1%UNl9PLa`%2#gW?mck6%33+nUo><h=6<s3M_m>&?Yg*r8o6[kh*eLYPW`GH(8W^JYXYM4>Z[D'=k(7[.F<b/#m+!"7MgY,LgkpVt3p,UH8Y)lc.YfaCDhq)V86lpGAjMs!7GjP<WL\Kj/J04X)Vd!s4K,[M=b+78!rW[)fc$dt:Zc^I-9D:0,Guj)K]=l0_en#/>?b7Z$lB'NG/Ugcg(u&No>b8h$aFrKl_P^T!_eAfm>cUrR`B.VX?EG99!,;0=YYf;5^]L]$Bj?Z6X3int/Jfog(DnI?Ho="(`@*m=ctbOG@C/#5G^5EVV6e.JO&*rEVjmo>QYua!CAt%EcATK0SR5-=C_5U2B3NVIMuqt2)s(2pp9!Jdd$]^R2o+n>5>Za2-+Od7D^3%i(:D;)-;2%[3OOoZTf1D'W7.Q&rX;#[)Uan^1]!,2\5?#]KK;hY=#a'[VT(EYFi@sj05t6B%K2B6n[%CHDA5L&A+=#T$QF>;<Z3fn++*5M"?_3DT`~>endstream
 endobj
 xref
-0 7
+0 16
 0000000000 65535 f 
-0000000009 00000 n 
-0000000058 00000 n 
-0000000115 00000 n 
-0000000251 00000 n 
-0000000326 00000 n 
-0000000396 00000 n 
+0000000061 00000 n 
+0000000155 00000 n 
+0000000262 00000 n 
+0000000374 00000 n 
+0000000493 00000 n 
+0000000608 00000 n 
+0000000685 00000 n 
+0000000795 00000 n 
+0000000909 00000 n 
+0000001104 00000 n 
+0000001300 00000 n 
+0000001370 00000 n 
+0000001651 00000 n 
+0000001718 00000 n 
+0000006734 00000 n 
 trailer
-<< /Size 7 /Root 1 0 R >>
+<<
+/ID 
+[<5ad9fa1deff2c741265e850060eb70e8><5ad9fa1deff2c741265e850060eb70e8>]
+% ReportLab generated PDF document -- digest (opensource)
+
+/Info 12 0 R
+/Root 11 0 R
+/Size 16
+>>
 startxref
-4034
+7724
 %%EOF
