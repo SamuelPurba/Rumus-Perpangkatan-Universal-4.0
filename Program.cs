@@ -8,37 +8,46 @@ using System.Threading;
 
 class Program {
     static string GetEmbeddedFile(string name) {
-        var assembly = Assembly.GetExecutingAssembly();
-        var resourceName = "SamuelAI." + name;
-        using (Stream stream = assembly.GetManifestResourceStream(resourceName)) {
-            if (stream == null) return "";
-            using (StreamReader reader = new StreamReader(stream)) {
-                return reader.ReadToEnd();
+        try {
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = "SamuelAI." + name;
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName)) {
+                if (stream == null) return "";
+                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8)) {
+                    return reader.ReadToEnd();
+                }
             }
+        } catch {
+            return "";
         }
     }
 
     static void Main(string[] args) {
         int port = 3000;
-        HttpListener listener = new HttpListener();
-        
-        try {
-            listener.Prefixes.Add("http://localhost:" + port + "/");
-            listener.Start();
-        } catch (Exception ex) {
-            Console.WriteLine("Port " + port + " is busy: " + ex.Message);
-            // Try another port
-            port = 3050;
-            listener = new HttpListener();
-            listener.Prefixes.Add("http://localhost:" + port + "/");
+        HttpListener listener = null;
+        bool started = false;
+
+        // Dynamic port search from 3000 to 3015 to prevent socket collision
+        for (int p = 3000; p <= 3015; p++) {
             try {
+                listener = new HttpListener();
+                listener.Prefixes.Add("http://localhost:" + p + "/");
                 listener.Start();
-            } catch (Exception ex2) {
-                Console.WriteLine("Failed to start on port " + port + ": " + ex2.Message);
-                Console.WriteLine("Press Enter to exit...");
-                Console.ReadLine();
-                return;
+                port = p;
+                started = true;
+                break;
+            } catch {
+                if (listener != null) {
+                    try { listener.Close(); } catch {}
+                }
             }
+        }
+
+        if (!started || listener == null) {
+            Console.WriteLine("Gagal menjalankan server pada port 3000-3015.");
+            Console.WriteLine("Tekan Enter untuk keluar...");
+            Console.ReadLine();
+            return;
         }
 
         try {
@@ -52,7 +61,7 @@ class Program {
         try {
             Console.ResetColor();
         } catch {}
-        Console.WriteLine(" Server berhasil dijalankan!");
+        Console.WriteLine(" Server berhasil dijalankan tanpa error!");
         Console.WriteLine(" Silakan akses aplikasi melalui peramban (browser) di:");
         try {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -64,12 +73,16 @@ class Program {
         Console.WriteLine("==============================================================");
         Console.WriteLine(" Membuka peramban otomatis...");
         
+        string targetUrl = "http://localhost:" + port + "/";
         try {
-            Process.Start("http://localhost:" + port + "/");
+            ProcessStartInfo psi = new ProcessStartInfo {
+                FileName = targetUrl,
+                UseShellExecute = true
+            };
+            Process.Start(psi);
         } catch {
-            // Fallback for some windows systems
             try {
-                Process.Start("cmd", "/c start http://localhost:" + port + "/");
+                Process.Start("cmd", "/c start " + targetUrl);
             } catch {}
         }
 
@@ -84,9 +97,8 @@ class Program {
                     if (string.IsNullOrEmpty(path)) path = "index.html";
 
                     byte[] buffer = null;
-                    string contentType = "text/html";
+                    string contentType = "text/html; charset=utf-8";
 
-                    // Handle URL decoding (for spaces in filenames)
                     path = Uri.UnescapeDataString(path);
 
                     if (path == "index.html") {
@@ -94,17 +106,26 @@ class Program {
                         contentType = "text/html; charset=utf-8";
                     } else if (path == "app.js") {
                         buffer = Encoding.UTF8.GetBytes(GetEmbeddedFile("app.js"));
-                        contentType = "application/javascript";
+                        contentType = "application/javascript; charset=utf-8";
                     } else if (path == "style.css") {
                         buffer = Encoding.UTF8.GetBytes(GetEmbeddedFile("style.css"));
-                        contentType = "text/css";
+                        contentType = "text/css; charset=utf-8";
                     } else {
-                        // Check if file exists in the directory (like PDF or DOCX)
+                        // Check local directory files (images, docs, pdfs)
                         if (File.Exists(path)) {
                             buffer = File.ReadAllBytes(path);
-                            if (path.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase)) contentType = "application/pdf";
-                            else if (path.EndsWith(".docx", StringComparison.OrdinalIgnoreCase)) contentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-                            else contentType = "application/octet-stream";
+                            string ext = Path.GetExtension(path).ToLowerInvariant();
+                            switch (ext) {
+                                case ".pdf": contentType = "application/pdf"; break;
+                                case ".docx": contentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"; break;
+                                case ".png": contentType = "image/png"; break;
+                                case ".jpg":
+                                case ".jpeg": contentType = "image/jpeg"; break;
+                                case ".svg": contentType = "image/svg+xml"; break;
+                                case ".json": contentType = "application/json"; break;
+                                case ".ico": contentType = "image/x-icon"; break;
+                                default: contentType = "application/octet-stream"; break;
+                            }
                         }
                     }
 
@@ -133,6 +154,7 @@ class Program {
                 Thread.Sleep(5000);
             }
         }
-        listener.Stop();
+        try { listener.Stop(); } catch {}
     }
 }
+

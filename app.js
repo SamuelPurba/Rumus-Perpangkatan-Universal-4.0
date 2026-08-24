@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navItems.forEach(item => {
         item.addEventListener('click', () => {
             const tabId = item.getAttribute('data-tab');
-            switchTab(tabId);
+            if (tabId) switchTab(tabId);
         });
     });
 
@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function binomial(n, k) {
+        if (!Number.isFinite(n) || !Number.isFinite(k)) return 0;
         if (k < 0 || k > n) return 0;
         if (n <= 30) return PASCAL_TABLE[n][k];
         let res = 1;
@@ -83,7 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ultra-fast 16-point Gauss-Legendre Quadrature of t^t from 0.0001 to x
     function integralXPowerX(x) {
-        if (x <= 0.0001) return 0;
+        if (!Number.isFinite(x) || x <= 0.0001) return 0;
+        if (x > 100) x = 100; // Safeguard against exponential numeric overflow
         
         // Cache key with 5 decimal precision for O(1) instantaneous lookup
         const cacheKey = Math.round(x * 100000);
@@ -98,9 +100,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let sum = 0;
         for (let i = 0; i < 16; i++) {
             const t = halfLength * GAUSS_NODES[i] + midPoint;
-            // Native exp(t * ln(t)) for maximum numerical speed
+            if (t <= 0) continue;
             const val = Math.exp(t * Math.log(t));
-            sum += GAUSS_WEIGHTS[i] * val;
+            if (Number.isFinite(val)) {
+                sum += GAUSS_WEIGHTS[i] * val;
+            }
         }
 
         const result = halfLength * sum;
@@ -112,12 +116,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const sumCoefCache = new Map();
 
     function getSumCoef(n, k) {
-        const key = (n << 8) | k;
+        if (!Number.isFinite(n) || !Number.isFinite(k)) return 0;
+        const safeN = Math.max(0, Math.min(30, n));
+        const safeK = Math.max(0, Math.min(safeN, k));
+        const key = (safeN << 8) | safeK;
         if (sumCoefCache.has(key)) return sumCoefCache.get(key);
         
         let sum = 0;
-        for (let i = k; i <= n; i++) {
-            sum += binomial(n, i);
+        for (let i = safeK; i <= safeN; i++) {
+            sum += binomial(safeN, i);
         }
         sumCoefCache.set(key, sum);
         return sum;
@@ -131,16 +138,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const quickResSam = document.getElementById('quick-res-sam');
 
     function updateQuickCalc() {
-        const x = parseFloat(quickX.value) || 0;
-        const y = parseFloat(quickY.value) || 0;
-        const n = parseInt(quickN.value) || 1;
+        const x = Number.isFinite(parseFloat(quickX ? quickX.value : '7')) ? parseFloat(quickX.value) : 7;
+        const y = Number.isFinite(parseFloat(quickY ? quickY.value : '2')) ? parseFloat(quickY.value) : 2;
+        const n = Math.max(0, parseInt(quickN ? quickN.value : '3') || 3);
 
         // Standard binomial expansion: (x-y)^n
         const stdVal = Math.pow(x - y, n);
-        quickResStd.textContent = stdVal.toLocaleString('id-ID', { maximumFractionDigits: 4 });
+        if (quickResStd) {
+            quickResStd.textContent = Number.isFinite(stdVal) ? stdVal.toLocaleString('id-ID', { maximumFractionDigits: 4 }) : stdVal.toString();
+        }
         
         // Original Samuel formula always divides by zero (derivative wrt t of a non-t expression is 0)
-        quickResSam.textContent = "❌ Pembagian dengan Nol (Turunan t = 0)";
+        if (quickResSam) {
+            quickResSam.textContent = "❌ Pembagian dengan Nol (Turunan t = 0)";
+        }
 
         // Corrected Samuel formula (d/dy with k=1)
         const quickResCorr = document.getElementById('quick-res-corr');
@@ -149,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (corrRes.error) {
                 quickResCorr.textContent = "❌ " + corrRes.error;
             } else {
-                quickResCorr.textContent = corrRes.value.toLocaleString('id-ID', { maximumFractionDigits: 4 });
+                quickResCorr.textContent = Number.isFinite(corrRes.value) ? corrRes.value.toLocaleString('id-ID', { maximumFractionDigits: 4 }) : corrRes.value.toString();
             }
         }
     }
@@ -215,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 derivVal = n * Math.pow(x - y, n - 1);
             }
 
-            if (derivVal === 0) {
+            if (derivVal === 0 || !Number.isFinite(derivVal)) {
                 return { value: NaN, error: 'Pembagian dengan Nol: turunan = 0' };
             }
 
@@ -232,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 derivVal = (k - n) * Math.pow(x, k - n - 1) * Math.pow(y, k) * sumCoef;
             }
 
-            if (derivVal === 0) {
+            if (derivVal === 0 || !Number.isFinite(derivVal)) {
                 return { value: NaN, error: 'Pembagian dengan Nol: turunan = 0' };
             }
 
@@ -244,28 +255,32 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateCalculator() {
         const startTime = performance.now();
         
-        const x = parseFloat(calcX.value) || 0;
-        const y = parseFloat(calcY.value) || 0;
-        const n = parseInt(calcN.value) || 1;
-        const k = parseInt(calcK.value) || 0;
-        const derivVar = calcDeriv.value;
+        const x = Number.isFinite(parseFloat(calcX ? calcX.value : '7')) ? parseFloat(calcX.value) : 7;
+        const y = Number.isFinite(parseFloat(calcY ? calcY.value : '2')) ? parseFloat(calcY.value) : 2;
+        const n = Math.max(0, parseInt(calcN ? calcN.value : '3') || 3);
+        const k = Math.max(0, Math.min(n, parseInt(calcK ? calcK.value : '1') || 1));
+        const derivVar = calcDeriv ? calcDeriv.value : 'y';
 
-        const fixDerivVal = calcFixDeriv.checked;
-        const fixIndexVal = calcFixIndex.checked;
-        const fixIntegralVal = calcFixIntegral.checked;
+        const fixDerivVal = calcFixDeriv ? calcFixDeriv.checked : true;
+        const fixIndexVal = calcFixIndex ? calcFixIndex.checked : true;
+        const fixIntegralVal = calcFixIntegral ? calcFixIntegral.checked : true;
 
         // Evaluate standard
         const stdVal = Math.pow(x - y, n);
-        resStdVal.textContent = stdVal.toLocaleString('id-ID', { maximumFractionDigits: 4 });
+        if (resStdVal) {
+            resStdVal.textContent = Number.isFinite(stdVal) ? stdVal.toLocaleString('id-ID', { maximumFractionDigits: 4 }) : stdVal.toString();
+        }
 
         // Evaluate Samuel
         const samResult = evaluateSamuelFormula(x, y, n, k, derivVar, fixDerivVal, fixIndexVal, fixIntegralVal);
-        if (samResult.error) {
-            resSamVal.textContent = "Error: " + samResult.error;
-            resSamVal.classList.add('error-text');
-        } else {
-            resSamVal.textContent = samResult.value.toLocaleString('id-ID', { maximumFractionDigits: 4 });
-            resSamVal.classList.remove('error-text');
+        if (resSamVal) {
+            if (samResult.error) {
+                resSamVal.textContent = "Error: " + samResult.error;
+                resSamVal.classList.add('error-text');
+            } else {
+                resSamVal.textContent = Number.isFinite(samResult.value) ? samResult.value.toLocaleString('id-ID', { maximumFractionDigits: 4 }) : samResult.value.toString();
+                resSamVal.classList.remove('error-text');
+            }
         }
 
         // Calculate and display error rate
@@ -273,41 +288,45 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resErrorVal) {
             if (samResult.error || isNaN(samResult.value)) {
                 resErrorVal.textContent = "N/A (Error)";
-                resErrorVal.parentElement.classList.remove('zero-error');
+                if (resErrorVal.parentElement) resErrorVal.parentElement.classList.remove('zero-error');
             } else {
                 const diff = Math.abs(stdVal - samResult.value);
                 const pctError = stdVal !== 0 ? (diff / Math.abs(stdVal)) * 100 : diff * 100;
                 
                 if (pctError < 1e-9) {
                     resErrorVal.textContent = "0%";
-                    resErrorVal.parentElement.classList.add('zero-error');
+                    if (resErrorVal.parentElement) resErrorVal.parentElement.classList.add('zero-error');
                 } else {
                     resErrorVal.textContent = pctError.toLocaleString('id-ID', { maximumFractionDigits: 4 }) + "%";
-                    resErrorVal.parentElement.classList.remove('zero-error');
+                    if (resErrorVal.parentElement) resErrorVal.parentElement.classList.remove('zero-error');
                 }
             }
         }
 
         // Update reference formula description
-        if (!fixDerivVal || derivVar === 't') {
-            simFormulaRef.innerHTML = 'Menggunakan $\\frac{d}{dt}$ (Turunan terhadap $t$ = 0)';
-        } else if (fixIntegralVal) {
-            if (fixIndexVal) {
-                simFormulaRef.innerHTML = 'Koreksi Penuh: $(x-y)^n = \\sum_{k=0}^n \\binom{n}{k} x^{n-k} (-y)^k$';
+        if (simFormulaRef) {
+            if (!fixDerivVal || derivVar === 't') {
+                simFormulaRef.innerHTML = 'Menggunakan $\\frac{d}{dt}$ (Turunan terhadap $t$ = 0)';
+            } else if (fixIntegralVal) {
+                if (fixIndexVal) {
+                    simFormulaRef.innerHTML = 'Koreksi Penuh: $(x-y)^n = \\sum_{k=0}^n \\binom{n}{k} x^{n-k} (-y)^k$';
+                } else {
+                    simFormulaRef.innerHTML = 'Integral Dieliminasi, Indeks Tidak Sinkron: $x^{k-n} y^k \\sum \\binom{n}{i}$';
+                }
             } else {
-                simFormulaRef.innerHTML = 'Integral Dieliminasi, Indeks Tidak Sinkron: $x^{k-n} y^k \\sum \\binom{n}{i}$';
+                if (derivVar === 'x') {
+                    simFormulaRef.innerHTML = 'Menggunakan $\\frac{d}{dx}$ & Integrasi Numerik $\\int x^x$';
+                } else {
+                    simFormulaRef.innerHTML = 'Menggunakan $\\frac{d}{dy}$ & Integrasi Numerik $\\int x^x$';
+                }
             }
-        } else {
-            if (derivVar === 'x') {
-                simFormulaRef.innerHTML = 'Menggunakan $\\frac{d}{dx}$ & Integrasi Numerik $\\int x^x$';
-            } else {
-                simFormulaRef.innerHTML = 'Menggunakan $\\frac{d}{dy}$ & Integrasi Numerik $\\int x^x$';
-            }
-        }
-        
-        // Re-trigger KaTeX rendering in specific container
-        if (window.renderMathInElement) {
-            window.renderMathInElement(simFormulaRef);
+            
+            // Re-trigger KaTeX rendering safely
+            try {
+                if (window.renderMathInElement) {
+                    window.renderMathInElement(simFormulaRef);
+                }
+            } catch (e) {}
         }
 
         // Update Step-by-Step Breakdown in UI
@@ -337,7 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (fixIntegralVal) {
             stepDerivText = 'Dieliminasi (Turunan tidak diperlukan karena integral dihilangkan)';
-            stepFinalText = samResult.error ? "❌ " + samResult.error : samResult.value.toLocaleString('id-ID', { maximumFractionDigits: 4 });
+            stepFinalText = samResult.error ? "❌ " + samResult.error : (Number.isFinite(samResult.value) ? samResult.value.toLocaleString('id-ID', { maximumFractionDigits: 4 }) : samResult.value.toString());
         } else {
             if (!fixDerivVal || derivVar === 't') {
                 stepDerivText = 'Turunan pembilang (d/dt) = 0 | Turunan penyebut (d/dt) = 0';
@@ -349,8 +368,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     dVal = (k - n) * Math.pow(x, k - n - 1) * Math.pow(y, k) * sumCoef;
                 }
-                stepDerivText = `Turunan (d/dx) = ${dVal.toLocaleString('id-ID', { maximumFractionDigits: 4 })}`;
-                stepFinalText = samResult.error ? "❌ " + samResult.error : samResult.value.toLocaleString('id-ID', { maximumFractionDigits: 4 });
+                stepDerivText = `Turunan (d/dx) = ${Number.isFinite(dVal) ? dVal.toLocaleString('id-ID', { maximumFractionDigits: 4 }) : dVal.toString()}`;
+                stepFinalText = samResult.error ? "❌ " + samResult.error : (Number.isFinite(samResult.value) ? samResult.value.toLocaleString('id-ID', { maximumFractionDigits: 4 }) : samResult.value.toString());
             } else if (derivVar === 'y') {
                 let dVal = 0;
                 if (fixIndexVal) {
@@ -358,8 +377,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     dVal = k * Math.pow(y, k - 1) * Math.pow(x, k - n) * sumCoef;
                 }
-                stepDerivText = `Turunan (d/dy) = ${dVal.toLocaleString('id-ID', { maximumFractionDigits: 4 })}`;
-                stepFinalText = samResult.error ? "❌ " + samResult.error : samResult.value.toLocaleString('id-ID', { maximumFractionDigits: 4 });
+                stepDerivText = `Turunan (d/dy) = ${Number.isFinite(dVal) ? dVal.toLocaleString('id-ID', { maximumFractionDigits: 4 }) : dVal.toString()}`;
+                stepFinalText = samResult.error ? "❌ " + samResult.error : (Number.isFinite(samResult.value) ? samResult.value.toLocaleString('id-ID', { maximumFractionDigits: 4 }) : samResult.value.toString());
             }
         }
 
@@ -378,6 +397,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateChart(y, n, k, derivVar, fixDeriv, fixIndex, fixIntegral) {
+        const chartCanvas = document.getElementById('convergenceChart');
+        if (!chartCanvas || !window.Chart) return;
+
         const xValues = [];
         const stdDataset = [];
         const samDataset = [];
@@ -399,144 +421,148 @@ document.addEventListener('DOMContentLoaded', () => {
             samDataset.push(samRes.error ? null : samRes.value);
         }
 
-        const ctx = document.getElementById('convergenceChart').getContext('2d');
+        try {
+            const ctx = chartCanvas.getContext('2d');
 
-        if (convergenceChart) {
-            convergenceChart.destroy();
-        }
+            if (convergenceChart) {
+                try { convergenceChart.destroy(); } catch (e) {}
+            }
 
-        const hasSamuelData = samDataset.some(val => val !== null && !isNaN(val));
-        const isDualAxis = !fixIntegral && hasSamuelData;
+            const hasSamuelData = samDataset.some(val => val !== null && !isNaN(val) && Number.isFinite(val));
+            const isDualAxis = !fixIntegral && hasSamuelData;
 
-        // Create gradients
-        const standardGradient = ctx.createLinearGradient(0, 0, 0, 350);
-        standardGradient.addColorStop(0, 'rgba(16, 185, 129, 0.25)');
-        standardGradient.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
+            // Create gradients
+            const standardGradient = ctx.createLinearGradient(0, 0, 0, 350);
+            standardGradient.addColorStop(0, 'rgba(16, 185, 129, 0.25)');
+            standardGradient.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
 
-        const samuelGradient = ctx.createLinearGradient(0, 0, 0, 350);
-        samuelGradient.addColorStop(0, 'rgba(99, 102, 241, 0.25)');
-        samuelGradient.addColorStop(1, 'rgba(99, 102, 241, 0.0)');
+            const samuelGradient = ctx.createLinearGradient(0, 0, 0, 350);
+            samuelGradient.addColorStop(0, 'rgba(99, 102, 241, 0.25)');
+            samuelGradient.addColorStop(1, 'rgba(99, 102, 241, 0.0)');
 
-        let samLabel = 'Samuel Formula';
-        let samColor = '#6366f1';
-        if (!hasSamuelData) {
-            samLabel = 'Samuel Formula (Error: Div by 0)';
-            samColor = '#ef4444';
-        } else if (isDualAxis) {
-            samLabel = 'Samuel Formula (Skala Kanan)';
-            samColor = '#a855f7';
-        } else {
-            samLabel = 'Samuel Formula (Terkoreksi)';
-            samColor = '#6366f1';
-        }
+            let samLabel = 'Samuel Formula';
+            let samColor = '#6366f1';
+            if (!hasSamuelData) {
+                samLabel = 'Samuel Formula (Error: Div by 0)';
+                samColor = '#ef4444';
+            } else if (isDualAxis) {
+                samLabel = 'Samuel Formula (Skala Kanan)';
+                samColor = '#a855f7';
+            } else {
+                samLabel = 'Samuel Formula (Terkoreksi)';
+                samColor = '#6366f1';
+            }
 
-        convergenceChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: xValues,
-                datasets: [
-                    {
-                        label: `Standard (x - ${y})^${n}`,
-                        data: stdDataset,
-                        borderColor: '#10b981',
-                        backgroundColor: standardGradient,
-                        borderWidth: 3,
-                        pointRadius: 4,
-                        pointHoverRadius: 6,
-                        pointBackgroundColor: '#10b981',
-                        fill: true,
-                        tension: 0.35,
-                        yAxisID: 'y'
-                    },
-                    {
-                        label: samLabel,
-                        data: samDataset,
-                        borderColor: samColor,
-                        backgroundColor: samuelGradient,
-                        borderWidth: 3,
-                        pointRadius: hasSamuelData ? 4 : 0,
-                        pointHoverRadius: hasSamuelData ? 6 : 0,
-                        pointBackgroundColor: samColor,
-                        fill: hasSamuelData && !isDualAxis,
-                        tension: 0.35,
-                        yAxisID: isDualAxis ? 'ySamuel' : 'y'
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        labels: {
-                            color: '#e5e7eb',
-                            font: {
-                                family: 'Plus Jakarta Sans',
-                                weight: '600'
-                            }
+            convergenceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: xValues,
+                    datasets: [
+                        {
+                            label: `Standard (x - ${y})^${n}`,
+                            data: stdDataset,
+                            borderColor: '#10b981',
+                            backgroundColor: standardGradient,
+                            borderWidth: 3,
+                            pointRadius: 4,
+                            pointHoverRadius: 6,
+                            pointBackgroundColor: '#10b981',
+                            fill: true,
+                            tension: 0.35,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: samLabel,
+                            data: samDataset,
+                            borderColor: samColor,
+                            backgroundColor: samuelGradient,
+                            borderWidth: 3,
+                            pointRadius: hasSamuelData ? 4 : 0,
+                            pointHoverRadius: hasSamuelData ? 6 : 0,
+                            pointBackgroundColor: samColor,
+                            fill: hasSamuelData && !isDualAxis,
+                            tension: 0.35,
+                            yAxisID: isDualAxis ? 'ySamuel' : 'y'
                         }
-                    }
+                    ]
                 },
-                scales: {
-                    x: {
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.05)'
-                        },
-                        ticks: {
-                            color: '#9ca3af',
-                            font: {
-                                family: 'JetBrains Mono'
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#e5e7eb',
+                                font: {
+                                    family: 'Plus Jakarta Sans',
+                                    weight: '600'
+                                }
                             }
-                        },
-                        title: {
-                            display: true,
-                            text: 'Nilai x',
-                            color: '#e5e7eb'
                         }
                     },
-                    y: {
-                        type: 'linear',
-                        display: true,
-                        position: 'left',
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.05)'
-                        },
-                        ticks: {
-                            color: isDualAxis ? '#10b981' : '#9ca3af',
-                            font: {
-                                family: 'JetBrains Mono'
-                            }
-                        },
-                        title: {
-                            display: true,
-                            text: isDualAxis ? 'Hasil Standard (Skala Kiri)' : 'Hasil Perhitungan',
-                            color: isDualAxis ? '#10b981' : '#e5e7eb'
-                        }
-                    },
-                    ...(isDualAxis ? {
-                        ySamuel: {
-                            type: 'linear',
-                            display: true,
-                            position: 'right',
+                    scales: {
+                        x: {
                             grid: {
-                                drawOnChartArea: false
+                                color: 'rgba(255, 255, 255, 0.05)'
                             },
                             ticks: {
-                                color: '#a855f7',
+                                color: '#9ca3af',
                                 font: {
                                     family: 'JetBrains Mono'
                                 }
                             },
                             title: {
                                 display: true,
-                                text: 'Hasil Samuel (Skala Kanan)',
-                                color: '#a855f7'
+                                text: 'Nilai x',
+                                color: '#e5e7eb'
                             }
-                        }
-                    } : {})
+                        },
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: {
+                                color: isDualAxis ? '#10b981' : '#9ca3af',
+                                font: {
+                                    family: 'JetBrains Mono'
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: isDualAxis ? 'Hasil Standard (Skala Kiri)' : 'Hasil Perhitungan',
+                                color: isDualAxis ? '#10b981' : '#e5e7eb'
+                            }
+                        },
+                        ...(isDualAxis ? {
+                            ySamuel: {
+                                type: 'linear',
+                                display: true,
+                                position: 'right',
+                                grid: {
+                                    drawOnChartArea: false
+                                },
+                                ticks: {
+                                    color: '#a855f7',
+                                    font: {
+                                        family: 'JetBrains Mono'
+                                    }
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Hasil Samuel (Skala Kanan)',
+                                    color: '#a855f7'
+                                }
+                            }
+                        } : {})
+                    }
                 }
-            }
-        });
+            });
+        } catch (err) {
+            console.warn('Chart rendering error caught safely:', err);
+        }
     }
 
     let isSyncingInputs = false;
@@ -567,39 +593,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    calcDeriv.addEventListener('change', () => {
-        if (calcDeriv.value === 't') {
-            calcFixDeriv.checked = false;
-            fixDeriv.checked = false;
-        } else {
-            calcFixDeriv.checked = true;
-            fixDeriv.checked = true;
-        }
-        updateFormulaFixer();
-        updateCalculator();
-    });
+    if (calcDeriv) {
+        calcDeriv.addEventListener('change', () => {
+            if (calcDeriv.value === 't') {
+                if (calcFixDeriv) calcFixDeriv.checked = false;
+                if (fixDeriv) fixDeriv.checked = false;
+            } else {
+                if (calcFixDeriv) calcFixDeriv.checked = true;
+                if (fixDeriv) fixDeriv.checked = true;
+            }
+            updateFormulaFixer();
+            updateCalculator();
+        });
+    }
 
     // Synchronize checkboxes
     function syncStates(changedFrom) {
         if (changedFrom === 'calc') {
-            fixDeriv.checked = calcFixDeriv.checked;
-            fixIndex.checked = calcFixIndex.checked;
-            fixIntegral.checked = calcFixIntegral.checked;
+            if (fixDeriv && calcFixDeriv) fixDeriv.checked = calcFixDeriv.checked;
+            if (fixIndex && calcFixIndex) fixIndex.checked = calcFixIndex.checked;
+            if (fixIntegral && calcFixIntegral) fixIntegral.checked = calcFixIntegral.checked;
         } else if (changedFrom === 'fix') {
-            calcFixDeriv.checked = fixDeriv.checked;
-            calcFixIndex.checked = fixIndex.checked;
-            calcFixIntegral.checked = fixIntegral.checked;
+            if (calcFixDeriv && fixDeriv) calcFixDeriv.checked = fixDeriv.checked;
+            if (calcFixIndex && fixIndex) calcFixIndex.checked = fixIndex.checked;
+            if (calcFixIntegral && fixIntegral) calcFixIntegral.checked = fixIntegral.checked;
         }
 
         // Adjust derivative variable dropdown based on fixDeriv checked state
-        if (calcFixDeriv.checked) {
-            calcDeriv.disabled = false;
-            if (calcDeriv.value === 't') {
-                calcDeriv.value = 'y'; // default to y if it was t
+        if (calcFixDeriv && calcFixDeriv.checked) {
+            if (calcDeriv) {
+                calcDeriv.disabled = false;
+                if (calcDeriv.value === 't') {
+                    calcDeriv.value = 'y'; // default to y if it was t
+                }
             }
         } else {
-            calcDeriv.value = 't';
-            calcDeriv.disabled = true;
+            if (calcDeriv) {
+                calcDeriv.value = 't';
+                calcDeriv.disabled = true;
+            }
         }
 
         updateFormulaFixer();
@@ -619,9 +651,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function updateFormulaFixer() {
-        const dDeriv = fixDeriv.checked;
-        const dIndex = fixIndex.checked;
-        const dInt = fixIntegral.checked;
+        const dDeriv = fixDeriv ? fixDeriv.checked : true;
+        const dIndex = fixIndex ? fixIndex.checked : true;
+        const dInt = fixIntegral ? fixIntegral.checked : true;
 
         let latex = '';
         let explanation = '';
@@ -654,18 +686,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Render latex using KaTeX
-        try {
-            correctedMathRender.innerHTML = '$$' + latex + '$$';
-            if (window.renderMathInElement) {
-                window.renderMathInElement(correctedMathRender);
+        if (correctedMathRender) {
+            try {
+                correctedMathRender.innerHTML = '$$' + latex + '$$';
+                if (window.renderMathInElement) {
+                    window.renderMathInElement(correctedMathRender);
+                }
+            } catch (err) {
+                correctedMathRender.textContent = latex;
             }
-        } catch (err) {
-            correctedMathRender.textContent = latex;
         }
 
-        correctedExplanation.innerHTML = explanation;
+        if (correctedExplanation) {
+            correctedExplanation.innerHTML = explanation;
+        }
     }
 
     // Initialize state synchronization on startup (sync from calc checks)
     syncStates('calc');
 });
+
