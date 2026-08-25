@@ -9,9 +9,10 @@ Sistem ini dirancang untuk menghilangkan segala bentuk "handwaving" (argumen int
 ### Struktur Utama
 1. **SYSTEM_PROMPT.md**: Definisi instruksi sistem bagi AI untuk bertindak sebagai *ProofEngine*.
 2. **QUERY_TEMPLATE.md**: Templat terstandarisasi untuk mengirimkan permintaan teorema agar hasil verifikasi selalu konsisten dan simetris.
+3. **RESEARCH_PROMPT.md**: Templat prompt tingkat lanjut untuk menghasilkan dokumentasi teknis berkualitas Scopus Q1/IEEE.
 
 ## Penggunaan
-Untuk melakukan verifikasi teorema, gunakan `QUERY_TEMPLATE.md` saat berinteraksi dengan AI. Pastikan kerangka aksioma (Axiom Framework) didefinisikan dengan jelas dalam setiap permintaan.
+Untuk melakukan verifikasi teorema atau penulisan paper riset formal, gunakan `RESEARCH_PROMPT.md` saat berinteraksi dengan AI. Pastikan kerangka aksioma (Axiom Framework) didefinisikan dengan jelas dalam setiap permintaan.
 
 ---
 *Protokol ini disusun untuk kebutuhan riset akademik Samuel Hasiholan Omega, S. Tr. T.*
