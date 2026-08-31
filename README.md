@@ -123,47 +123,7 @@ Salin prompt di bawah ini untuk digunakan pada **Google Antigravity AI** untuk m
 
 ## 🧮 Formula Matematis Original vs Terkoreksi
 
-### 1. Formula Asli dari Dokumen Riset (`Rumus Perpangkatan Universal 4.0.pdf`)
-
-#### 📌 Bentuk Formula Utuh (Complete Mathematical Equation):
-
-$$
-\sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} (x - y)^n = \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \left( \frac{\left(\int x^x \, \mathrm{d}x \times \left[ \frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k \right]\right) - \int x^x \, \mathrm{d}x}{\frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k} \right)
-$$
-
-#### 🔍 Dekomposisi Struktur Persamaan:
-
-- **Sisi Kiri (Left-Hand Side / LHS):**
-
-$$
-\text{LHS} = \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} (x - y)^n
-$$
-
-- **Sisi Kanan (Right-Hand Side / RHS):**
-
-$$
-\text{RHS} = \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \left( \frac{\left(\int x^x \, \mathrm{d}x \times \left[ \frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k \right]\right) - \int x^x \, \mathrm{d}x}{\frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k} \right)
-$$
-
-#### 📋 Glosarium Notasi, Variabel & Operator:
-
-| Simbol / Operator | Deskripsi Matematika | Peran dalam Dokumen |
-|:---:|---|---|
-| $(x - y)^n$ | Suku basis polinomial berpangkat | Target ekspansi nilai binomial |
-| $zeta 	o -8.39416$ | Batas nilai zeta asimptotik | Parameter batas evaluasi khusus |
-| $n = \lim_{n \to \infty} 6\%$ | Kondisi evaluasi batas modulasi | Modulasi asimptotik limit |
-| $\int x^x \, \mathrm{d}x$ | Integral fungsi eksponensial diri (*self-exponential*) | Komponen pembobot numerik (*Sophomore's Dream*) |
-| $\frac{\mathrm{d}}{\mathrm{d}t}$ | Operator diferensiasi terhadap parameter $t$ | Operator diferensial analitis |
-| $\sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k$ | Deret kombinatorik berbobot eksponen | Suku deret ekspansi pangkat binom |
-
-#### 📝 Kode Sumber LaTeX Baku (Copy-Pasteable):
-```latex
-\sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} (x - y)^n = \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \left( \frac{\left(\int x^x \, \mathrm{d}x \times \left[ \frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k \right]\right) - \int x^x \, \mathrm{d}x}{\frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k} \right)
-```
-
----
-
-### 2. Formulasi Formal Terkoreksi (Academic Correction Pathways)
+### Formulasi Formal Terkoreksi (Academic Correction Pathways)
 
 #### 🌟 Jalur 1: Teorema Binomial Newton Tergeneralisasi (Identitas Murni)
 Ekspansi aljabar formal tanpa operator diferensial eksternal yang menghasilkan nilai eksak:
