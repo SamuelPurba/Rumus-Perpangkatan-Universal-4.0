@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, analytical engine, or paper framework in your research, please cite it as below."
+authors:
+  - family-names: "Purba"
+    given-names: "Samuel Hasiholan Omega"
+    title: "S. Tr. T."
+    affiliation: "Politeknik Negeri Batam - Department of Electrical Engineering, Robotics & Artificial Intelligence Engineering Program"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+title: "SAMUEL.A.I: High-Precision Analytical Engine & Scopus Q1 Academic Framework for Universal Exponentiation Formula 4.0"
+version: "4.0.0"
+doi: "10.5281/zenodo.10000000"
+date-released: "2026-07-24"
+url: "https://github.com/samuelpurba/Samuel.AI"
+repository-code: "https://github.com/samuelpurba/Samuel.AI"
+keywords:
+  - "Universal Exponentiation Formula 4.0"
+  - "Newton Binomial Theorem"
+  - "Analytical Calculus Audit"
+  - "Gauss-Legendre Quadrature"
+  - "Artificial Intelligence Engine"
+  - "Politeknik Negeri Batam"
+license: "MIT"
