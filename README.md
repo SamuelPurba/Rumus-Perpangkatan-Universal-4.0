@@ -126,13 +126,24 @@ Salin prompt di bawah ini untuk digunakan pada **Google Antigravity AI** untuk m
 ### 1. Formula Asli dari Dokumen Riset:
 
 #### 📌 Bentuk Formula Utuh (Complete Mathematical Equation):
-$$ \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} (x - y)^n = \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \left( \frac{\left(\int x^x \, \mathrm{d}x \times \left[ \frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k \right]\right) - \int x^x \, \mathrm{d}x}{\frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k} \right) $$
+
+$$
+\sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} (x - y)^n = \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \left( \frac{\left(\int x^x \, \mathrm{d}x \times \left[ \frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k \right]\right) - \int x^x \, \mathrm{d}x}{\frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k} \right)
+$$
 
 #### 🔍 Dekomposisi Struktur Persamaan:
+
 - **Sisi Kiri (Left-Hand Side / LHS):**
-  $$ \text{LHS} = \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} (x - y)^n $$
+
+$$
+\text{LHS} = \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} (x - y)^n
+$$
+
 - **Sisi Kanan (Right-Hand Side / RHS):**
-  $$ \text{RHS} = \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \left( \frac{\left(\int x^x \, \mathrm{d}x \times \left[ \frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k \right]\right) - \int x^x \, \mathrm{d}x}{\frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k} \right) $$
+
+$$
+\text{RHS} = \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \left( \frac{\left(\int x^x \, \mathrm{d}x \times \left[ \frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k \right]\right) - \int x^x \, \mathrm{d}x}{\frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k} \right)
+$$
 
 #### 📋 Keterangan Notasi Variabel & Operator:
 - $(x - y)^n$: Suku perpangkatan basis binom dengan eksponen $n$.
@@ -148,7 +159,10 @@ $$ \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \ze
 ```
 
 ### 2. Teorema Terkoreksi Formal (Teorema Binomial Newton):
-$$ (x - y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-y)^k = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-1)^k y^k $$
+
+$$
+(x - y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-y)^k = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-1)^k y^k
+$$
 
 ---
 
