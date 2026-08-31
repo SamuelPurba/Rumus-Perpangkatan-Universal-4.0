@@ -83,7 +83,7 @@ Salin prompt di bawah ini untuk digunakan pada **Google Antigravity AI** untuk m
 
 #### 🧮 1. Mathematical Specifications & Exact LaTeX Formulation
 1. **Exact Verbatim Original Formula (from PDF/DOCX)**:
-   $$ \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} (x - y)^n = \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \left( \frac{\left(\int x^x \, dx \times \left[ \frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k \right]\right) - \int x^x \, dx}{\frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k} \right) $$
+   $$ \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} (x - y)^n = \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \left( \frac{\left(\int x^x \, \mathrm{d}x \times \left[ \frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k \right]\right) - \int x^x \, \mathrm{d}x}{\frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k} \right) $$
 
 2. **Rigorous Component Decomposition & Resolution Tree**:
    - **Operator $\frac{d}{dt}$ Anomaly**: Deret tidak mengandung parameter $t \implies \frac{d}{dt}(\dots) = 0 \implies \text{Division by Zero}$.
@@ -124,7 +124,7 @@ Salin prompt di bawah ini untuk digunakan pada **Google Antigravity AI** untuk m
 ## 🧮 Formula Matematis Original vs Terkoreksi
 
 ### 1. Formula Asli dari Dokumen Riset:
-$$ \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} (x - y)^n = \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \left( \frac{\left(\int x^x \, dx \times \left[ \frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k \right]\right) - \int x^x \, dx}{\frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k} \right) $$
+$$ \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} (x - y)^n = \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \left( \frac{\left(\int x^x \, \mathrm{d}x \times \left[ \frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k \right]\right) - \int x^x \, \mathrm{d}x}{\frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k} \right) $$
 
 ### 2. Teorema Terkoreksi Formal (Teorema Binomial Newton):
 $$ (x - y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-y)^k = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-1)^k y^k $$
@@ -135,8 +135,8 @@ $$ (x - y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-y)^k = \sum_{k=0}^n \binom{n}
 
 | No | Komponen Original | Permasalahan Teknis | Solusi Akademis Formal |
 |:---:|---|---|---|
-| **1** | Operator $\frac{d}{dt}$ | Deret tidak mengandung peubah $t \implies \frac{d}{dt}(\dots) = 0$ sehingga penyebut bernilai nol *(Division by Zero)*. | Sediakan opsi diferensiasi parsial terhadap $y$ ($\frac{\partial}{\partial y}$) atau $x$, serta opsi reduksi langsung. |
-| **2** | Suku Integral $\int x^x \, dx$ | Fungsi eksponensial diri non-elementer (*Sophomore's Dream family*) tanpa antiderivatif dasar. | Hitung numerik presisi tinggi via **Kuadratur Gauss-Legendre 16-Titik** ($0.00\text{ ms}$) atau eliminasi suku integral. |
+| **1** | Operator $\frac{\mathrm{d}}{\mathrm{d}t}$ | Deret tidak mengandung peubah $t \implies \frac{\mathrm{d}}{\mathrm{d}t}(\dots) = 0$ sehingga penyebut bernilai nol *(Division by Zero)*. | Sediakan opsi diferensiasi parsial terhadap $y$ ($\frac{\partial}{\partial y}$) atau $x$, serta opsi reduksi langsung. |
+| **2** | Suku Integral $\int x^x \, \mathrm{d}x$ | Fungsi eksponensial diri non-elementer (*Sophomore's Dream family*) tanpa antiderivatif dasar. | Hitung numerik presisi tinggi via **Kuadratur Gauss-Legendre 16-Titik** ($0.00\text{ ms}$) atau eliminasi suku integral. |
 | **3** | Indeks Sumasi $\sum_{i=k}^n \dots x^{n-k} y^k$ | Indeks berjalan sumasi adalah $i$, tetapi variabel pada suku deret adalah $k$ *(Index Mismatch)*. | Sinkronkan indeks berjalan deret aljabar: $\sum_{k=0}^n \binom{n}{k} x^{n-k} (-y)^k$. |
 | **4** | Pecahan $\frac{A \cdot B - A}{B}$ | Bentuk aljabar ekuivalen dengan $A\left(1 - \frac{1}{B}\right)$. | Reduksi identitas ke ekspansi binomial standar $(x-y)^n$. |
 
@@ -144,7 +144,7 @@ $$ (x - y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-y)^k = \sum_{k=0}^n \binom{n}
 
 ## ✨ Fitur Unggulan Platform
 
-- ⚡ **Integrasi Numerik Gauss-Legendre (16-Point Quadrature)**: Menghitung nilai $\int x^x \, dx$ dengan kecepatan **0.00 ms** (100x lebih cepat dari integrasi numerik trapesium biasa).
+- ⚡ **Integrasi Numerik Gauss-Legendre (16-Point Quadrature)**: Menghitung nilai $\int x^x \, \mathrm{d}x$ dengan kecepatan **0.00 ms** (100x lebih cepat dari integrasi numerik trapesium biasa).
 - 📈 **Grafik Konvergensi Dual Y-Axis**: Visualisasi kurva dinamis yang memisahkan orde besar hasil integral dengan skala eksponen standar secara proporsional.
 - 🔄 **Sinkronisasi Input 2-Arah (Bidirectional Input Sync)**: Perubahan parameter $(x, y, n)$ pada satu tab otomatis memperbarui seluruh tab secara real-time.
 - ⚡ **Sistem Auto-Respon Instant**: Kalkulasi dan indikator visual `⚡ Auto-Respon` aktif pada setiap keystroke, pemindahan slider, dan navigasi tab.

@@ -37,7 +37,7 @@ Salin dan gunakan Master Prompt berikut pada **Google Antigravity AI**:
 
 #### 🧮 1. Mathematical Specifications & Exact LaTeX Formulation
 1. **Exact Verbatim Original Formula (from PDF/DOCX)**:
-   $$ \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} (x - y)^n = \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \left( \frac{\left(\int x^x \, dx \times \left[ \frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k \right]\right) - \int x^x \, dx}{\frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k} \right) $$
+   $$ \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} (x - y)^n = \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \left( \frac{\left(\int x^x \, \mathrm{d}x \times \left[ \frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k \right]\right) - \int x^x \, \mathrm{d}x}{\frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k} \right) $$
 
 2. **Rigorous Component Decomposition & Resolution Tree**:
    - **Operator $\frac{d}{dt}$ Anomaly**: Deret tidak mengandung parameter $t \implies \frac{d}{dt}(\dots) = 0 \implies \text{Division by Zero}$.
@@ -79,8 +79,8 @@ Salin dan gunakan Master Prompt berikut pada **Google Antigravity AI**:
 
 | No | Komponen Original Dokumen | Masalah Teknis | Koreksi Standar Akademis |
 |---|---|---|---|
-| **1** | Operator $\frac{d}{dt}$ | Deret tidak mengandung peubah $t \implies \frac{d}{dt}(\dots) = 0$ (Division by Zero) | Diferensiasi parsial terhadap $y$ ($\frac{\partial}{\partial y}$) atau $x$, atau eliminasi operator turunan |
-| **2** | Suku $\int x^x \, dx$ | Fungsi eksponensial diri non-elementer | Integrasi Numerik Gauss-Legendre 16-Titik ($0.00\text{ ms}$) atau eliminasi suku integral |
+| **1** | Operator $\frac{\mathrm{d}}{\mathrm{d}t}$ | Deret tidak mengandung peubah $t \implies \frac{\mathrm{d}}{\mathrm{d}t}(\dots) = 0$ (Division by Zero) | Diferensiasi parsial terhadap $y$ ($\frac{\partial}{\partial y}$) atau $x$, atau eliminasi operator turunan |
+| **2** | Suku $\int x^x \, \mathrm{d}x$ | Fungsi eksponensial diri non-elementer | Integrasi Numerik Gauss-Legendre 16-Titik ($0.00\text{ ms}$) atau eliminasi suku integral |
 | **3** | Indeks $\sum_{i=k}^n \dots x^{n-k}(-1)^k y^k$ | Indeks berjalan $i$ tidak sinkron dengan pangkat $k$ | Sinkronisasi indeks berjalan deret: $\sum_{k=0}^n \binom{n}{k} x^{n-k} (-y)^k$ |
 | **4** | Bentuk Pecahan $\frac{A \cdot B - A}{B}$ | Identitas aljabar: $A\left(1 - \frac{1}{B}\right)$ | Reduksi langsung ke Teorema Binomial Newton: $(x - y)^n$ |
 
