@@ -83,7 +83,7 @@ Salin prompt di bawah ini untuk digunakan pada **Google Antigravity AI** untuk m
 
 #### 🧮 1. Mathematical Specifications & Exact LaTeX Formulation
 1. **Exact Verbatim Original Formula (from PDF/DOCX)**:
-   $$ \sum_{x = \zeta \to [(-8.39416_{n = \lim_{n \to \infty} 6})\%]} \lim_{x = \zeta \to [(-8.39416_{n = \lim_{n \to \infty} 6})\%]} (x - y)^n = \sum_{x = \zeta \to [(-8.39416_{n = \lim_{n \to \infty} 6})\%]} \lim_{x = \zeta \to [(-8.39416_{n = \lim_{n \to \infty} 6})\%]} \left( \frac{\left(\int x^x \, dx \times \left\{ \frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k \right\}\right) - \int x^x \, dx}{\frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k} \right) $$
+   $$ \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} (x - y)^n = \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \left( \frac{\left(\int x^x \, dx \times \left[ \frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k \right]\right) - \int x^x \, dx}{\frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k} \right) $$
 
 2. **Rigorous Component Decomposition & Resolution Tree**:
    - **Operator $\frac{d}{dt}$ Anomaly**: Deret tidak mengandung parameter $t \implies \frac{d}{dt}(\dots) = 0 \implies \text{Division by Zero}$.
@@ -124,7 +124,7 @@ Salin prompt di bawah ini untuk digunakan pada **Google Antigravity AI** untuk m
 ## 🧮 Formula Matematis Original vs Terkoreksi
 
 ### 1. Formula Asli dari Dokumen Riset:
-$$ \sum_{x = \zeta \to [(-8.39416_{n = \lim_{n \to \infty} 6})\%]} \lim_{x = \zeta \to [(-8.39416_{n = \lim_{n \to \infty} 6})\%]} (x - y)^n = \sum_{x = \zeta \to [(-8.39416_{n = \lim_{n \to \infty} 6})\%]} \lim_{x = \zeta \to [(-8.39416_{n = \lim_{n \to \infty} 6})\%]} \left( \frac{\left(\int x^x \, dx \times \left\{ \frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k \right\}\right) - \int x^x \, dx}{\frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k} \right) $$
+$$ \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} (x - y)^n = \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \left( \frac{\left(\int x^x \, dx \times \left[ \frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k \right]\right) - \int x^x \, dx}{\frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k} \right) $$
 
 ### 2. Teorema Terkoreksi Formal (Teorema Binomial Newton):
 $$ (x - y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-y)^k = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-1)^k y^k $$

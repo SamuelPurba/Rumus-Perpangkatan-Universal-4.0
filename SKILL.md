@@ -37,7 +37,7 @@ Salin dan gunakan Master Prompt berikut pada **Google Antigravity AI**:
 
 #### 🧮 1. Mathematical Specifications & Exact LaTeX Formulation
 1. **Exact Verbatim Original Formula (from PDF/DOCX)**:
-   $$ \sum_{x = \zeta \to [(-8.39416_{n = \lim_{n \to \infty} 6})\%]} \lim_{x = \zeta \to [(-8.39416_{n = \lim_{n \to \infty} 6})\%]} (x - y)^n = \sum_{x = \zeta \to [(-8.39416_{n = \lim_{n \to \infty} 6})\%]} \lim_{x = \zeta \to [(-8.39416_{n = \lim_{n \to \infty} 6})\%]} \left( \frac{\left(\int x^x \, dx \times \left\{ \frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k \right\}\right) - \int x^x \, dx}{\frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k} \right) $$
+   $$ \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} (x - y)^n = \sum_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \lim_{x = \zeta \to [-8.39416_{(n = \lim_{n \to \infty} 6)}\%]} \left( \frac{\left(\int x^x \, dx \times \left[ \frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k \right]\right) - \int x^x \, dx}{\frac{d}{dt} \sum_{i=k}^n \binom{n}{i} x^{n-k} (-1)^k y^k} \right) $$
 
 2. **Rigorous Component Decomposition & Resolution Tree**:
    - **Operator $\frac{d}{dt}$ Anomaly**: Deret tidak mengandung parameter $t \implies \frac{d}{dt}(\dots) = 0 \implies \text{Division by Zero}$.
