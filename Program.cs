@@ -101,15 +101,31 @@ class Program {
 
                     path = Uri.UnescapeDataString(path);
 
-                    if (path == "index.html") {
-                        buffer = Encoding.UTF8.GetBytes(GetEmbeddedFile("index.html"));
-                        contentType = "text/html; charset=utf-8";
-                    } else if (path == "app.js") {
-                        buffer = Encoding.UTF8.GetBytes(GetEmbeddedFile("app.js"));
-                        contentType = "application/javascript; charset=utf-8";
-                    } else if (path == "style.css") {
-                        buffer = Encoding.UTF8.GetBytes(GetEmbeddedFile("style.css"));
-                        contentType = "text/css; charset=utf-8";
+                    if (File.Exists(path)) {
+                        buffer = File.ReadAllBytes(path);
+                        string ext = Path.GetExtension(path).ToLowerInvariant();
+                        switch (ext) {
+                            case ".html": case ".htm": contentType = "text/html; charset=utf-8"; break;
+                            case ".js": contentType = "application/javascript; charset=utf-8"; break;
+                            case ".css": contentType = "text/css; charset=utf-8"; break;
+                            case ".pdf": contentType = "application/pdf"; break;
+                            case ".docx": contentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"; break;
+                            case ".png": contentType = "image/png"; break;
+                            case ".jpg": case ".jpeg": contentType = "image/jpeg"; break;
+                            case ".svg": contentType = "image/svg+xml"; break;
+                            case ".json": contentType = "application/json"; break;
+                            case ".ico": contentType = "image/x-icon"; break;
+                            case ".md": contentType = "text/markdown; charset=utf-8"; break;
+                            default: contentType = "application/octet-stream"; break;
+                        }
+                    } else if (path == "index.html" || path == "app.js" || path == "style.css") {
+                        string embedded = GetEmbeddedFile(path);
+                        if (!string.IsNullOrEmpty(embedded)) {
+                            buffer = Encoding.UTF8.GetBytes(embedded);
+                            if (path == "index.html") contentType = "text/html; charset=utf-8";
+                            else if (path == "app.js") contentType = "application/javascript; charset=utf-8";
+                            else if (path == "style.css") contentType = "text/css; charset=utf-8";
+                        }
                     } else {
                         // Check local directory files (images, docs, pdfs)
                         if (File.Exists(path)) {
