@@ -67,7 +67,7 @@ Use this prompt with **Google Antigravity AI** to verify, refactor, and maintain
 ### 🤖 [GOOGLE ANTIGRAVITY AI - IEEE & SCOPUS Q1 TOP 1% MASTER PROMPT] 🤖
 
 **Role**: Lead Principal Scientist in Computational Mathematics, Applied Calculus Auditor, and IEEE Senior Transactions Editor.
-**Target Repository**: `D:\Rumus\Rumus Word\Rumus Perpangkatan Universal 4.0`
+**Target Repository**: `Samuel.AI-main` (Universal Power Series 4.0)
 **Academic Benchmark**: IEEE Transactions on Mathematics & Computing / Scopus Q1 Top 1% Quality Standard.
 **Primary Author**: Samuel Hasiholan Omega Purba, S. Tr. T. (Department of Robotics & AI, Politeknik Negeri Batam).
 
@@ -188,7 +188,7 @@ $$
 ### Option 2: Python Development Server
 ```bash
 # Navigate to repository directory
-cd "D:\Rumus\Rumus Word\Rumus Perpangkatan Universal 4.0"
+cd "C:\Rumus\Samuel.AI-main"
 
 # Launch local HTTP server
 python -m http.server 3000
@@ -200,18 +200,29 @@ Access the platform at `http://localhost:3000/`.
 ## 📁 Repository Structure
 
 ```
-D:\Rumus\Rumus Word\Rumus Perpangkatan Universal 4.0\
+C:\Rumus\Samuel.AI-main\
 ├── .agents/
-│   └── AGENTS.md                  # Standard LaTeX & Mathematical Formatting Rules
-├── index.html                     # Main Web Interface & KaTeX Typesetting Engine
-├── app.js                         # High-Speed Math Engine & Dual Y-Axis Chart Engine
-├── style.css                      # Modern Responsive Glassmorphism Styling
-├── Program.cs                     # Standalone C# HTTP Multi-Port Server Source
-├── SamuelAI.exe                   # Re-compiled Windows Executable Standalone Binary
-├── SKILL.md                       # IEEE / Scopus Q1 AI Skill Blueprint & Master Prompt
+│   ├── AGENTS.md                  # Standard LaTeX Rules & God-Mode PWA Architecture
+│   └── skills/                    # Specialized AI Domain Skills
+├── index.html                     # 12-Tab Interface, PWA Meta & KaTeX Typesetting Engine
+├── app.js                         # 12-Module Calculus & High-Precision Engine (Canvas Fallback)
+├── style.css                      # Zero-Collision Anti-Overlap Layout (WCAG AA High Contrast)
+├── manifest.json                  # Progressive Web App (PWA) Standalone Manifest
+├── sw.js                          # PWA Service Worker (Offline Cache Engine)
+├── Program.cs                     # Standalone C# HTTP Multi-Port Host & Gateway Engine
+├── build_samuelai.rsp             # In-Memory Win32 Assembly Resource Compiler Specification
+├── build_samuelai_exe.bat         # One-Click Native C# Compilation Script
+├── SamuelAI.exe                   # Self-Contained Bare-Metal Windows Executable (619.5 KB)
+├── ExponentialEnergy.exe          # Dedicated Industrial Smart Grid & Power Divergence Engine
+├── avatar_profile.png             # Official IEEE Primary Author Portrait
+├── Rumus Perpangkatan Universal 4.0.pdf  # Camera-Ready 2-Column IEEE Transactions PDF
+├── Rumus Perpangkatan Universal 4.0.docx # Original Mathematical Manuscript DOCX
+├── SKILL.md                       # Hermes-ProofEngine AI Skill Blueprint
 ├── README.md                      # Comprehensive Academic Research Documentation
-├── Rumus Perpangkatan Universal 4.0.pdf  # Source Research PDF Document
-├── Rumus Perpangkatan Universal 4.0.docx # Source Manuscript DOCX Document
+├── verify_samuelai_server.js      # 15-Point Host & PWA Verification Test Suite
+├── test_all_features.js           # 40-Assertion Primitives & Integration Suite
+├── test_suite.js                  # 71-Assertion 11-Pillar Benchmark
+├── test_e2e_full.js               # 95-Assertion 4-Tier Opaque-Box E2E Suite
 └── LICENSE                        # MIT Open-Source License
 ```
 
