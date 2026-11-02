@@ -1,0 +1,64 @@
+#!/bin/bash
+# ==============================================================================
+# Samuel.A.I - Universal Exponentiation Formula 4.0 (macOS Native Launcher)
+# Author: Samuel Hasiholan Omega Purba, S. Tr. T., Member, IEEE (S'26)
+# Politeknik Negeri Batam & BeruangLaut.ID
+# ==============================================================================
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+RESOURCES="$DIR/Resources"
+cd "$RESOURCES" || exit 1
+
+# Detect sequential available port in range 3000..3025
+PORT=3000
+for p in $(seq 3000 3025); do
+    if ! lsof -Pi :$p -sTCP:LISTEN -t >/dev/null 2>&1; then
+        PORT=$p
+        break
+    fi
+done
+
+echo "Starting Samuel.A.I host on http://localhost:$PORT ..."
+
+# Start background local HTTP host
+SERVER_PID=""
+if command -v python3 >/dev/null 2>&1; then
+    python3 -m http.server $PORT --bind 127.0.0.1 >/dev/null 2>&1 &
+    SERVER_PID=$!
+elif command -v python >/dev/null 2>&1; then
+    python -m SimpleHTTPServer $PORT >/dev/null 2>&1 &
+    SERVER_PID=$!
+elif command -v node >/dev/null 2>&1; then
+    node -e "
+    const http = require('http');
+    const fs = require('fs');
+    const path = require('path');
+    const mime = {
+      '.html': 'text/html', '.js': 'application/javascript', '.css': 'text/css',
+      '.png': 'image/png', '.pdf': 'application/pdf', '.docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      '.json': 'application/json'
+    };
+    http.createServer((req, res) => {
+      let f = path.join('$RESOURCES', req.url === '/' ? 'index.html' : req.url.split('?')[0]);
+      if (fs.existsSync(f) && fs.statSync(f).isFile()) {
+        res.writeHead(200, {'Content-Type': mime[path.extname(f)] || 'application/octet-stream', 'Access-Control-Allow-Origin': '*'});
+        fs.createReadStream(f).pipe(res);
+      } else {
+        res.writeHead(404); res.end('Not Found');
+      }
+    }).listen($PORT, '127.0.0.1');
+    " >/dev/null 2>&1 &
+    SERVER_PID=$!
+else
+    # Fallback directly opening html file in default browser
+    open "index.html"
+    exit 0
+fi
+
+# Give local host half a second to bind socket, then open default web browser
+sleep 0.8
+open "http://localhost:$PORT/"
+
+# Safe termination hook
+trap "kill -9 $SERVER_PID 2>/dev/null; exit 0" SIGINT SIGTERM EXIT
+wait $SERVER_PID
