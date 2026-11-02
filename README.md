@@ -93,18 +93,6 @@ Use this prompt with **Google Antigravity AI** to verify, refactor, and maintain
    - Provide complete mathematical derivations, IEEEtran style tables, LaTeX block schemas, and standardized citation metadata.
 ```
 
----
-
-## 🧮 Five Core Theorems & Canonical Invariants (Theorems 1–5)
-
-### 🌟 Theorem 1: Division-by-Zero Singularity Elimination ($\frac{\partial S}{\partial t} \equiv 0$)
-- **Formal Statement**: For any multivariable algebraic series $S(x, y, n) = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-1)^k y^k$, because the arbitrary time parameter $t \notin \mathrm{vars}(S)$, the partial derivative with respect to $t$ vanishes identically:
-  $$ \frac{\partial S}{\partial t} \equiv 0 $$
-- **Singularity Resolution**: In early heuristic formulations containing the indeterminate differential quotient $\frac{\left(\int_{0}^{1} x^x \, \mathrm{d}x \cdot \frac{\partial S}{\partial t}\right) - \int_{0}^{1} x^x \, \mathrm{d}x}{\frac{\partial S}{\partial t}}$, the apparent division-by-zero singularity is eliminated via formal algebraic factor cancellation on the continuous domain:
-  $$ \frac{A \cdot B - A}{B} \xrightarrow[B \to 0]{} \text{Removable Singularity} \implies S(x, y, n) $$
-  guaranteeing $0\%$ algorithmic error rate and complete numerical stability.
-
-
 ## 📊 Technical Calculus Audit & Academic Solutions
 
 | Item | Original Document Component | Formal Mathematical Anomaly | Standard Academic Resolution |
