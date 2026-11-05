@@ -108,14 +108,6 @@ Sistem menyediakan 5 aset rilis fisik mandiri yang telah diaudit secara forensik
 
 ---
 
-## 🏛️ The 12 Architectural Subsystem Pillars / 12 Pilar Arsitektur Subsistem Samuel.AI
-
-Platform **Samuel.AI** dibangun di atas 12 subsistem arsitektur komputasi dan matematika terintegrasi yang menjembatani kalkulus simbolik, simulasi numerik presisi tinggi, telemetri IoT edge deterministik, aktuasi mekatronika robotik, serta kecerdasan bisnis industri.
-
-The **Samuel.AI** platform is engineered upon 12 integrated mathematical and computational architecture subsystems bridging symbolic calculus, high-precision numerical simulation, deterministic edge IoT telemetry, robotic mechatronic actuation, and industrial business intelligence.
-
----
-
 ## 📊 Technical Calculus Audit & Academic Resolutions
 
 Tabel audit berikut merangkum anomali formal yang teridentifikasi pada manuskrip heuristik awal beserta solusi resolusi kalkulus akademik yang diterapkan pada platform Samuel.AI:
