@@ -61,16 +61,14 @@
 ## 📑 Table of Contents / Daftar Isi
 1. [Abstract & Executive Summary](#-abstract--executive-summary)
 2. [📦 Matriks Unduhan Berkas Fisik & Binari Rilis (5 Core Release Assets)](#-matriks-unduhan-berkas-fisik--binari-rilis-5-core-release-assets)
-3. [🏛️ The 12 Architectural Subsystem Pillars / 12 Pilar Arsitektur Subsistem Samuel.AI](#️-the-12-architectural-subsystem-pillars--12-pilar-arsitektur-subsistem-samuelai)
-4. [🧮 Five Core Theorems & Canonical Invariants (Theorems 1–5)](#-five-core-theorems--canonical-invariants-theorems-15)
-5. [📊 Technical Calculus Audit & Academic Resolutions](#-technical-calculus-audit--academic-resolutions)
-6. [🔬 Numerical Benchmark Comparison & Empirical Validation](#-numerical-benchmark-comparison--empirical-validation)
-7. [💻 Multi-Platform Deployment & Execution Guide](#-multi-platform-deployment--execution-guide)
-8. [📁 Full Repository Directory Tree](#-full-repository-directory-tree)
-9. [🧪 Automated Verification & Quality Assurance Matrix](#-automated-verification--quality-assurance-matrix)
-10. [🤖 Google Antigravity AI Master Prompt (IEEE & Scopus Q1 Standard)](#-google-antigravity-ai-master-prompt-ieee--scopus-q1-standard)
-11. [📑 IEEE Citation & BibTeX](#-ieee-citation--bibtex)
-12. [⚖️ License & Open-Source Attribution](#️-license--open-source-attribution)
+3. [📊 Technical Calculus Audit & Academic Resolutions](#-technical-calculus-audit--academic-resolutions)
+4. [🔬 Numerical Benchmark Comparison & Empirical Validation](#-numerical-benchmark-comparison--empirical-validation)
+5. [💻 Multi-Platform Deployment & Execution Guide](#-multi-platform-deployment--execution-guide)
+6. [📁 Full Repository Directory Tree](#-full-repository-directory-tree)
+7. [🧪 Automated Verification & Quality Assurance Matrix](#-automated-verification--quality-assurance-matrix)
+8. [🤖 Google Antigravity AI Master Prompt (IEEE & Scopus Q1 Standard)](#-google-antigravity-ai-master-prompt-ieee--scopus-q1-standard)
+9. [📑 IEEE Citation & BibTeX](#-ieee-citation--bibtex)
+10. [⚖️ License & Open-Source Attribution](#️-license--open-source-attribution)
 
 ---
 
