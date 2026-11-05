@@ -116,47 +116,6 @@ The **Samuel.AI** platform is engineered upon 12 integrated mathematical and com
 
 ---
 
-## 🧮 Five Core Theorems & Canonical Invariants (Theorems 1–5)
-
-Seluruh formulasi matematis dalam platform Samuel.AI telah diverifikasi secara formal menggunakan SymPy, Python Decimal (50 digit presisi), dan kalkulus analitis sesuai standar IEEE Transactions on Applied Mathematics and Computing / Scopus Q1 Top 1%:
-
-### 🌟 Theorem 1: Division-by-Zero Singularity Elimination ($\frac{\partial S}{\partial t} \equiv 0$)
-- **Formal Premise**: Given the discrete multivariable power series expansion $S(x, y, n) = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-1)^k y^k$, the unassociated temporal parameter $t$ does not belong to the variable set: $t \notin \mathrm{vars}(S)$.
-- **Mathematical Deduction**: The partial derivative of the series with respect to time vanishes identically:
-  $$ \frac{\partial S}{\partial t} \equiv 0 $$
-- **Singularity Resolution**: In early heuristic formulations, indeterminate differential ratios of the form $\frac{-\int x^x \, \mathrm{d}x}{\partial S / \partial t}$ where $\frac{\partial S}{\partial t} \equiv 0$ produced an apparent division-by-zero singularity. Through continuous-domain algebraic factor cancellation, this removable singularity is analytically eliminated:
-  $$ S(x, y, n) \equiv (x - y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-1)^k y^k $$
-  guaranteeing an exact **0.0%** algorithmic error rate and complete numerical stability across all complex domains.
-
-### ⚡ Theorem 2: Non-Elementary Transcendental Integration ($\int_{0}^{1} x^x \, \mathrm{d}x$)
-- **Liouville Non-Elementarity & Bernoulli Series**: By Liouville's theorem (1833), the self-exponential integrand $f(x) = x^x = \exp(x \ln x)$ possesses no elementary closed-form antiderivative. On the canonical domain $[0, 1]$, the definite integral converges to the Sophomore's Dream identity (Johann Bernoulli, 1697):
-  $$ \int_{0}^{1} x^x \, \mathrm{d}x = \sum_{m=1}^{\infty} (-1)^{m-1} m^{-m} = \sum_{m=1}^{\infty} \frac{(-1)^{m-1}}{m^m} \approx 0.783430510712134 $$
-- **16-Point Adaptive Gauss-Legendre Quadrature**: Numerical integration over arbitrary intervals $[0, x]$ is evaluated via coordinate transformation $t = \frac{x}{2}(\xi + 1)$:
-  $$ \int_{0}^x t^t \, \mathrm{d}t \approx \frac{x}{2} \sum_{i=1}^{16} w_i \left[ \frac{x}{2} (\xi_i + 1) \right]^{\frac{x}{2} (\xi_i + 1)} $$
-  where $\xi_i \in (-1, 1)$ are the roots of the 16th Legendre polynomial $P_{16}(\xi) = 0$ and $w_i$ are Christoffel quadrature weights, ensuring absolute error bound $\varepsilon < 10^{-14}$ and latency $< 0.01\text{ ms}$.
-
-### 📐 Theorem 3: Discrete Coefficient Mapping & Newton Binomial Theorem
-- **Pure Algebraic Expansion**: For all real bases $x, y \in \mathbb{R}$ and non-negative integer powers $n \in \mathbb{N}_0$, the closed-form expansion is identically reconciled with Newton's Binomial Theorem:
-  $$ (x - y)^n = \sum_{k=0}^{n} \binom{n}{k} x^{n-k} (-1)^k y^k $$
-- **Discrete Combinatorial Mapping**: Coefficients $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ are resolved via precomputed Pascal table ($O(1)$ time for $n \le 30$) and BigInt exact combinatorics for higher orders.
-
-### 🔄 Theorem 4: Term-by-Term Partial Derivative Equivalence
-- **First Partial Derivatives with respect to active bases $y$ and $x$:**
-  $$
-  \begin{aligned}
-  \frac{\partial}{\partial y} \left[ (x - y)^n \right] &= -n(x - y)^{n-1} = \sum_{k=1}^n \binom{n}{k} x^{n-k} (-1)^k k y^{k-1} \\
-  \frac{\partial}{\partial x} \left[ (x - y)^n \right] &= \phantom{-}n(x - y)^{n-1} = \sum_{k=0}^{n-1} \binom{n}{k} (n-k) x^{n-k-1} (-1)^k y^k
-  \end{aligned}
-  $$
-
-### 🎯 Theorem 5: Pointwise Invariant Preservation and Asymptotic Limit Ratio
-- **Asymptotic Limit Ratio**: As $x \to \infty$, the ratio between the binomial expansion and leading monomial $x^n$ converges asymptotically to unity:
-  $$ \lim_{x \to \infty} \frac{(x - y)^n}{x^n} = 1.0000000 \quad (\text{Algorithmic Error: } 0.0\%) $$
-- **Pointwise Rational Invariant**: The algebraic rational factor $\frac{A B - A}{B}$ reduces identically to $A$ as $B \to \infty$:
-  $$ \lim_{B \to \infty} \frac{A B - A}{B} = \lim_{B \to \infty} \frac{A(B - 1)}{B} = A \lim_{B \to \infty} \left( 1 - \frac{1}{B} \right) = A = (x - y)^n $$
-
----
-
 ## 📊 Technical Calculus Audit & Academic Resolutions
 
 Tabel audit berikut merangkum anomali formal yang teridentifikasi pada manuskrip heuristik awal beserta solusi resolusi kalkulus akademik yang diterapkan pada platform Samuel.AI:
