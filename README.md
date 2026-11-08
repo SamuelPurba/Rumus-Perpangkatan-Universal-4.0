@@ -149,74 +149,6 @@ To transition this exploratory heuristic identity into a rigorous, Scopus Q1 / I
 
 ---
 
-### 2.4 Five Core Theorems & Canonical Invariants (Theorems 1–5)
-
-Seluruh formulasi matematis dalam platform Samuel.AI telah diverifikasi secara formal menggunakan SymPy, Python Decimal (50 digit presisi), dan kalkulus analitis standar IEEE Transactions on Applied Mathematics and Computing:
-
-#### 🌟 Theorem 1: Division-by-Zero Singularity Elimination ($\frac{\partial S}{\partial t} \equiv 0$)
-- **Formal Premise**: Let $S(x, y, n)$ be the discrete multivariable binomial power expansion defined on $(x, y, n) \in \mathbb{R} \times \mathbb{R} \times \mathbb{N}_0$:
-  $$ S(x, y, n) = \sum_{k=0}^{n} \binom{n}{k} x^{n-k} (-1)^k y^k $$
-  Let $t \in \mathbb{R}$ denote any unassociated external parameter (e.g., physical time). Because $t \notin \mathrm{vars}(S) = \{x, y, n, k\}$, the partial derivative of $S$ with respect to $t$ vanishes identically over the entire domain:
-  $$ \frac{\partial S}{\partial t} \equiv 0 $$
-- **Mathematical Deduction**:
-  By the formal definition of the partial derivative of a multivariable function:
-  $$ \frac{\partial S}{\partial t} = \lim_{\Delta t \to 0} \frac{S(x, y, n; t + \Delta t) - S(x, y, n; t)}{\Delta t} $$
-  Since $S(x, y, n)$ is strictly invariant under translations in $t$, $S(x, y, n; t + \Delta t) - S(x, y, n; t) = 0$ for all $\Delta t \ne 0$. Thus:
-  $$ \frac{\partial S}{\partial t} = \lim_{\Delta t \to 0} \frac{0}{\Delta t} = 0 \quad \text{identically} $$
-- **Singularity Resolution via Continuous Algebraic Factor Cancellation**:
-  In early heuristic trials, evaluating $\frac{-\int x^x \, \mathrm{d}x}{\frac{\partial S}{\partial t}}$ where $\frac{\partial S}{\partial t} \equiv 0$ produced an apparent division-by-zero catastrophe ($0/0$ or $C/0$).
-  In formal calculus, this represents a **removable singularity** (*singularitas terhapuskan*). Continuous-domain algebraic factor cancellation recognizes the extraneous differential operator as uncoupled from the spatial power manifold. Cancelling the redundant singular differential factors reduces the system directly to the closed polynomial form:
-  $$ S(x, y, n) \equiv (x - y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-1)^k y^k $$
-  guaranteeing zero division errors across all evaluation regimes $\blacksquare$.
-
----
-
-#### ⚡ Theorem 2: Non-Elementary Transcendental Integration ($\int_{0}^{1} x^x \, \mathrm{d}x$)
-- **Liouville's Non-Elementarity Criterion (1833)**:
-  Let $f(x) = x^x = \exp(x \ln x)$ on $x \in (0, \infty)$. The indefinite integral $\int x^x \, \mathrm{d}x$ cannot be expressed in finite terms of elementary functions `[2]`.
-  *Analytical Proof Sketch*: By Liouville's theorem on differential fields, an elementary antiderivative for $g(x)e^{h(x)}$ requires $R'(x) + R(x)h'(x) = g(x)$ for an elementary $R(x)$. For $h(x) = x \ln x$ and $g(x) = 1$, $R'(x) + R(x)(1 + \ln x) = 1$ admits no elementary solution in $\mathbb{C}(x, \ln x)$ because differentiation cannot eliminate $\ln x$ without generating higher algebraic degrees. Thus, $\int x^x \, \mathrm{d}x$ is strictly non-elementary.
-- **Johann Bernoulli's Sophomore's Dream Identity (1697)**:
-  Over the canonical unit interval $[0, 1]$, the definite integral converges to an exact alternating infinite series `[3]`:
-  $$ \int_{0}^{1} x^x \, \mathrm{d}x = \sum_{m=1}^{\infty} (-1)^{m-1} m^{-m} = \sum_{m=1}^{\infty} \frac{(-1)^{m-1}}{m^m} \approx 0.7834305107121344... $$
-  *Step-by-step Derivation*:
-  1. Expand via Maclaurin series: $x^x = e^{x \ln x} = \sum_{k=0}^\infty \frac{(x \ln x)^k}{k!}$.
-  2. Integrate term-by-term on $(0, 1]$: $\int_{0}^{1} x^x \, \mathrm{d}x = \sum_{k=0}^\infty \frac{1}{k!} \int_{0}^{1} x^k (\ln x)^k \, \mathrm{d}x$.
-  3. Substitute $u = -\ln x \implies x = e^{-u}$, yielding $I_k = (-1)^k \int_{0}^{\infty} u^k e^{-(k+1)u} \, \mathrm{d}u$.
-  4. Substitute $v = (k+1)u \implies I_k = \frac{(-1)^k}{(k+1)^{k+1}} \Gamma(k+1) = \frac{(-1)^k k!}{(k+1)^{k+1}}$.
-  5. Summation over $k \ge 0$ with index shift $m = k+1$ yields Bernoulli's series:
-     $$ \int_{0}^{1} x^x \, \mathrm{d}x = \sum_{m=1}^{\infty} \frac{(-1)^{m-1}}{m^m} = 1 - \frac{1}{4} + \frac{1}{27} - \frac{1}{256} + \frac{1}{3125} - \dots \approx 0.783430510712134 $$
-- **16-Point Adaptive Gauss-Legendre Quadrature Scheme**:
-  Over arbitrary domains $[a, b]$, the interval $[-1, 1]$ is mapped to $[a, b]$ via coordinate transformation `[4]`:
-  $$ t(\xi) = \frac{b - a}{2} \xi + \frac{b + a}{2}, \quad \mathrm{d}t = \frac{b - a}{2} \, \mathrm{d}\xi $$
-  The integral is evaluated with sub-millisecond latency via:
-  $$ \int_{a}^{b} t^t \, \mathrm{d}t \approx \frac{b - a}{2} \sum_{i=1}^{16} w_i f\left( \frac{b - a}{2} \xi_i + \frac{b + a}{2} \right) $$
-  where $\xi_i$ are roots of $P_{16}(\xi) = 0$ and $w_i = \frac{2}{(1 - \xi_i^2)[P'_{16}(\xi_i)]^2}$. The integrand enforces continuous limit $\lim_{t\to 0^+} t^t = 1.0$ at the lower boundary $\blacksquare$.
-
-##### Canonical 16-Point Gauss-Legendre Abscissas ($\xi_i$) and Weights ($w_i$):
-From [`engine/quadrature_engine.py`](engine/quadrature_engine.py) (lines 15–27) and [`app.js`](app.js) (lines 644–656):
-
-| Node Index $i$ | Legendre Root Abscissa $\xi_i$ | Christoffel Quadrature Weight $w_i$ |
-|:---:|:---:|:---:|
-| 1 | $-0.989400934991650$ | $0.027152459411754$ |
-| 2 | $-0.944575023073233$ | $0.062253523938648$ |
-| 3 | $-0.865631202387832$ | $0.095158511682493$ |
-| 4 | $-0.755404408355003$ | $0.124628971255534$ |
-| 5 | $-0.617876244402644$ | $0.149595988816577$ |
-| 6 | $-0.458016777657227$ | $0.169156519395003$ |
-| 7 | $-0.281603550779259$ | $0.182603415044924$ |
-| 8 | $-0.095012509837637$ | $0.189450610455068$ |
-| 9 | $+0.095012509837637$ | $0.189450610455068$ |
-| 10 | $+0.281603550779259$ | $0.182603415044924$ |
-| 11 | $+0.458016777657227$ | $0.169156519395003$ |
-| 12 | $+0.617876244402644$ | $0.149595988816577$ |
-| 13 | $+0.755404408355003$ | $0.124628971255534$ |
-| 14 | $+0.865631202387832$ | $0.095158511682493$ |
-| 15 | $+0.944575023073233$ | $0.062253523938648$ |
-| 16 | $+0.989400934991650$ | $0.027152459411754$ |
-
-*Empirical Benchmark Attribution*: Python Decimal (50-digit) series evaluation yields an absolute error of $6.82 \times 10^{-21}$ against Bernoulli's constant; IEEE 754 float64 quadrature maintains error bound $< 10^{-7}$ with execution latency measured $< 0.01\text{ ms}$ in `test_suite.js`.
-
----
 
 #### 📐 Theorem 3: Newton Binomial Theorem Reconciliation
 - **Pure Algebraic Expansion**: For all real or complex bases $x, y \in \mathbb{C}$ (including the analytic continuation boundary $x = \zeta(-1) = -\frac{1}{12}$) and non-negative integer powers $n \in \mathbb{N}_0$:
@@ -228,10 +160,6 @@ From [`engine/quadrature_engine.py`](engine/quadrature_engine.py) (lines 15–27
      $$ (x - y)^{m+1} = (x - y) \sum_{k=0}^m \binom{m}{k} x^{m-k} (-1)^k y^k = \sum_{k=0}^m \binom{m}{k} x^{m-k+1} (-1)^k y^k - \sum_{k=0}^m \binom{m}{k} x^{m-k} (-1)^k y^{k+1} $$
      Applying Pascal's Identity $\binom{m}{k} + \binom{m}{k-1} = \binom{m+1}{k}$ to like powers $x^{m+1-k} y^k$ yields:
      $$ (x - y)^{m+1} = \sum_{k=0}^{m+1} \binom{m+1}{k} x^{m+1-k} (-1)^k y^k \quad \blacksquare $$
-- **Computational Architecture**:
-  - $O(1)$ Pascal table lookup (`PASCAL_TABLE[32][32]` in `app.js:658-677`) for $n \le 30$.
-  - Arbitrary-precision BigInt combinatorics (`evaluateNewtonBinomialBigInt` in `app.js:679-704`) for high-order powers ($n > 30$), guaranteeing exact integer calculation without mantissa overflow.
-  - Negative exponents $n = -m$ evaluated via reciprocal series $(x - y)^{-m} = \frac{1}{(x - y)^m}$ for $x \ne y$.
 
 ---
 
