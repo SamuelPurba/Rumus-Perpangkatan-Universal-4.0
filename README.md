@@ -149,30 +149,6 @@ To transition this exploratory heuristic identity into a rigorous, Scopus Q1 / I
 
 ---
 
-
-#### 📐 Theorem 3: Newton Binomial Theorem Reconciliation
-- **Pure Algebraic Expansion**: For all real or complex bases $x, y \in \mathbb{C}$ (including the analytic continuation boundary $x = \zeta(-1) = -\frac{1}{12}$) and non-negative integer powers $n \in \mathbb{N}_0$:
-  $$ (x - y)^n = \sum_{k=0}^{n} \binom{n}{k} x^{n-k} (-1)^k y^k $$
-  where $\binom{n}{k} = \frac{n!}{k!(n - k)!}$.
-- **Mathematical Induction Proof**:
-  1. *Base Case ($n = 0$)*: $(x - y)^0 = 1 = \binom{0}{0} x^0 (-1)^0 y^0 = 1$. Holds identically.
-  2. *Inductive Step*: Assume $(x - y)^m = \sum_{k=0}^m \binom{m}{k} x^{m-k} (-1)^k y^k$. Then:
-     $$ (x - y)^{m+1} = (x - y) \sum_{k=0}^m \binom{m}{k} x^{m-k} (-1)^k y^k = \sum_{k=0}^m \binom{m}{k} x^{m-k+1} (-1)^k y^k - \sum_{k=0}^m \binom{m}{k} x^{m-k} (-1)^k y^{k+1} $$
-     Applying Pascal's Identity $\binom{m}{k} + \binom{m}{k-1} = \binom{m+1}{k}$ to like powers $x^{m+1-k} y^k$ yields:
-     $$ (x - y)^{m+1} = \sum_{k=0}^{m+1} \binom{m+1}{k} x^{m+1-k} (-1)^k y^k \quad \blacksquare $$
-
----
-
-#### 🔄 Theorem 4: Term-by-Term Partial Derivative Equivalence
-- **Sensitivity with respect to base parameter $y$**:
-  $$ \frac{\partial}{\partial y} \left[ (x - y)^n \right] = -n(x - y)^{n-1} = \sum_{k=1}^n \binom{n}{k} x^{n-k} (-1)^k k y^{k-1} $$
-  *Analytical Proof*: Chain rule gives $\frac{\partial}{\partial y}[(x - y)^n] = n(x - y)^{n-1}(-1) = -n(x - y)^{n-1}$. Differentiating the series term-by-term: $\frac{\partial}{\partial y}[y^k] = k y^{k-1}$ for $k \ge 1$ (the $k=0$ constant term vanishes). Using combinatorial identity $k \binom{n}{k} = n \binom{n-1}{k-1}$, both forms are identically verified.
-- **Sensitivity with respect to base parameter $x$**:
-  $$ \frac{\partial}{\partial x} \left[ (x - y)^n \right] = n(x - y)^{n-1} = \sum_{k=0}^{n-1} \binom{n}{k} (n - k) x^{n-k-1} (-1)^k y^k $$
-  *Analytical Proof*: Differentiating $(x - y)^n$ gives $n(x - y)^{n-1}(1)$. Term-by-term series differentiation with $(n - k)\binom{n}{k} = n \binom{n-1}{k}$ establishes exact equivalence $\blacksquare$.
-
----
-
 ## 🤖 SECTION III: APPLICATION TO ROBOTICS, ARTIFICIAL INTELLIGENCE & THE 12 ARCHITECTURAL SUBSYSTEM PILLARS
 
 ### 3.1 Core Robotics & Artificial Intelligence Engineering Implementations
