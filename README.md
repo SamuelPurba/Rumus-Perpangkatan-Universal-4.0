@@ -173,51 +173,6 @@ To transition this exploratory heuristic identity into a rigorous, Scopus Q1 / I
 
 ---
 
-#### 🎯 Theorem 5: Pointwise Rational Invariants & Asymptotic Limits
-- **Asymptotic Limit Ratio as $x \to \infty$**:
-  For any fixed real parameter $y$ and non-negative integer power $n$:
-  $$ \lim_{x \to \infty} \frac{(x - y)^n}{x^n} = 1.0000000 $$
-  *Analytical Proof*: Factoring $x$ from the numerator yields $\frac{(x - y)^n}{x^n} = \left( 1 - \frac{y}{x} \right)^n$. Since $\lim_{x\to\infty} \frac{y}{x} = 0$, continuous mapping gives $(1 - 0)^n = 1.0000000 \quad \blacksquare$.
-- **Pointwise Rational Invariant $\frac{AB - A}{B} \to A$**:
-  For scale invariant factor $B \ne 0$:
-  $$ \lim_{B \to \infty} \frac{AB - A}{B} = \lim_{B \to \infty} A \left( 1 - \frac{1}{B} \right) = A = (x - y)^n $$
-  reducing runtime computation directly to $(x - y)^n$ without runtime division risks.
-
----
-
-### 2.5 Mathematical & Typography Formatting Standards Matrix
-To guarantee standard IEEE Transactions / Scopus Q1 mathematical typography, all mathematical formulations adhere strictly to the following specification:
-
-| Mathematical Construct | Prohibited Raw String | Compliant IEEE / KaTeX Standard | Rendered Output |
-|:---|:---|:---|:---:|
-| Temporal Derivative | `(d/dt)`, `d/dt`, `dS/dt` | `\frac{\partial S}{\partial t} \equiv 0` | $\frac{\partial S}{\partial t} \equiv 0$ |
-| Upright Differential | `d/dy`, `d/dx` | `\frac{\partial}{\partial y}`, `\frac{\mathrm{d}}{\mathrm{d}t}` | $\frac{\partial}{\partial y}, \frac{\mathrm{d}}{\mathrm{d}t}$ |
-| Proportional Delimiters | `(\frac{\partial}{\partial t})` | `\left( \frac{\partial}{\partial t} \right)` | $\left( \frac{\partial}{\partial t} \right)$ |
-| Definite Self-Exponential Integral | `int_0^1 x^x dx` | `\int_{0}^{1} x^x \, \mathrm{d}x` | $\int_{0}^{1} x^x \, \mathrm{d}x$ |
-| Indefinite Integral | `int x^x dx` | `\int x^x \, \mathrm{d}x` | $\int x^x \, \mathrm{d}x$ |
-| Variable Upper Limit Integral | `int_0^x t^t dt` | `\int_{0}^{x} t^t \, \mathrm{d}t` | $\int_{0}^{x} t^t \, \mathrm{d}t$ |
-| Sophomore's Dream Series | `sum (-1)^(m-1) / m^m` | `\sum_{m=1}^{\infty} (-1)^{m-1} m^{-m}` | $\sum_{m=1}^{\infty} (-1)^{m-1} m^{-m}$ |
-| Binomial Expansion | `(x-y)^n = sum C(n,k)...` | `(x - y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-1)^k y^k` | $(x - y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} (-1)^k y^k$ |
-| Base Sensitivity Derivative | `d/dy (x-y)^n = -n(x-y)^(n-1)` | `\frac{\partial}{\partial y} \left[ (x - y)^n \right] = -n(x - y)^{n-1}` | $\frac{\partial}{\partial y} \left[ (x - y)^n \right] = -n(x - y)^{n-1}$ |
-| Asymptotic Limit | `lim x->inf (x-y)^n / x^n = 1` | `\lim_{x \to \infty} \frac{(x - y)^n}{x^n} = 1.0000000` | $\lim_{x \to \infty} \frac{(x - y)^n}{x^n} = 1.0000000$ |
-
----
-
-### 2.6 Technical Calculus Audit & Academic Resolutions
-
-Tabel audit berikut merangkum anomali formal yang teridentifikasi pada manuskrip heuristik awal beserta solusi resolusi kalkulus akademik yang diterapkan pada platform Samuel.AI:
-
-| No | Komponen Dokumen Awal | Anomali Matematis Formal | Resolusi Akademik Standar IEEE Transactions |
-|:---:|---|---|---|
-| **1** | Operator Diferensial Temporal $\frac{\partial}{\partial t}$ | Deret multivariabel $S(x, y, n)$ tidak memuat parameter waktu $t$ ($t \notin \mathrm{vars}(S)$), sehingga $\frac{\partial S}{\partial t} \equiv 0$. Muncul singularitas pembagian dengan nol saat membagi dengan $\frac{\partial S}{\partial t}$. | Dihilangkan secara tuntas melalui pembatalan faktor aljabar kontinu: $\frac{\partial S}{\partial t} \equiv 0$ diakui sebagai singularitas terhapuskan (*removable singularity*), menghasilkan polinomial $(x-y)^n$ dengan galat $0.0\%$. |
-| **2** | Integral *Self-Exponential* $\int_{0}^{1} x^x \, \mathrm{d}x$ | Fungsi $f(x) = x^x$ terbukti secara analitis tidak memiliki antiturunan fungsi elementer tertutup (Teorema Liouville, 1833). | Dievaluasi dengan **Kuadratur Adaptif 16-Titik Gauss-Legendre** berlatensi benchmark $<0.01\text{ ms}$ ($\varepsilon < 10^{-14}$) dan ekuivalensi konvergen terhadap deret **Sophomore's Dream** ($\sum_{m=1}^{\infty} (-1)^{m-1} m^{-m} \approx 0.783430510712134$). |
-| **3** | Indeks Sumasi $\sum_{i=k}^n \dots x^{k-n} y^k$ | Variabel indeks berjalan $i$ tidak sinkron dengan pangkat variabel $k$ dan suku tanda minus belum terisolasi secara formal. | Disinkronkan dengan formulasi kanonikal Teorema Binomial Newton: $\sum_{k=0}^n \binom{n}{k} x^{n-k} (-1)^k y^k$. |
-| **4** | Faktor Rasional $\frac{A B - A}{B}$ | Bentuk aljabar $\frac{A(B-1)}{B}$ menghasilkan bentuk tak tentu $\frac{0}{0}$ ketika $B \to 0$. | Reduksi kontinu langsung menjadi ekspresi analitis tunggal $(x - y)^n$ tanpa operasi pembagian runtime berisiko. |
-
-> **Catatan Epistemik & Verifikasi Diagnostik**: Respons JSON diagnostik dari endpoint server seperti `/api/audit` yang mengembalikan status `"AUDIT_VERIFIED_100"` merupakan pemeriksaan integrasi sistem (*runtime health assertion contract*), bukan bukti matematika analitis. Pembuktian matematika analitis dilakukan secara deduktif dan simbolik pada [`engine/proof_verification.py`](engine/proof_verification.py).
-
----
-
 ## 🤖 SECTION III: APPLICATION TO ROBOTICS, ARTIFICIAL INTELLIGENCE & THE 12 ARCHITECTURAL SUBSYSTEM PILLARS
 
 ### 3.1 Core Robotics & Artificial Intelligence Engineering Implementations
@@ -229,10 +184,6 @@ The audited mathematical kernel of **Rumus Perpangkatan Universal 4.0** is engin
    and computing exact analytical Jacobian sensitivities via Theorem 4 ($\frac{\partial}{\partial y}[(x-y)^n] = -n(x-y)^{n-1}$), the controller achieves smooth, sub-millisecond trajectory convergence within a $< 1.0\text{ mm}$ spatial tolerance.
 2. **High-Dimensional Neural Network Polynomial Activation Functions & Symbolic AI Guardrails**:
    Standard deep learning polynomial activation layers and Taylor-approximated attention kernels frequently suffer from exploding gradients or `NaN` propagation when encountering near-singular denominator states. The **Samuel-Tosh AI Engine** (`SamuelToshAIEngine`) acts as a deterministic symbolic guardrail that intercepts indeterminate differential quotients ($\frac{\partial S}{\partial t} \equiv 0$) in $< 0.01\text{ ms}$, replacing unstable floating-point divisions with exact $O(1)$ Pascal Sieve polynomial expansions.
-3. **Dynamic System State Estimation, Edge IoT Telemetry & Smart Grid Divergence Analytics**:
-   In embedded cyber-physical systems (ESP32-S3 / STM32F4 edge nodes and 50 Hz electrical smart grids), transient state divergence is governed by the coupled integral-binomial state equation:
-   $$ E_{\text{total}}(t) = (x - y)^n \left[ \frac{1 - e^{-\alpha t}}{\alpha} \right] + \left( \int_{0}^{1} x^x \, \mathrm{d}x \right) t $$
-   Pre-caching the Sophomore's Dream constant ($\approx 0.783430510712134$) and evaluating $(x - y)^n$ via the $O(1)$ lookup table allows real-time state estimation at $> 38{,}000\text{ operations/second}$ on bare-metal hardware.
 
 ---
 
