@@ -155,9 +155,7 @@ To transition this exploratory heuristic identity into a rigorous, Scopus Q1 / I
 The audited mathematical kernel of **Rumus Perpangkatan Universal 4.0** is engineered specifically for three high-impact domains in Robotics and Artificial Intelligence `[7]`:
 
 1. **Non-Linear 3-DOF Robotic Manipulator Kinematics & Exponential Torque Damping**:
-   In articulated robotic manipulators with link lengths $(l_1, l_2, l_3) = (100, 80, 60)\text{ mm}$, rapid trajectory tracking between joint setpoint $x = \theta_{\text{target}}$ and current encoder feedback $y = \theta_{\text{actual}}$ often induces mechanical overshoot and high-frequency oscillation. By embedding the universal binomial error manifold $(x - y)^n$ into an exponential damping control law:
-   $$ \tau(\theta_{\text{target}}, \theta_{\text{actual}}, n) = \tau_0 \exp\left( -\frac{(\theta_{\text{target}} - \theta_{\text{actual}})^n}{\lambda} \right) $$
-   and computing exact analytical Jacobian sensitivities via Theorem 4 ($\frac{\partial}{\partial y}[(x-y)^n] = -n(x-y)^{n-1}$), the controller achieves smooth, sub-millisecond trajectory convergence within a $< 1.0\text{ mm}$ spatial tolerance.
+   In articulated robotic manipulators with link lengths $(l_1, l_2, l_3) = (100, 80, 60)\text{ mm}$, rapid trajectory tracking between joint setpoint $x = \theta_{\text{target}}$ and current encoder feedback $y = \theta_{\text{actual}}$ often induces mechanical overshoot and high-frequency oscillation.
 2. **High-Dimensional Neural Network Polynomial Activation Functions & Symbolic AI Guardrails**:
    Standard deep learning polynomial activation layers and Taylor-approximated attention kernels frequently suffer from exploding gradients or `NaN` propagation when encountering near-singular denominator states. The **Samuel-Tosh AI Engine** (`SamuelToshAIEngine`) acts as a deterministic symbolic guardrail that intercepts indeterminate differential quotients ($\frac{\partial S}{\partial t} \equiv 0$) in $< 0.01\text{ ms}$, replacing unstable floating-point divisions with exact $O(1)$ Pascal Sieve polynomial expansions.
 
