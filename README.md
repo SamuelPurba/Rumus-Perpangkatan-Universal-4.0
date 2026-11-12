@@ -123,7 +123,7 @@ In modern computational mathematics, non-linear robotics control, and high-dimen
 In the foundational research manuscript (*Rumus Perpangkatan Universal 4.0.docx*), the universal power expansion explores the structural coupling between binomial power series, Riemann Zeta analytic continuation $\zeta(s) = -\frac{1}{12}$, differential operators, and self-exponential integrals:
 
 $$
-(\sum_{x \to (\zeta(s)) = (-\frac{1}{12})}) (x - y)^n = (\sum_{x \to (\zeta(s)) = (-\frac{1}{12})}) \frac{\left( \int x^x \, \mathrm{d}x \times \left[ \frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^{n} \binom{n}{i} x^{(n-k)} (-1)^k y^k \right] \right) - \int (x^x) \, \mathrm{d}x}{\frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^{n} \binom{n}{i} x^{(n-k)} (-1)^k y^k}
+\sum_{(x \to (\zeta(s)) = (-\frac{1}{12}))} (x - y)^n = \sum_{(x \to (\zeta(s)) = (-\frac{1}{12}))} \frac{\left( \int x^x \, \mathrm{d}x \times \left[ \frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^{n} \binom{n}{i} x^{(n-k)} (-1)^k y^k \right] \right) - \int (x^x) \, \mathrm{d}x}{\frac{\mathrm{d}}{\mathrm{d}t} \sum_{i=k}^{n} \binom{n}{i} x^{(n-k)} (-1)^k y^k}
 $$
 
 To transition this exploratory heuristic identity into a rigorous, Scopus Q1 / IEEE Transactions-compliant analytical engine without runtime division-by-zero traps, every variable, operator, index, and boundary condition is formally defined and audited below.
