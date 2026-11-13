@@ -748,7 +748,7 @@ Jika Anda menggunakan, mereferensikan, atau memperluas perangkat lunak, formulas
 ```
 
 #### Format Plain Text (IEEE Citation Style):
-> S. H. O. Purba, "Universal Exponentiation Formula 4.0: High-Precision Analytical Engine and Formal Calculus Audit," Research Manuscript (Formatted to IEEE Transactions style), Department of Electrical Engineering, Politeknik Negeri Batam & BeruangLaut.ID, July 2026. [Online]. Available: https://github.com/samuelpurba/Samuel.AI
+> S. H. O. Purba, "Universal Exponentiation Formula 4.0: High-Precision Analytical Engine and Formal Calculus Audit," Research Manuscript (Formatted to IEEE Transactions style), Department of Electrical Engineering, Politeknik Negeri Batam & BeruangLaut.ID, July 2026. [Online]. Available: https://github.com/samuelpurba/Rumus-Perpangkatan-Universal-4.0
 
 ---
 
