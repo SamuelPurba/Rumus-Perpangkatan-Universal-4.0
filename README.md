@@ -104,7 +104,7 @@ Table I defines all mathematical symbols, operators, and domain constraints gove
 All mathematical claims are formally verified via symbolic computer algebra (`SymPy`) and 50-digit arbitrary-precision decimal arithmetic in [`engine/proof_verification.py`](engine/proof_verification.py) and [`tests/test_mathematical_proofs.py`](tests/test_mathematical_proofs.py).
 
 #### **Theorem 1 (Division-by-Zero Singularity Elimination)**
-*Let $S(x, y, n) = $\sum_{k=0}^{n} $\binom{n}{k} x^{n-k} (-1)^k y^k$ be the discrete multivariable binomial series on $(x, y, n) $\in $\mathbb{R} $\times $\mathbb{R} $\times $\mathbb{N}_0$. For any unassociated external temporal variable $t $\notin $\mathrm{vars}(S) = $\{x, y, n, k$\}$, the partial derivative of $S with respect to $t vanishes identically:*
+*Let $S(x, y, n) = $\sum_{k=0}^{n} $\binom{n}{k} x^{n-k} (-1)^k y^k$ be the discrete multivariable binomial series on $(x, y, n) $\in $\mathbb{R} $\times $\mathbb{R} $\times $\mathbb{N}_0$. For any unassociated external temporal variable $t $\notin $\mathrm{vars}(S) = $\{x, y, n, k$\}$, the partial derivative of S with respect to t vanishes identically:*
 
 $$
 \frac{\partial S}{\partial t} \equiv 0 \tag{4}
@@ -118,7 +118,7 @@ $$
 \frac{\partial S}{\partial t} = \lim_{\Delta t \to 0} \frac{S(x, y, n; t + \Delta t) - S(x, y, n; t)}{\Delta t} = \lim_{\Delta t \to 0} \frac{0}{\Delta t} = 0 \tag{5}
 $$
 
-In the heuristic quotient $Q = $\frac{I $\cdot D - F}{D}$ where $D = $\frac{$\partial S}{$\partial t}$, direct substitution yields an indeterminate singularity as $D \to 0$. By decoupling the extraneous operator $D and synchronizing the summation index $i $\mapsto k $\in $\{0, $\dots, n$\}$ and exponent $x^{k-n} $\mapsto x^{n-k}$, the removable singular factor cancels in the continuous domain, leaving the nonsingular polynomial manifold $S(x, y, n) = (x - y)^n$ with $0.0$\%$ division error. $\blacksquare$
+In the heuristic quotient $Q = $\frac{I $\cdot D - F}{D}$ where $D = $\frac{$\partial S}{$\partial t}$, direct substitution yields an indeterminate singularity as $D \to 0$. By decoupling the extraneous operator D and synchronizing the summation index $i $\mapsto k $\in $\{0, $\dots, n$\}$ and exponent $x^{k-n} $\mapsto x^{n-k}$, the removable singular factor cancels in the continuous domain, leaving the nonsingular polynomial manifold $S(x, y, n) = (x - y)^n$ with $0.0$\%$ division error. $\blacksquare$
 
 ---
 
