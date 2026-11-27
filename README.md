@@ -110,7 +110,7 @@ $$
 \frac{\partial S}{\partial t} \equiv 0 \tag{4}
 $$
 
-*Consequently, the indeterminate quotient in (1) constitutes a removable algebraic singularity that reduces via continuous factor cancellation to the exact polynomial identity $S(x, y, n) $\equiv (x - y)^n$.*
+*Consequently, the indeterminate quotient in (1) constitutes a removable algebraic singularity that reduces via continuous factor cancellation to the exact polynomial identity $S(x, y, n) \equiv (x - y)^n$.*
 
 **Proof:** By the limit definition of the partial derivative:
 
