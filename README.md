@@ -118,7 +118,7 @@ $$
 \frac{\partial S}{\partial t} = \lim_{\Delta t \to 0} \frac{S(x, y, n; t + \Delta t) - S(x, y, n; t)}{\Delta t} = \lim_{\Delta t \to 0} \frac{0}{\Delta t} = 0 \tag{5}
 $$
 
-In the heuristic quotient $Q = $\frac{I $\cdot D - F}{D}$ where $D = $\frac{$\partial S}{$\partial t}$, direct substitution yields an indeterminate singularity as $D \to 0$. By decoupling the extraneous operator D and synchronizing the summation index $i $\mapsto k $\in $\{0, $\dots, n$\}$ and exponent $x^{k-n} $\mapsto x^{n-k}$, the removable singular factor cancels in the continuous domain, leaving the nonsingular polynomial manifold $S(x, y, n) = (x - y)^n$ with $0.0$\%$ division error. $\blacksquare$
+In the heuristic quotient $Q = \frac{I \cdot D - F}{D}$ where $D = \frac{\partial S}{\partial t}$, direct substitution yields an indeterminate singularity as $D \to 0$. By decoupling the extraneous operator D and synchronizing the summation index $i \mapsto k \in \{0, \dots, n\}$ and exponent $x^{k-n} \mapsto x^{n-k}$, the removable singular factor cancels in the continuous domain, leaving the nonsingular polynomial manifold $S(x, y, n) = (x - y)^n$ with $0.0\%$ division error. $\blacksquare$
 
 ---
 
