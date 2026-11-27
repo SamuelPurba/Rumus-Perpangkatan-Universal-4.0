@@ -121,21 +121,17 @@ In the heuristic quotient $Q = $\frac{I $\cdot D - F}{D}$ where $D = $\frac{$\pa
 ---
 
 #### **Theorem 2 (Non-Elementary Transcendental Integration and 16-Point Gauss-Legendre Quadrature)**
-*By Liouville's Theorem (1833) [3], the self-exponential integrand $f(x) = x^x = \exp(x \ln x)$ possesses no elementary closed-form antiderivative. Over the unit interval $[0, 1]$, its definite integral converges to Johann Bernoulli's Sophomore's Dream identity (1697):*
+*By Liouville's Theorem (1833) [3], the self-exponential integrand $f(x) = x^x = $\exp(x \ln x)$ possesses no elementary closed-form antiderivative. Over the unit interval $[0, 1]$, its definite integral converges to Johann Bernoulli's Sophomore's Dream identity (1697):*
 
-($$\int_{0}^{1} x^x $\, $\mathrm{d}x = $\sum_{m=1}^{\infty} (-1)^{m-1} m^{-m} = \sum_{m=1}^{\infty} \frac{(-1)^{m-1}}{m^m} \approx 0.7834305107121344 \tag{6}$$)
+($$\int_{0}^{1} x^x $\, $\mathrm{d}x = $\sum_{m=1}^{\infty} (-1)^{m-1} m^{-m} = $\sum_{m=1}^{\infty} \frac{(-1)^{m-1}}{m^m} \approx 0.7834305107121344 \tag{6}$$)
 
 *Over any finite interval $[a, b] $\subset [0, $\infty)$, the integral is evaluated in $\mathcal{O}(1)$ time with error $\varepsilon < 10^{-14}$ via 16-point adaptive Gauss-Legendre quadrature [4]:*
 
-$$
-\int_{a}^{b} t^t \, \mathrm{d}t \approx \frac{b - a}{2} \sum_{i=1}^{16} w_i f\left( \frac{b - a}{2} \xi_i + \frac{b + a}{2} \right) \tag{7}
-$$
+($$\int_{a}^{b} t^t $\, $\mathrm{d}t $\approx $\frac{b - a}{2} $\sum_{i=1}^{16} w_i f$\left( $\frac{b - a}{2} $\xi_i + $\frac{b + a}{2} $\right) $\tag{7}$$)
 
-**Proof:** Expanding $x^x = \sum_{k=0}^{\infty} \frac{(x \ln x)^k}{k!}$ and integrating term-by-term on $(0, 1]$ via the substitution $u = -\ln x$ ($\mathrm{d}x = -e^{-u} \, \mathrm{d}u$) yields:
+**Proof:** Expanding $x^x = $\sum_{k=0}^{$\infty} $\frac{(x $\ln x)^k}{k!}$ and integrating term-by-term on $(0, 1]$ via the substitution $u = -$\ln x$ ($\mathrm{d}x = -e^{-u} $\, $\mathrm{d}u$) yields:
 
-$$
-\int_{0}^{1} x^x \, \mathrm{d}x = \sum_{k=0}^{\infty} \frac{(-1)^k}{k!} \int_{0}^{\infty} u^k e^{-(k+1)u} \, \mathrm{d}u = \sum_{k=0}^{\infty} \frac{(-1)^k k!}{k! (k+1)^{k+1}} = \sum_{m=1}^{\infty} \frac{(-1)^{m-1}}{m^m} \tag{8}
-$$
+($$\int_{0}^{1} x^x $\, \mathrm{d}x = $\sum_{k=0}^{$\infty} $\frac{(-1)^k}{k!} $\int_{0}^{$\infty} u^k e^{-(k+1)u} $\, $\mathrm{d}u = $\sum_{k=0}^{$\infty} $\frac{(-1)^k k!}{k! (k+1)^{k+1}} = $\sum_{m=1}^{$\infty} $\frac{(-1)^{m-1}}{m^m} $\tag{8}$$)
 
 where the index shift $m = k + 1$ and Euler's Gamma integral $\int_{0}^{\infty} v^k e^{-v} \, \mathrm{d}v = k!$ establish (6). For arbitrary upper limits $b = x$, mapping $[-1, 1] \to [a, b]$ with the 16 roots $\xi_i$ of the Legendre polynomial $P_{16}(\xi) = 0$ and Christoffel weights $w_i = \frac{2}{(1 - \xi_i^2)[P'_{16}(\xi_i)]^2}$ (Table II) achieves degree-31 polynomial exactness. $\blacksquare$
 
