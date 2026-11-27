@@ -89,7 +89,7 @@ Table I defines all mathematical symbols, operators, and domain constraints gove
 | $k, i$ | $\{0, 1, \dots, n\}$ | Discrete summation indices. Synchronized in the canonical audited formulation to $k \in \{0, \dots, n\}$ with exponent weights $x^{n-k} (-1)^k y^k$. |
 | $\binom{n}{k}$ | $\mathbb{N}$ | Binomial coefficient $\frac{n!}{k!(n-k)!}$, resolved in $\mathcal{O}(1)$ time via `PASCAL_TABLE[32][32]` for $n \le 30$ and exact `BigInt` combinatorics for $n > 30$. |
 | $\zeta(s)$ | $\mathbb{C} \setminus \{1\}$ | Riemann Zeta function, analytically continued via (2) to $s = -1$ where $\zeta(-1) = -\frac{1}{12}$ [5]. |
-| $\frac{\mathrm{d}}{\mathrm{d}t}, \frac{\partial}{\partial t}$ | Operator | Differential operator with respect to external time parameter $t$. Since $t \notin \mathrm{vars}(S) = \{x, y, n\}$, $\frac{\partial S}{\partial t} $\equiv 0$. |
+| $\frac{\mathrm{d}}{\mathrm{d}t}, \frac{\partial}{\partial t}$ | Operator | Differential operator with respect to external time parameter $t$. Since $t \notin \mathrm{vars}(S) = \{x, y, n\}$, $\frac{\partial S}{\partial t} $\equiv 0. |
 | $\frac{\partial}{\partial x}, \frac{\partial}{\partial y}$ | Operators | Partial differential operators with respect to spatial bases $x$ and $y$, governing sensitivity analysis and robotic Jacobian matrices. |
 | $f(x^x)$ | $x \in (0, \infty)$ | Self-exponential transcendental integrand $f(x) = x^x = \exp(x \ln x)$, extended continuously to $x = 0$ via $\lim_{x \to 0^+} x^x = 1$. |
 | $\int_{0}^{1} x^x \, \mathrm{d}x$ | $\mathbb{R}^+$ | Definite non-elementary integral over $[0, 1]$, converging to Johann Bernoulli's *Sophomore's Dream* constant $I_1 \approx 0.783430510712134$ [4]. |
