@@ -39,7 +39,7 @@
 **P**OWER series expansions and multivariable binomial differences $(x - y)^n$ form the analytical foundation of non-linear robotic manipulator control, high-dimensional neural network polynomial kernels, and cyber-physical state estimation [1], [2]. However, when traditional power expansions are embedded into complex dynamical systems coupled with differential and integral operators, three structural limitations arise:
 
 1. **Combinatorial Overflow and Catastrophic Cancellation:** Direct evaluation of factorial binomial coefficients $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ exceeds the 53-bit mantissa limit of IEEE 754 double-precision floating-point arithmetic ($> 9.007 \times 10^{15}$) for orders $n > 30$ [6]. Moreover, alternating signs $(-1)^k$ cause severe loss of significance when evaluating bases near analytically continued quantum or zeta-regularized boundaries such as $\zeta(-1) = -\frac{1}{12}$ [5].
-2. **Indeterminate Differential Singularities ($0/0$):** In operator-coupled rational formulations of the form $\frac{I \cdot D - F}{D}$, applying an external temporal derivative operator $D = \frac{\mathrm{d}}{\mathrm{d}t}$ to a time-invariant spatial expansion $S(x, y, n)$ causes the denominator to vanish identically ($D $\equiv 0). Conventional numerical evaluators fail with unhandled `NaN` or division-by-zero hardware exceptions.
+2. **Indeterminate Differential Singularities ($0/0$):** In operator-coupled rational formulations of the form $\frac{I \cdot D - F}{D}$, applying an external temporal derivative operator $D = \frac{\mathrm{d}}{\mathrm{d}t}$ to a time-invariant spatial expansion $S(x, y, n)$ causes the denominator to vanish identically ($D \equiv 0$). Conventional numerical evaluators fail with unhandled `NaN` or division-by-zero hardware exceptions.
 3. **Non-Elementary Transcendental Integration Bottlenecks:** Incorporating self-exponential terms $f(x) = x^x = \exp(x \ln x)$ introduces integrals $\int x^x \, \mathrm{d}x$ that possess no closed-form elementary antiderivative under Liouville's Theorem (1833) [3]. Standard composite Simpson or trapezoidal quadrature schemes require $N \ge 500$ mesh subdivisions to achieve moderate accuracy, violating the sub-millisecond ($< 1\text{ ms}$) real-time control loop constraints of embedded microcontrollers.
 
 ### *B. Theoretical Motivation and Core Contributions of Universal Power Expansion 4.0*
@@ -89,13 +89,13 @@ Table I defines all mathematical symbols, operators, and domain constraints gove
 | $k, i$ | $\{0, 1, \dots, n\}$ | Discrete summation indices. Synchronized in the canonical audited formulation to $k \in \{0, \dots, n\}$ with exponent weights $x^{n-k} (-1)^k y^k$. |
 | $\binom{n}{k}$ | $\mathbb{N}$ | Binomial coefficient $\frac{n!}{k!(n-k)!}$, resolved in $\mathcal{O}(1)$ time via `PASCAL_TABLE[32][32]` for $n \le 30$ and exact `BigInt` combinatorics for $n > 30$. |
 | $\zeta(s)$ | $\mathbb{C} \setminus \{1\}$ | Riemann Zeta function, analytically continued via (2) to $s = -1$ where $\zeta(-1) = -\frac{1}{12}$ [5]. |
-| $\frac{\mathrm{d}}{\mathrm{d}t}, \frac{\partial}{\partial t}$ | Operator | Differential operator with respect to external time parameter $t$. Since $t \notin \mathrm{vars}(S) = \{x, y, n\}$, $\frac{\partial S}{\partial t} $\equiv 0. |
+| $\frac{\mathrm{d}}{\mathrm{d}t}, \frac{\partial}{\partial t}$ | Operator | Differential operator with respect to external time parameter $t$. Since $t \notin \mathrm{vars}(S) = \{x, y, n\}$, $\frac{\partial S}{\partial t} \equiv 0$. |
 | $\frac{\partial}{\partial x}, \frac{\partial}{\partial y}$ | Operators | Partial differential operators with respect to spatial bases $x$ and $y$, governing sensitivity analysis and robotic Jacobian matrices. |
 | $f(x^x)$ | $x \in (0, \infty)$ | Self-exponential transcendental integrand $f(x) = x^x = \exp(x \ln x)$, extended continuously to $x = 0$ via $\lim_{x \to 0^+} x^x = 1$. |
 | $\int_{0}^{1} x^x \, \mathrm{d}x$ | $\mathbb{R}^+$ | Definite non-elementary integral over $[0, 1]$, converging to Johann Bernoulli's *Sophomore's Dream* constant $I_1 \approx 0.783430510712134$ [4]. |
 
 ### *C. Convergence Conditions and Domain Validity*
-1. **Finite Polynomial Regime ($n \in \mathbb{N}_0$):** For all $x, y \in \mathbb{C}$ (including $x = \zeta(-1) = -\frac{1}{12}$), the synchronized expansion S(x, y, n) = $\sum_{k=0}^{n} $\binom{n}{k} x^{n-k} (-1)^k y^k consists of $n + 1$ finite terms and converges **absolutely and identically** over all of $\mathbb{C}^2$ with radius of convergence $R = \infty$.
+1. **Finite Polynomial Regime ($n \in \mathbb{N}_0$):** For all $x, y \in \mathbb{C}$ (including $x = \zeta(-1) = -\frac{1}{12}$), the synchronized expansion $S(x, y, n) = \sum_{k=0}^{n} \binom{n}{k} x^{n-k} (-1)^k y^k$ consists of $n + 1$ finite terms and converges **absolutely and identically** over all of $\mathbb{C}^2$ with radius of convergence $R = \infty$.
 2. **Real/Fractional Exponent Regime ($\alpha \in \mathbb{R} \setminus \mathbb{N}_0$):** Under Newton's infinite binomial series $(x - y)^\alpha = x^\alpha \sum_{k=0}^{\infty} \binom{\alpha}{k} (-1)^k (y/x)^k$, absolute convergence requires $|y/x| < 1$.
 3. **Transcendental Quadrature Regime ($x > 0$):** Because $f(t) = t^t = \exp(t \ln t)$ is continuous and bounded on $[0, b]$ for any finite $b > 0$, $\int_{0}^{b} t^t \, \mathrm{d}t$ is strictly proper and convergent.
 
@@ -104,11 +104,13 @@ Table I defines all mathematical symbols, operators, and domain constraints gove
 All mathematical claims are formally verified via symbolic computer algebra (`SymPy`) and 50-digit arbitrary-precision decimal arithmetic in [`engine/proof_verification.py`](engine/proof_verification.py) and [`tests/test_mathematical_proofs.py`](tests/test_mathematical_proofs.py).
 
 #### **Theorem 1 (Division-by-Zero Singularity Elimination)**
-*Let S(x, y, n) = $\sum_{k=0}^{n} $\binom{n}{k} x^{n-k} (-1)^k y^k be the discrete multivariable binomial series on (x, y, n) $\in $\mathbb{R} $\times $\mathbb{R} $\times $\mathbb{N}_0 . For any unassociated external temporal variable $t$ $\notin $\mathrm{vars}(S) = $\{x, y, n, k$\}, the partial derivative of $S$ with respect to $t$ vanishes identically:*
+*Let $S(x, y, n) = \sum_{k=0}^{n} \binom{n}{k} x^{n-k} (-1)^k y^k$ be the discrete multivariable binomial series on $(x, y, n) \in \mathbb{R} \times \mathbb{R} \times \mathbb{N}_0$. For any unassociated external temporal variable $t \notin \mathrm{vars}(S) = \{x, y, n, k\}$, the partial derivative of $S$ with respect to $t$ vanishes identically:*
 
-($$\frac{$\partial(S)}{$\partial(t)} $\equiv 0 $\tag{4}$$)
+$$
+\frac{\partial S}{\partial t} \equiv 0 \tag{4}
+$$
 
-*Consequently, the indeterminate quotient in (1) constitutes a removable algebraic singularity that reduces via continuous factor cancellation to the exact polynomial identity S(x, y, n) $\equiv (x - y)^n.*
+*Consequently, the indeterminate quotient in (1) constitutes a removable algebraic singularity that reduces via continuous factor cancellation to the exact polynomial identity $S(x, y, n) \equiv (x - y)^n$.*
 
 **Proof:** By the limit definition of the partial derivative:
 
@@ -116,22 +118,28 @@ $$
 \frac{\partial S}{\partial t} = \lim_{\Delta t \to 0} \frac{S(x, y, n; t + \Delta t) - S(x, y, n; t)}{\Delta t} = \lim_{\Delta t \to 0} \frac{0}{\Delta t} = 0 \tag{5}
 $$
 
-In the heuristic quotient $Q = $\frac{I $\cdot D - F}{D}$ where $D = $\frac{$\partial S}{$\partial t}$, direct substitution yields an indeterminate singularity as $D $\to 0$. By decoupling the extraneous operator $D$ and synchronizing the summation index $i $\mapsto k $\in $\{0, \dots, n\}$ and exponent $x^{k-n} \mapsto x^{n-k}$, the removable singular factor cancels in the continuous domain, leaving the nonsingular polynomial manifold $S(x, y, n) = (x - y)^n$ with $0.0\%$ division error. $\blacksquare$
+In the heuristic quotient $Q = \frac{I \cdot D - F}{D}$ where $D = \frac{\partial S}{\partial t}$, direct substitution yields an indeterminate singularity as $D \to 0$. By decoupling the extraneous operator $D$ and synchronizing the summation index $i \mapsto k \in \{0, \dots, n\}$ and exponent $x^{k-n} \mapsto x^{n-k}$, the removable singular factor cancels in the continuous domain, leaving the nonsingular polynomial manifold $S(x, y, n) = (x - y)^n$ with $0.0\%$ division error. $\blacksquare$
 
 ---
 
 #### **Theorem 2 (Non-Elementary Transcendental Integration and 16-Point Gauss-Legendre Quadrature)**
-*By Liouville's Theorem (1833) [3], the self-exponential integrand $f(x) = x^x = $\exp(x \ln x)$ possesses no elementary closed-form antiderivative. Over the unit interval $[0, 1]$, its definite integral converges to Johann Bernoulli's Sophomore's Dream identity (1697):*
+*By Liouville's Theorem (1833) [3], the self-exponential integrand $f(x) = x^x = \exp(x \ln x)$ possesses no elementary closed-form antiderivative. Over the unit interval $[0, 1]$, its definite integral converges to Johann Bernoulli's Sophomore's Dream identity (1697):*
 
-($$\int_{0}^{1} x^x $\, $\mathrm{d}x = $\sum_{m=1}^{\infty} (-1)^{m-1} m^{-m} = $\sum_{m=1}^{\infty} \frac{(-1)^{m-1}}{m^m} \approx 0.7834305107121344 \tag{6}$$)
+$$
+\int_{0}^{1} x^x \, \mathrm{d}x = \sum_{m=1}^{\infty} (-1)^{m-1} m^{-m} = \sum_{m=1}^{\infty} \frac{(-1)^{m-1}}{m^m} \approx 0.7834305107121344 \tag{6}
+$$
 
-*Over any finite interval $[a, b] $\subset [0, $\infty)$, the integral is evaluated in $\mathcal{O}(1)$ time with error $\varepsilon < 10^{-14}$ via 16-point adaptive Gauss-Legendre quadrature [4]:*
+*Over any finite interval $[a, b] \subset [0, \infty)$, the integral is evaluated in $\mathcal{O}(1)$ time with error $\varepsilon < 10^{-14}$ via 16-point adaptive Gauss-Legendre quadrature [4]:*
 
-($$\int_{a}^{b} t^t $\, $\mathrm{d}t $\approx $\frac{b - a}{2} $\sum_{i=1}^{16} w_i f$\left( $\frac{b - a}{2} $\xi_i + $\frac{b + a}{2} $\right) $\tag{7}$$)
+$$
+\int_{a}^{b} t^t \, \mathrm{d}t \approx \frac{b - a}{2} \sum_{i=1}^{16} w_i f\left( \frac{b - a}{2} \xi_i + \frac{b + a}{2} \right) \tag{7}
+$$
 
-**Proof:** Expanding $x^x = $\sum_{k=0}^{$\infty} $\frac{(x $\ln x)^k}{k!}$ and integrating term-by-term on $(0, 1]$ via the substitution $u = -$\ln x$ ($\mathrm{d}x = -e^{-u} $\, $\mathrm{d}u$) yields:
+**Proof:** Expanding $x^x = \sum_{k=0}^{\infty} \frac{(x \ln x)^k}{k!}$ and integrating term-by-term on $(0, 1]$ via the substitution $u = -\ln x$ ($\mathrm{d}x = -e^{-u} \, \mathrm{d}u$) yields:
 
-($$\int_{0}^{1} x^x $\, \mathrm{d}x = $\sum_{k=0}^{$\infty} $\frac{(-1)^k}{k!} $\int_{0}^{$\infty} u^k e^{-(k+1)u} $\, $\mathrm{d}u = $\sum_{k=0}^{$\infty} $\frac{(-1)^k k!}{k! (k+1)^{k+1}} = $\sum_{m=1}^{$\infty} $\frac{(-1)^{m-1}}{m^m} $\tag{8}$$)
+$$
+\int_{0}^{1} x^x \, \mathrm{d}x = \sum_{k=0}^{\infty} \frac{(-1)^k}{k!} \int_{0}^{\infty} u^k e^{-(k+1)u} \, \mathrm{d}u = \sum_{k=0}^{\infty} \frac{(-1)^k k!}{k! (k+1)^{k+1}} = \sum_{m=1}^{\infty} \frac{(-1)^{m-1}}{m^m} \tag{8}
+$$
 
 where the index shift $m = k + 1$ and Euler's Gamma integral $\int_{0}^{\infty} v^k e^{-v} \, \mathrm{d}v = k!$ establish (6). For arbitrary upper limits $b = x$, mapping $[-1, 1] \to [a, b]$ with the 16 roots $\xi_i$ of the Legendre polynomial $P_{16}(\xi) = 0$ and Christoffel weights $w_i = \frac{2}{(1 - \xi_i^2)[P'_{16}(\xi_i)]^2}$ (Table II) achieves degree-31 polynomial exactness. $\blacksquare$
 
