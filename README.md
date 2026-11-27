@@ -95,7 +95,7 @@ Table I defines all mathematical symbols, operators, and domain constraints gove
 | $\int_{0}^{1} x^x \, \mathrm{d}x$ | $\mathbb{R}^+$ | Definite non-elementary integral over $[0, 1]$, converging to Johann Bernoulli's *Sophomore's Dream* constant $I_1 \approx 0.783430510712134$ [4]. |
 
 ### *C. Convergence Conditions and Domain Validity*
-1. **Finite Polynomial Regime ($n \in \mathbb{N}_0$):** For all $x, y \in \mathbb{C}$ (including $x = \zeta(-1) = -\frac{1}{12}$), the synchronized expansion $S(x, y, n) = \sum_{k=0}^{n} \binom{n}{k} x^{n-k} (-1)^k y^k$ consists of $n + 1$ finite terms and converges **absolutely and identically** over all of $\mathbb{C}^2$ with radius of convergence $R = \infty$.
+1. **Finite Polynomial Regime ($n \in \mathbb{N}_0$):** For all $x, y \in \mathbb{C}$ (including $x = \zeta(-1) = -\frac{1}{12}$), the synchronized expansion S(x, y, n) = $\sum_{k=0}^{n} $\binom{n}{k} x^{n-k} (-1)^k y^k consists of $n + 1$ finite terms and converges **absolutely and identically** over all of $\mathbb{C}^2$ with radius of convergence $R = \infty$.
 2. **Real/Fractional Exponent Regime ($\alpha \in \mathbb{R} \setminus \mathbb{N}_0$):** Under Newton's infinite binomial series $(x - y)^\alpha = x^\alpha \sum_{k=0}^{\infty} \binom{\alpha}{k} (-1)^k (y/x)^k$, absolute convergence requires $|y/x| < 1$.
 3. **Transcendental Quadrature Regime ($x > 0$):** Because $f(t) = t^t = \exp(t \ln t)$ is continuous and bounded on $[0, b]$ for any finite $b > 0$, $\int_{0}^{b} t^t \, \mathrm{d}t$ is strictly proper and convergent.
 
