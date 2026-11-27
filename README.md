@@ -106,9 +106,7 @@ All mathematical claims are formally verified via symbolic computer algebra (`Sy
 #### **Theorem 1 (Division-by-Zero Singularity Elimination)**
 *Let $S(x, y, n) = $\sum_{k=0}^{n} $\binom{n}{k} x^{n-k} (-1)^k y^k$ be the discrete multivariable binomial series on $(x, y, n) $\in $\mathbb{R} $\times $\mathbb{R} $\times $\mathbb{N}_0$ . For any unassociated external temporal variable $t $\notin $\mathrm{vars}(S) = $\{x, y, n, k\}$ , the partial derivative of $S$ with respect to $t$ vanishes identically:*
 
-$$
-\frac{\partial S}{\partial t} \equiv 0 \tag{4}
-$$
+($$\frac{\partial S}{\partial t} \equiv 0 \tag{4}$$)
 
 *Consequently, the indeterminate quotient in (1) constitutes a removable algebraic singularity that reduces via continuous factor cancellation to the exact polynomial identity $S(x, y, n) \equiv (x - y)^n$.*
 
