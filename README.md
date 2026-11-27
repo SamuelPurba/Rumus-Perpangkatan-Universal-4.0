@@ -123,11 +123,9 @@ In the heuristic quotient $Q = $\frac{I $\cdot D - F}{D}$ where $D = $\frac{$\pa
 #### **Theorem 2 (Non-Elementary Transcendental Integration and 16-Point Gauss-Legendre Quadrature)**
 *By Liouville's Theorem (1833) [3], the self-exponential integrand $f(x) = x^x = \exp(x \ln x)$ possesses no elementary closed-form antiderivative. Over the unit interval $[0, 1]$, its definite integral converges to Johann Bernoulli's Sophomore's Dream identity (1697):*
 
-$$
-\int_{0}^{1} x^x \, \mathrm{d}x = \sum_{m=1}^{\infty} (-1)^{m-1} m^{-m} = \sum_{m=1}^{\infty} \frac{(-1)^{m-1}}{m^m} \approx 0.7834305107121344 \tag{6}
-$$
+($$\int_{0}^{1} x^x $\, $\mathrm{d}x = $\sum_{m=1}^{\infty} (-1)^{m-1} m^{-m} = \sum_{m=1}^{\infty} \frac{(-1)^{m-1}}{m^m} \approx 0.7834305107121344 \tag{6}$$)
 
-*Over any finite interval $[a, b] \subset [0, \infty)$, the integral is evaluated in $\mathcal{O}(1)$ time with error $\varepsilon < 10^{-14}$ via 16-point adaptive Gauss-Legendre quadrature [4]:*
+*Over any finite interval $[a, b] $\subset [0, $\infty)$, the integral is evaluated in $\mathcal{O}(1)$ time with error $\varepsilon < 10^{-14}$ via 16-point adaptive Gauss-Legendre quadrature [4]:*
 
 $$
 \int_{a}^{b} t^t \, \mathrm{d}t \approx \frac{b - a}{2} \sum_{i=1}^{16} w_i f\left( \frac{b - a}{2} \xi_i + \frac{b + a}{2} \right) \tag{7}
